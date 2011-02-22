@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+
+printf "\nBackup portage...\n"
+pushd `git rev-parse --show-toplevel`
+rsync -Pa --exclude=00cpu-flags --exclude='savedconfig' /etc/portage/* portage/
+sed -i '/MAKEOPTS/d' portage/make.conf
+
+printf "\nBackup kernel config...\n"
+config_file=profiles/kernel.conf/kernel-config-`LANG=C lscpu | grep -i 'vendor' | awk -F ':'  '{print $2}' | xargs`
+
+mkdir -p `dirname ${config_file}`
+gzip -d -c /proc/config | tail -n +4 | sed -E "/^CONFIG_(AS|GCC|CLANG|CC|LD|LLD)_VERSION/d" > ${config_file}
+
+printf "\nAdd to stage area....\n"
+git add ${config_file} portage
+
+popd
+
+printf "\nDone...\n"
+
+exit 0

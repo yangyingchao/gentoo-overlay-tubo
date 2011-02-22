@@ -1,0 +1,3 @@
+app-portage/eix eix-extra-econf.conf
+gui-wm/hyprland debug
+gui-apps/swaylock-effects debug

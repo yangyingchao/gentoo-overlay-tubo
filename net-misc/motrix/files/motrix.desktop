@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Motrix
+Exec=/opt/Motrix/motrix --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto %U
+Terminal=false
+Type=Application
+Icon=motrix
+StartupWMClass=Motrix
+Comment=A full-featured download manager
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;x-scheme-handler/mo;x-scheme-handler/motrix;x-scheme-handler/thunder
+Categories=Network;

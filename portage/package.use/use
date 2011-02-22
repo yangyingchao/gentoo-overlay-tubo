@@ -1,0 +1,33 @@
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+>=dev-qt/qtgui-5.15.10-r1 X
+>=gnome-extra/nm-applet-1.32.0 appindicator
+>=gui-apps/waybar-0.9.22-r1 pipewire
+>=media-libs/gd-2.3.3-r3 fontconfig
+>=media-libs/mesa-23.1.6 X
+>=x11-libs/libxkbcommon-1.5.0 X
+app-editors/emacs jit webp svg png jpeg gif sqlite json libxml2 -X -gui dynamic-loading
+app-emacs/emacs-common -gui -games -gsettings
+app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude -stroke -terra-pinyin -wubi -bopomofo --cangjie -flypy -pinyin-simp
+dev-qt/qtgui eglfs
+gnome-base/gvfs ios fuse mtp
+gui-apps/swaybg gdk-pixbuf
+gui-apps/waybar experimental
+media-fonts/fontawesome ttf
+media-fonts/nerd-fonts nerdfontssymbolsonly
+media-fonts/noto cjk
+media-gfx/imagemagick graphviz webp
+media-gfx/shotwell opencv
+media-libs/libsdl2 gles2
+media-libs/libsdnfile minimal
+media-libs/libsndfile minimal
+media-sound/pulseaudio -daemon
+media-video/pipewire sound-server -bluetooth
+net-mail/mu emacs
+net-misc/aria2 xmlrpc jemalloc metalink bittorrent
+net-misc/freerdp -X
+net-misc/networkmanager -ppp -bluetooth
+sys-devel/gcc jit
+sys-devel/gdb zstd
+sys-kernel/gentoo-sources symlink
+virtual/tdesk -sway hyprland full video fcitx
+www-client/vivaldi proprietary-codecs widevine

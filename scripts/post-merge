@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "PWD: ${PWD}"
+
+# backup kmu
+pushd `git rev-parse --show-toplevel`
+sudo rsync --exclude=.cache/ --exclude=cmake_build_* -Pa  portage/ /etc/portage/
+popd
+
+exit 0
