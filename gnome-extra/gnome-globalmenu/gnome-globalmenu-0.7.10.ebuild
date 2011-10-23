@@ -48,5 +48,6 @@ pkg_postinst() {
 
 	ewarn "DO NOT report bugs to Gentoo's bugzilla"
 	einfo "Please report all bugs to http://gnome2-globalmenu.googlecode.com/issues"
+    einfo "Remember to export GTK_MODULES=globalmenu-gnome to use it."
 	einfo "Thank you"
 }
