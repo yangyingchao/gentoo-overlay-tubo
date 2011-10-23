@@ -14,7 +14,7 @@ S="${WORKDIR}/${P/_p/_}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="gnome test xfce"
 
 RDEPEND="dev-libs/glib:2
