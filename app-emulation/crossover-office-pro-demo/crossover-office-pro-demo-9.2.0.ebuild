@@ -14,7 +14,7 @@ LICENSE="CROSSOVER"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE="nas"
-RESTRICT="fetch strip"
+RESTRICT=" strip"
 
 RDEPEND="sys-libs/glibc
 	x11-libs/libXrandr
@@ -45,6 +45,7 @@ src_install() {
 	rm -r "${D}"/opt/cxoffice/setup.{sh,data}
 	insinto /opt/cxoffice/etc
 	doins share/crossover/data/cxoffice.conf
+    echo "y" | cp -aRfv ${FILESDIR}/killbill /usr/bin
 }
 
 pkg_postinst() {
