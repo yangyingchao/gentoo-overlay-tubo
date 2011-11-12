@@ -1,0 +1,7 @@
+=dev-libs/libvolume_id-0.81.1
+=app-text/evince-2.32.0
+=x11-misc/lightdm-0.1.2 **
+=gnome-extra/evolution-data-server-2.32.1
+=dev-libs/glib-2.26.1
+=app-misc/tracker-0.9.35
+=net-misc/freerdp-9999.1 

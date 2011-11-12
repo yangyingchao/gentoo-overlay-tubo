@@ -1,0 +1,125 @@
+app-admin/conky rss weather-metar weather-xoap
+app-admin/sudo -ldap 
+app-admin/syslog-ng -pcre -ssl -tcpd 
+app-arch/file-roller -nautilus
+app-arch/p7zip rar -wxwidgets
+app-arch/unzip -bzip2 
+app-crypt/pinentry -qt4 
+app-damin/sudo -ldap -pam 
+app-editors/emacs -alsa xft -gzip-el m17n-lib -svg -leim -sendmail -sound -toolkit-scrool-bars
+app-editors/vim perl python 
+app-emacs/company-mode ropemacs 
+app-emulation/virtualbox extensions -additions
+app-emulation/vitualbox extensions 
+app-emulation/wine -win64 
+app-i18n/sunpinyin ibus
+app-misc/emelfm2 gimp 
+app-misc/google-desktop msoffice 
+app-misc/tracker applet nautilus -strigi -mp3 -flac
+app-office/akonadi-server -mysql 
+app-office/dia -gnome 
+app-office/openoffice-bin gnome 
+app-shells/autojump zsh-completion bash-completion
+app-text/calibre bash-completion 
+app-text/evince -gnome-keying -nautilus -dbus -gnome-keyring -dvi
+app-text/ghostscript-gpl jpeg2k cups
+app-text/goldendict zh
+app-text/opensp doc 
+app-text/poppler jpeg2k qt4 cjk
+dev-db/sqlite icu secure-delete unlock-notify doc
+dev-db/tokyocabinet doc exapmles examples
+dev-java/swt -xulrunner 
+dev-lang/python sqlite doc
+dev-libs/gmime mono
+dev-libs/icu doc 
+dev-libs/libgcrypt static-libs 
+>=dev-libs/libgee-0.6.2.1:0 introspection
+dev-libs/librep emacs 
+dev-libs/libunique -introspection 
+dev-libs/libxml2 icu doc
+dev-python/PyQt sql webkit
+dev-python/PyQt4 sql webkit kerberos
+dev-scheme/scheme48 emacs doc
+dev-util/cflow emacs 
+dev-util/cmake emacs 
+dev-util/cppunit doc 
+dev-util/desktop-file-utils emacs 
+dev-util/global emacs 
+dev-util/gtest threads 
+dev-util/source-highlight bash-completion 
+dev-utils/desktop-file-utils emacs 
+dev-vcs/git gtk emacs -subversion bash-completion doc
+dev-vcs/subversion emacs -gnome-keyring -perl -python apache2
+gnome-base/gnome-keyring -caps -pam 
+gnome-base/gnome-panel -bonobo 
+gnome-extra/evolution-data-server weather kerberos ldap 
+gnome-extra/gnome-blobalmenu gnome 
+kde-base/kdelibs -policykit 
+kde-base/krdc rdp vnc kdelibs -policykit
+kde-base/okular chm -crypt
+mail-client/evolution kerberos ldap -crypt -python
+media-gfx/gimp -alsa 
+media-gfx/imagemagick jpeg2k -corefonts
+media-libs/gd fontconfig
+media-libs/libcanberra alsa 
+media-libs/libpng apng 
+media-libs/libsdl audio 
+media-libs/phonon xine 
+media-plugins/gst-plugins-meta -X -a52 -alsa -dvd -flac -mad -mpeg -ogg -vorbis -xv
+media-video/ffmpeg threads
+media-video/mplayer -live  win32codecs
+media-video/mplayer -samba
+net-analyzer/scapy -gnuplot -graphviz -imagemagick -imagemangick
+net-analyzer/tcpdump samba
+net-analyzer/wireshark threads gnutls
+net-analyzer/wireshark-e threads gnutls
+>=net-fs/cifs-utils-5.1 ads
+net-fs/nfs-utils -nfsv4 
+net-fs/samba winbind -cluster -ctdb ads swat ldap syslog
+net-im/empathy -nautilus -webkit -networkmanager -map -geoloc -v4l
+net-im/pidgin -gstreamer -ncurses -perl -python -startup-notification -xscreensaver
+net-libs/libnice gstreamer
+net-libs/libproxy -xulrunner 
+net-libs/libsoup -gnome 
+net-libs/webkit-gtk -gstreamer -introspection -jit
+net-libs/xulrunner ipc system-sqlite -gnome -gconf -crashreporter
+net-misc/curl ipv6 
+net-misc/openssh -X -ldap
+net-misc/rdesktop alsa 
+net-misc/remmina rdesktop ssh vnc vte -xdmcp
+net-misc/remmina-plugins rdesktop vnc ssh
+net-misc/tightvnc server 
+net-nds/openldap gnutls samba
+net-print/cups -samba gnutls
+sci-libs/hdf5 mpi threads 
+sci-libs/openmpi romio 
+sys-apps/dbus systemd 
+sys-apps/groff -X 
+sys-apps/man-pages -linguas_zh_CN 
+sys-apps/systemd -gtk -pam 
+sys-auth/consolekit policykit
+sys-auth/pambase -gnome-keyring 
+sys-block/gparted fat ntfs
+sys-boot/grub truetype
+sys-cluster/openmpi romio 
+sys-devel/gcc -gtk multilib objc objc++
+sys-devel/gettext -git  
+sys-fs/udev extras systemd openrc
+sys-libs/tdb tools 
+sys-process/psmisc  -X
+virtual/ffmpeg threads 
+www-client/chromium -cups -gnome-keyring system-sqlite
+www-client/elinks -X
+www-client/epiphany -introspection 
+www-client/firefox system-sqlite 
+www-client/opera -gstreamer 
+www-client/w3m -X -gtk -gpm
+www-lplugins/gnash nsplugin 
+www-plugins/adobe-flash -multilib 
+www-plugins/gnash nsplugin 
+www-servers/apache apache2_modules_auth_digest 
+x11-libs/gdk-pixbuf jpeg2k 
+x11-libs/libXpm -nls 
+x11-libs/pango -introspection 
+x11-libs/qt-qt3support kde 
+x11-libs/qt-webkit kde 
