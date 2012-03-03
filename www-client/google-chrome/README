@@ -1,1 +1,0 @@
-As upstream upgrages Chrome very frequently, there's no Manifest file here, use ebuild xxxx.ebuild digest to create one.
