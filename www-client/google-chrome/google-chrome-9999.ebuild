@@ -14,7 +14,7 @@ SRC_URI="amd64? ( ${SRC_BASE}amd64.deb ) x86? ( ${SRC_BASE}i386.deb )"
 SLOT="1"
 
 LICENSE="google-chrome"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+plugins"
 RESTRICT="mirror strip"
 

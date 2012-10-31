@@ -31,24 +31,24 @@ RDEPEND="sys-libs/glibc
 S=${WORKDIR}
 
 pkg_nofetch() {
-	einfo "Please visit ${HOMEPAGE}"
-	einfo "and place ${A} in ${DISTDIR}"
+    einfo "Please visit ${HOMEPAGE}"
+    einfo "and place ${A} in ${DISTDIR}"
 }
 
 src_unpack() {
-	unpack_makeself
+    unpack_makeself
 }
 
 src_install() {
-	dodir /opt/cxoffice
-	cp -r * "${D}"/opt/cxoffice || die "cp failed"
-	rm -r "${D}"/opt/cxoffice/setup.{sh,data}
-	insinto /opt/cxoffice/etc
-	doins share/crossover/data/cxoffice.conf
+    dodir /opt/cxoffice
+    cp -r * "${D}"/opt/cxoffice || die "cp failed"
+    rm -r "${D}"/opt/cxoffice/setup.{sh,data}
+    insinto /opt/cxoffice/etc
+    doins share/crossover/data/cxoffice.conf
     echo "y" | cp -aRfv ${FILESDIR}/killbill /usr/bin
 }
 
 pkg_postinst() {
-	elog "Run /opt/cxoffice/bin/cxsetup as normal user to create"
-	elog "bottles and install Windows applications."
+    elog "Run /opt/cxoffice/bin/cxsetup as normal user to create"
+    elog "bottles and install Windows applications."
 }
