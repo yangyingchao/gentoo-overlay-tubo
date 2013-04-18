@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: ^&^ $
 
+EAPI="2"
 DESCRIPTION="gdm-themes-arc-colors-2.7.ebuild"
 DOCS="AUTHORS ChangeLog NEWS README TODO"
-EAPI="2"
 HOMEPAGE="http://www.bukengnikengshui.com/(joke)"
 IUSE="doc"
 KEYWORDS="amd64 x86"

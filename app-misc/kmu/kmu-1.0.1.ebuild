@@ -3,14 +3,16 @@
 # $Header: ^&^ $
 
 EAPI="3"
-DESCRIPTION="iptux"
+
+DESCRIPTION="Keyword, Mask, USE manager."
+HOMEPAGE="http://github.com/yangyingchao/kmu"
+SRC_URI="http://abc.org/${P}.tar.gz"
+
 DOCS="AUTHORS ChangeLog NEWS README TODO"
-HOMEPAGE="http://www.bukengnikengshui.com/(joke)"
 IUSE="doc"
 KEYWORDS="amd64 x86"
 LICENSE="LGPL-2"
 SLOT="0"
-SRC_URI="http://abc.org/${P}.tar.gz"
 
 src_configure(){
 
@@ -18,9 +20,7 @@ src_configure(){
 
     myconf="${myconf} --prefix=/usr --sysconfdir=/etc"
 
-   econf ${myconf} || die "Config failed."
-
-
+    econf ${myconf} || die "Config failed."
 }
 
 src_compile(){

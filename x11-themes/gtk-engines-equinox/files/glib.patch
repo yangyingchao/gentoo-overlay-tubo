@@ -1,0 +1,12 @@
+diff -urNa equinox-1.50.ori/src/animation.c equinox-1.50/src/animation.c
+--- equinox-1.50.ori/src/animation.c	2011-01-10 09:53:12.000000000 +0000
++++ equinox-1.50/src/animation.c	2013-04-18 14:40:13.408818102 +0000
+@@ -7,7 +7,7 @@
+ #include "animation.h"
+ 
+ #ifdef HAVE_ANIMATION
+-#include <glib/gtimer.h>
++#include <glib.h>
+ 
+ struct _AnimationInfo {
+ 	GTimer *timer;
