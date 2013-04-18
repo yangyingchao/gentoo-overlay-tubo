@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: ^&^ $
 
-DESCRIPTION="iptux-0.5.ebuild"
+EAPI="3"
+DESCRIPTION="iptux"
 DOCS="AUTHORS ChangeLog NEWS README TODO"
-EAPI="2"
 HOMEPAGE="http://www.bukengnikengshui.com/(joke)"
 IUSE="doc"
 KEYWORDS="amd64 x86"
