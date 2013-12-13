@@ -57,7 +57,7 @@ index 2d32738..023d196
 -exec python @DATA_DIR@/setup/main.py $@
 +exec @PYTHON@ @DATA_DIR@/setup/main.py $@
 diff --git a/wrapper/ibus/setup/main.py b/wrapper/ibus/setup/main.py
-index 4179a91..78e9e92 100644
+index 4179a91..c5ea341 100644
 --- a/wrapper/ibus/setup/main.py
 +++ b/wrapper/ibus/setup/main.py
 @@ -1,5 +1,5 @@
@@ -219,7 +219,7 @@ index 4179a91..78e9e92 100644
  class RadioOption(Option):
      """option represented using multiple Raidio buttons
      """
-@@ -177,10 +185,10 @@ class RadioOption(Option):
+@@ -177,13 +185,18 @@ class RadioOption(Option):
  
      def init_ui(self):
          self.read_config()
@@ -228,11 +228,21 @@ index 4179a91..78e9e92 100644
      def read_config(self):
          self.v = self.read()
 -        name = SEPARATOR.join([self.name, self.v])
-+        name = SEPARATOR.join([self.name, "".join(self.v.get_string())])
++        try:
++            name = SEPARATOR.join([self.name, "".join(self.v.get_string())])
++        except:
++            name = SEPARATOR.join([self.name, "".join(self.v.get_bytestring())])
          button = self.xml.get_object(name)
-         assert button is not None, "button: %r not found" % name
-         button.set_active(True)
-@@ -200,7 +208,7 @@ class MappingInfo:
+-        assert button is not None, "button: %r not found" % name
+-        button.set_active(True)
++        if button is None:
++            print("Failed to find button:%s, will skip..."%name)
++        else:
++            button.set_active(True)
+ 
+     def write_config(self):
+         active_opt = None
+@@ -200,7 +213,7 @@ class MappingInfo:
      def __init__(self, name, mapping):
          self.name = name
          self.mapping = mapping
@@ -241,7 +251,7 @@ index 4179a91..78e9e92 100644
  class MappingOption(object):
      """an option which presents some sort of mapping, e.g. fuzzy pinyin mapping
  
-@@ -211,7 +219,7 @@ class MappingOption(object):
+@@ -211,7 +224,7 @@ class MappingOption(object):
          self.name = name
          self.widget = owner.get_object(name)
          self.mappings = mappings
@@ -250,7 +260,7 @@ index 4179a91..78e9e92 100644
      def get_mappings(self):
          if self.widget.get_active():
              return [':'.join(self.mappings)]
-@@ -223,18 +231,18 @@ class MappingOption(object):
+@@ -223,18 +236,18 @@ class MappingOption(object):
  
      def get_active(self):
          return self.widget.get_active()
@@ -272,7 +282,7 @@ index 4179a91..78e9e92 100644
      def read_config(self):
          if not self.saved_pairs:
              self.saved_pairs = self.read()
-@@ -242,24 +250,24 @@ class MultiMappingOption(Option):
+@@ -242,24 +255,24 @@ class MultiMappingOption(Option):
          for opt in self.options:
              opt.is_enabled = (opt.key() in keys)
              # throw away unknown pair
@@ -302,7 +312,7 @@ index 4179a91..78e9e92 100644
      TODO: another option is to use radio button
      """
      def __init__ (self, ui_name, config_name, mappings, option_klass=MappingOption):
-@@ -269,12 +277,12 @@ class MultiCheckDialog (object):
+@@ -269,12 +282,12 @@ class MultiCheckDialog (object):
          self.option_klass = option_klass
          self.saved_settings = []
          self.mapping_options = None
@@ -317,7 +327,7 @@ index 4179a91..78e9e92 100644
      def __init_ui(self):
          dlg_name = self.get_setup_name()
          self.__xml = gtk.Builder()
-@@ -287,7 +295,7 @@ class MultiCheckDialog (object):
+@@ -287,7 +300,7 @@ class MultiCheckDialog (object):
                      '_'.join(["on", self.ui_name, "cancel_clicked"]) : self.on_button_cancel_clicked}
          self.__xml.connect_signals(handlers)
  
@@ -326,7 +336,7 @@ index 4179a91..78e9e92 100644
                     for m in self.mappings]
          self.mapping_options = MultiMappingOption(self.config_name, options, self.saved_settings)
  
-@@ -298,15 +306,15 @@ class MultiCheckDialog (object):
+@@ -298,15 +311,15 @@ class MultiCheckDialog (object):
          pass
  
      init_ui = read_config = dummy
@@ -345,7 +355,7 @@ index 4179a91..78e9e92 100644
      def __save_ui_settings(self):
          """save to in-memory storage, will flush to config if not canceled in main_window
          """
-@@ -315,20 +323,20 @@ class MultiCheckDialog (object):
+@@ -315,20 +328,20 @@ class MultiCheckDialog (object):
      def write_config(self):
          if self.mapping_options is not None:
              self.mapping_options.write_config()
@@ -370,7 +380,7 @@ index 4179a91..78e9e92 100644
      def on_button_cancel_clicked(self, button):
          self.__dlg.destroy()
  
-@@ -353,7 +361,7 @@ class FuzzySetupDialog (MultiCheckDialog):
+@@ -353,7 +366,7 @@ class FuzzySetupDialog (MultiCheckDialog):
                                    ui_name = 'fuzzy',
                                    config_name = 'QuanPin/Fuzzy/Pinyins',
                                    mappings = mappings)
@@ -379,7 +389,7 @@ index 4179a91..78e9e92 100644
  class CorrectionSetupDialog (MultiCheckDialog):
      def __init__(self):
          mappings = [MappingInfo('QuanPin/AutoCorrection/GnNg', ('gn','ng')),
-@@ -374,7 +382,7 @@ class PunctMapping(MappingOption):
+@@ -374,7 +387,7 @@ class PunctMapping(MappingOption):
              self.init_keys_values(mappings)
          else:
              self.widget.set_sensitive(False)
@@ -388,7 +398,7 @@ index 4179a91..78e9e92 100644
      def init_keys_values(self, mappings):
          self.keys = [m[0] for m in mappings]
          values_with_closing = [v or k for k, v in mappings]
-@@ -412,7 +420,7 @@ class PunctMapping(MappingOption):
+@@ -412,7 +425,7 @@ class PunctMapping(MappingOption):
          self.widget.set_active(enabled)
  
      is_enabled = property(MappingOption.get_active, set_active)
@@ -397,7 +407,7 @@ index 4179a91..78e9e92 100644
      def key(self):
          for k, v in self.mappings:
              if v is not None:
-@@ -460,13 +468,13 @@ class MainWindow():
+@@ -460,13 +473,13 @@ class MainWindow():
      def __init__ (self):
          self.__bus = ibus.Bus()
          self.__config = self.__bus.get_config()
@@ -414,7 +424,7 @@ index 4179a91..78e9e92 100644
      def __init_ui(self, name):
          self.__init_gettext()
          xml_file = path.join(path.dirname(__file__), XML_FILE)
-@@ -488,19 +496,19 @@ class MainWindow():
+@@ -488,19 +501,19 @@ class MainWindow():
          self.__fuzzy_setup = FuzzySetupDialog()
          self.__correction_setup = CorrectionSetupDialog()
          self.__punctmapping_setup = PunctMappingSetupDialog()
@@ -437,7 +447,7 @@ index 4179a91..78e9e92 100644
              RadioOption("Keyboard/ModeSwitch", 'Shift', ['Shift', 'Control'], self.__xml),
              RadioOption("Keyboard/PunctSwitch", 'None', ['ControlComma',
                                                           'ControlPeriod',
-@@ -510,7 +518,7 @@ class MainWindow():
+@@ -510,7 +523,7 @@ class MainWindow():
              CheckBoxOption("Keyboard/Page/CommaPeriod", False, self.__xml),
              CheckBoxOption("Keyboard/CancelBackspace", True, self.__xml),
              CheckBoxOption("Keyboard/SmartPunct", True, self.__xml),
@@ -446,7 +456,7 @@ index 4179a91..78e9e92 100644
              RadioOption("Pinyin/Scheme", 'QuanPin', ['QuanPin', 'ShuangPin'], self.__xml),
              ComboBoxOption("Pinyin/ShuangPinType", 'MS2003', ['MS2003',
                                                                'ABC',
-@@ -522,7 +530,7 @@ class MainWindow():
+@@ -522,7 +535,7 @@ class MainWindow():
              CheckBoxOption("QuanPin/AutoCorrection/Enabled", False, self.__xml),
              CheckBoxOption("QuanPin/FuzzySegs/Enabled", False, self.__xml),
              CheckBoxOption("QuanPin/InnerFuzzy/Enabled", False, self.__xml),
@@ -455,7 +465,7 @@ index 4179a91..78e9e92 100644
              self.__fuzzy_setup,
              self.__correction_setup,
              self.__punctmapping_setup,
-@@ -534,7 +542,7 @@ class MainWindow():
+@@ -534,7 +547,7 @@ class MainWindow():
                  return opt
          else:
              return None
@@ -464,7 +474,7 @@ index 4179a91..78e9e92 100644
      def __read_config(self):
          for opt in self.__options:
              opt.init_ui()
-@@ -543,7 +551,7 @@ class MainWindow():
+@@ -543,7 +556,7 @@ class MainWindow():
          self.on_chk_correction_enabled_toggled(None)
          self.on_chk_punctmapping_enabled_toggled(None)
          self.on_radio_shuangpin_toggled(None)
@@ -473,7 +483,7 @@ index 4179a91..78e9e92 100644
      def __write_config(self):
          for opt in self.__options:
              opt.write_config()
-@@ -563,14 +571,14 @@ class MainWindow():
+@@ -563,14 +576,14 @@ class MainWindow():
          enabled = radio.get_active()
          combo = self.__xml.get_object("Pinyin/ShuangPinType")
          combo.set_sensitive(enabled)
@@ -491,7 +501,7 @@ index 4179a91..78e9e92 100644
      def on_chk_correction_enabled_toggled(self, button):
          self.__update_enabling_button("QuanPin/AutoCorrection/Enabled",
                                        "button_correction_setup")
-@@ -581,18 +589,18 @@ class MainWindow():
+@@ -581,18 +594,18 @@ class MainWindow():
  
      def on_button_correction_setup_clicked(self, button):
          self.__correction_setup.run()
@@ -514,7 +524,7 @@ index 4179a91..78e9e92 100644
      def on_main_apply_clicked(self, button):
          self.__write_config()
  
-@@ -601,7 +609,7 @@ class MainWindow():
+@@ -601,7 +614,7 @@ class MainWindow():
  
      def __quit(self):
          gtk.main_quit()
