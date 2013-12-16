@@ -1,0 +1,28 @@
+diff --git a/plugins/rdp/vinagre-rdp-tab.c b/plugins/rdp/vinagre-rdp-tab.c
+index 389b678..ef6b8e8 100644
+--- a/plugins/rdp/vinagre-rdp-tab.c
++++ b/plugins/rdp/vinagre-rdp-tab.c
+@@ -90,7 +90,7 @@ delay_connect (GObject *object)
+   username = vinagre_connection_get_username (conn);
+   i = 0;
+ 
+-  arg = g_new (gchar *, 9);
++  arg = g_new (gchar *, 16);
+   arg[i++] = g_strdup ("rdesktop");
+ 
+   arg[i++] = g_strdup ("-K");
+@@ -107,6 +107,14 @@ delay_connect (GObject *object)
+       arg[i++] = g_strdup (username);
+     }
+ 
++  arg[i++] = g_strdup ("-z"); // Enabled compress
++
++  arg[i++] = g_strdup ("-a"); // Color depth to 24.
++  arg[i++] = g_strdup ("24");
++
++  arg[i++] = g_strdup ("-x"); // RDP5 experience
++  arg[i++] = g_strdup ("l");
++
+   arg[i++] = g_strdup_printf ("%s:%d",
+ 			      vinagre_connection_get_host (conn),
+ 			      vinagre_connection_get_port (conn));
