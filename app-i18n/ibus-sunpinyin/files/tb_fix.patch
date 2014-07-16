@@ -1,8 +1,7 @@
-diff --git a/wrapper/ibus/SConstruct b/wrapper/ibus/SConstruct
-index bff27fb..41ca8d4 100644
---- a/wrapper/ibus/SConstruct
-+++ b/wrapper/ibus/SConstruct
-@@ -40,9 +40,10 @@ def PassVariables(envvar, env):
+diff -urNa sunpinyin-2.0.4_pre20130108/wrapper/ibus/SConstruct sunpinyin-2.0.4_pre20130108_mod/wrapper/ibus/SConstruct
+--- sunpinyin-2.0.4_pre20130108/wrapper/ibus/SConstruct	2013-01-30 18:27:44.000000000 +0800
++++ sunpinyin-2.0.4_pre20130108_mod/wrapper/ibus/SConstruct	2014-03-19 21:31:51.848222017 +0800
+@@ -40,9 +40,10 @@
              env[y] = os.environ[x]
  
  env = Environment(ENV=os.environ,
@@ -14,7 +13,7 @@ index bff27fb..41ca8d4 100644
  opts.Update(env)
  
  if GetOption('prefix') is not None:
-@@ -51,6 +52,7 @@ if GetOption('prefix') is not None:
+@@ -51,6 +52,7 @@
      env['LIBEXECDIR'] = env['PREFIX'] + '/lib/'
      env['DATADIR'] = env['PREFIX'] + '/share/'
  
@@ -22,7 +21,7 @@ index bff27fb..41ca8d4 100644
  if GetOption('libdir') is not None:
      env['LIBDIR'] = GetOption('libdir')
  
-@@ -129,6 +131,7 @@ sub = {'@LIBEXEC_DIR@': bin_dir,
+@@ -129,6 +131,7 @@
         '@DATA_DIR@' : data_dir,
         '@ICON_DIR@': icons_dir,
         '@VERSION@' : version,
@@ -30,7 +29,7 @@ index bff27fb..41ca8d4 100644
         '@INSTALL_PREFIX@': env['PREFIX']}
  env.Substfile('data/sunpinyin.xml.in', SUBST_DICT=sub)
  env.Substfile('setup/config.py.in', SUBST_DICT=sub)
-@@ -138,11 +141,11 @@ env.Substfile('setup/ibus-setup-sunpinyin.in', SUBST_DICT=sub)
+@@ -138,11 +141,11 @@
  #==============================install================================
  #
  def DoInstall():
@@ -44,22 +43,18 @@ index bff27fb..41ca8d4 100644
      setup_target = env.Install(data_dir + '/setup',
                                 ['setup/setup.xml',
                                  'setup/main.py',
-diff --git a/wrapper/ibus/setup/ibus-setup-sunpinyin.in b/wrapper/ibus/setup/ibus-setup-sunpinyin.in
-old mode 100644
-new mode 100755
-index 2d32738..023d196
---- a/wrapper/ibus/setup/ibus-setup-sunpinyin.in
-+++ b/wrapper/ibus/setup/ibus-setup-sunpinyin.in
-@@ -4,4 +4,4 @@ prefix=@INSTALL_PREFIX@
+diff -urNa sunpinyin-2.0.4_pre20130108/wrapper/ibus/setup/ibus-setup-sunpinyin.in sunpinyin-2.0.4_pre20130108_mod/wrapper/ibus/setup/ibus-setup-sunpinyin.in
+--- sunpinyin-2.0.4_pre20130108/wrapper/ibus/setup/ibus-setup-sunpinyin.in	2013-01-30 18:27:44.000000000 +0800
++++ sunpinyin-2.0.4_pre20130108_mod/wrapper/ibus/setup/ibus-setup-sunpinyin.in	2014-03-19 21:31:51.848222017 +0800
+@@ -4,4 +4,4 @@
  exec_prefix=${prefix}
  export IBUS_PREFIX=${prefix}
  export IBUS_LOCALEDIR=${prefix}/share/locale
 -exec python @DATA_DIR@/setup/main.py $@
 +exec @PYTHON@ @DATA_DIR@/setup/main.py $@
-diff --git a/wrapper/ibus/setup/main.py b/wrapper/ibus/setup/main.py
-index 4179a91..c5ea341 100644
---- a/wrapper/ibus/setup/main.py
-+++ b/wrapper/ibus/setup/main.py
+diff -urNa sunpinyin-2.0.4_pre20130108/wrapper/ibus/setup/main.py sunpinyin-2.0.4_pre20130108_mod/wrapper/ibus/setup/main.py
+--- sunpinyin-2.0.4_pre20130108/wrapper/ibus/setup/main.py	2013-01-30 18:27:44.000000000 +0800
++++ sunpinyin-2.0.4_pre20130108_mod/wrapper/ibus/setup/main.py	2014-03-19 21:33:20.677228366 +0800
 @@ -1,5 +1,5 @@
  # -*- coding: utf-8 -*-
 -# 
@@ -113,7 +108,7 @@ index 4179a91..c5ea341 100644
  import gettext
  import locale
  
-@@ -52,27 +53,34 @@ class Logger:
+@@ -52,27 +53,34 @@
      @staticmethod
      def pr(message):
          print >> sys.stderr, message
@@ -153,7 +148,7 @@ index 4179a91..c5ea341 100644
      def __get_config_name(self):
          keys = self.name.rsplit(SEPARATOR ,1)
          if len(keys) == 2:
-@@ -96,7 +104,7 @@ class TrivalOption(Option):
+@@ -96,7 +104,7 @@
  
      def init(self):
          pass
@@ -162,7 +157,7 @@ index 4179a91..c5ea341 100644
      def read_config(self):
          """update user inferface with ibus.config
          """
-@@ -106,13 +114,13 @@ class TrivalOption(Option):
+@@ -106,13 +114,13 @@
      def write_config(self):
          v = self.save_ui_setting()
          self.write(v)
@@ -178,21 +173,32 @@ index 4179a91..c5ea341 100644
      def is_changed(self):
          return self.v != self.__get_value()
  
-@@ -124,10 +132,10 @@ class TrivalOption(Option):
+@@ -123,11 +131,19 @@
+             return self.widget.get_active()
  
      def __set_value(self, v):
-         try:
+-        try:
 -            self.widget.set_value(v)
-+            self.widget.set_value(v.get_int32())
-         except:
+-        except:
 -            self.widget.set_active(v)
 -            
-+            self.widget.set_active(v.get_int32())
++        if isinstance(v, int):
++            try:
++                self.widget.set_value(v)
++            except:
++                print sys.exc_info()
++                self.widget.set_active(v)
++        else:
++            try:
++                self.widget.set_value(v.get_int32())
++            except:
++                print sys.exc_info()
++                self.widget.set_active(v.get_int32())
 +
  class CheckBoxOption(TrivalOption):
      def __init__(self, name, default, owner):
          super(CheckBoxOption, self).__init__(name, default, owner)
-@@ -140,7 +148,7 @@ class ComboBoxOption(TrivalOption):
+@@ -140,7 +156,7 @@
              default = options.index(default)
          super(ComboBoxOption, self).__init__(name, default, owner)
          self.options = options
@@ -201,7 +207,7 @@ index 4179a91..c5ea341 100644
      def init(self):
          model = gtk.ListStore(str)
          for v in self.options:
-@@ -156,7 +164,7 @@ class ComboBoxOption(TrivalOption):
+@@ -156,7 +172,7 @@
          except ValueError:
              # otherwise save its index
              return active
@@ -210,7 +216,7 @@ index 4179a91..c5ea341 100644
      def __set_value(self, v):
          try:
              # if the options are just numbers, we treat 'self.v' as the literal
-@@ -166,7 +174,7 @@ class ComboBoxOption(TrivalOption):
+@@ -166,7 +182,7 @@
          except ValueError:
              active = v
          self.widget.set_active(active)
@@ -219,7 +225,7 @@ index 4179a91..c5ea341 100644
  class RadioOption(Option):
      """option represented using multiple Raidio buttons
      """
-@@ -177,13 +185,18 @@ class RadioOption(Option):
+@@ -177,13 +193,21 @@
  
      def init_ui(self):
          self.read_config()
@@ -228,10 +234,13 @@ index 4179a91..c5ea341 100644
      def read_config(self):
          self.v = self.read()
 -        name = SEPARATOR.join([self.name, self.v])
-+        try:
-+            name = SEPARATOR.join([self.name, "".join(self.v.get_string())])
-+        except:
-+            name = SEPARATOR.join([self.name, "".join(self.v.get_bytestring())])
++        if isinstance(self.v, str):
++            name = SEPARATOR.join([self.name, "".join(self.v)])
++        else:
++            try:
++                name = SEPARATOR.join([self.name, "".join(self.v.get_string())])
++            except:
++                name = SEPARATOR.join([self.name, "".join(self.v.get_bytestring())])
          button = self.xml.get_object(name)
 -        assert button is not None, "button: %r not found" % name
 -        button.set_active(True)
@@ -242,7 +251,7 @@ index 4179a91..c5ea341 100644
  
      def write_config(self):
          active_opt = None
-@@ -200,7 +213,7 @@ class MappingInfo:
+@@ -200,7 +224,7 @@
      def __init__(self, name, mapping):
          self.name = name
          self.mapping = mapping
@@ -251,7 +260,7 @@ index 4179a91..c5ea341 100644
  class MappingOption(object):
      """an option which presents some sort of mapping, e.g. fuzzy pinyin mapping
  
-@@ -211,7 +224,7 @@ class MappingOption(object):
+@@ -211,7 +235,7 @@
          self.name = name
          self.widget = owner.get_object(name)
          self.mappings = mappings
@@ -260,7 +269,7 @@ index 4179a91..c5ea341 100644
      def get_mappings(self):
          if self.widget.get_active():
              return [':'.join(self.mappings)]
-@@ -223,18 +236,18 @@ class MappingOption(object):
+@@ -223,18 +247,18 @@
  
      def get_active(self):
          return self.widget.get_active()
@@ -282,7 +291,7 @@ index 4179a91..c5ea341 100644
      def read_config(self):
          if not self.saved_pairs:
              self.saved_pairs = self.read()
-@@ -242,24 +255,24 @@ class MultiMappingOption(Option):
+@@ -242,24 +266,24 @@
          for opt in self.options:
              opt.is_enabled = (opt.key() in keys)
              # throw away unknown pair
@@ -312,7 +321,7 @@ index 4179a91..c5ea341 100644
      TODO: another option is to use radio button
      """
      def __init__ (self, ui_name, config_name, mappings, option_klass=MappingOption):
-@@ -269,12 +282,12 @@ class MultiCheckDialog (object):
+@@ -269,12 +293,12 @@
          self.option_klass = option_klass
          self.saved_settings = []
          self.mapping_options = None
@@ -327,7 +336,7 @@ index 4179a91..c5ea341 100644
      def __init_ui(self):
          dlg_name = self.get_setup_name()
          self.__xml = gtk.Builder()
-@@ -287,7 +300,7 @@ class MultiCheckDialog (object):
+@@ -287,7 +311,7 @@
                      '_'.join(["on", self.ui_name, "cancel_clicked"]) : self.on_button_cancel_clicked}
          self.__xml.connect_signals(handlers)
  
@@ -336,7 +345,7 @@ index 4179a91..c5ea341 100644
                     for m in self.mappings]
          self.mapping_options = MultiMappingOption(self.config_name, options, self.saved_settings)
  
-@@ -298,15 +311,15 @@ class MultiCheckDialog (object):
+@@ -298,15 +322,15 @@
          pass
  
      init_ui = read_config = dummy
@@ -355,7 +364,7 @@ index 4179a91..c5ea341 100644
      def __save_ui_settings(self):
          """save to in-memory storage, will flush to config if not canceled in main_window
          """
-@@ -315,20 +328,20 @@ class MultiCheckDialog (object):
+@@ -315,20 +339,20 @@
      def write_config(self):
          if self.mapping_options is not None:
              self.mapping_options.write_config()
@@ -380,7 +389,7 @@ index 4179a91..c5ea341 100644
      def on_button_cancel_clicked(self, button):
          self.__dlg.destroy()
  
-@@ -353,7 +366,7 @@ class FuzzySetupDialog (MultiCheckDialog):
+@@ -353,7 +377,7 @@
                                    ui_name = 'fuzzy',
                                    config_name = 'QuanPin/Fuzzy/Pinyins',
                                    mappings = mappings)
@@ -389,7 +398,7 @@ index 4179a91..c5ea341 100644
  class CorrectionSetupDialog (MultiCheckDialog):
      def __init__(self):
          mappings = [MappingInfo('QuanPin/AutoCorrection/GnNg', ('gn','ng')),
-@@ -374,7 +387,7 @@ class PunctMapping(MappingOption):
+@@ -374,7 +398,7 @@
              self.init_keys_values(mappings)
          else:
              self.widget.set_sensitive(False)
@@ -398,7 +407,7 @@ index 4179a91..c5ea341 100644
      def init_keys_values(self, mappings):
          self.keys = [m[0] for m in mappings]
          values_with_closing = [v or k for k, v in mappings]
-@@ -412,7 +425,7 @@ class PunctMapping(MappingOption):
+@@ -412,7 +436,7 @@
          self.widget.set_active(enabled)
  
      is_enabled = property(MappingOption.get_active, set_active)
@@ -407,7 +416,7 @@ index 4179a91..c5ea341 100644
      def key(self):
          for k, v in self.mappings:
              if v is not None:
-@@ -460,13 +473,13 @@ class MainWindow():
+@@ -460,13 +484,13 @@
      def __init__ (self):
          self.__bus = ibus.Bus()
          self.__config = self.__bus.get_config()
@@ -424,7 +433,7 @@ index 4179a91..c5ea341 100644
      def __init_ui(self, name):
          self.__init_gettext()
          xml_file = path.join(path.dirname(__file__), XML_FILE)
-@@ -488,19 +501,19 @@ class MainWindow():
+@@ -488,19 +512,19 @@
          self.__fuzzy_setup = FuzzySetupDialog()
          self.__correction_setup = CorrectionSetupDialog()
          self.__punctmapping_setup = PunctMappingSetupDialog()
@@ -447,7 +456,7 @@ index 4179a91..c5ea341 100644
              RadioOption("Keyboard/ModeSwitch", 'Shift', ['Shift', 'Control'], self.__xml),
              RadioOption("Keyboard/PunctSwitch", 'None', ['ControlComma',
                                                           'ControlPeriod',
-@@ -510,7 +523,7 @@ class MainWindow():
+@@ -510,7 +534,7 @@
              CheckBoxOption("Keyboard/Page/CommaPeriod", False, self.__xml),
              CheckBoxOption("Keyboard/CancelBackspace", True, self.__xml),
              CheckBoxOption("Keyboard/SmartPunct", True, self.__xml),
@@ -456,7 +465,7 @@ index 4179a91..c5ea341 100644
              RadioOption("Pinyin/Scheme", 'QuanPin', ['QuanPin', 'ShuangPin'], self.__xml),
              ComboBoxOption("Pinyin/ShuangPinType", 'MS2003', ['MS2003',
                                                                'ABC',
-@@ -522,7 +535,7 @@ class MainWindow():
+@@ -522,7 +546,7 @@
              CheckBoxOption("QuanPin/AutoCorrection/Enabled", False, self.__xml),
              CheckBoxOption("QuanPin/FuzzySegs/Enabled", False, self.__xml),
              CheckBoxOption("QuanPin/InnerFuzzy/Enabled", False, self.__xml),
@@ -465,7 +474,7 @@ index 4179a91..c5ea341 100644
              self.__fuzzy_setup,
              self.__correction_setup,
              self.__punctmapping_setup,
-@@ -534,7 +547,7 @@ class MainWindow():
+@@ -534,7 +558,7 @@
                  return opt
          else:
              return None
@@ -474,7 +483,7 @@ index 4179a91..c5ea341 100644
      def __read_config(self):
          for opt in self.__options:
              opt.init_ui()
-@@ -543,7 +556,7 @@ class MainWindow():
+@@ -543,7 +567,7 @@
          self.on_chk_correction_enabled_toggled(None)
          self.on_chk_punctmapping_enabled_toggled(None)
          self.on_radio_shuangpin_toggled(None)
@@ -483,7 +492,7 @@ index 4179a91..c5ea341 100644
      def __write_config(self):
          for opt in self.__options:
              opt.write_config()
-@@ -563,14 +576,14 @@ class MainWindow():
+@@ -563,14 +587,14 @@
          enabled = radio.get_active()
          combo = self.__xml.get_object("Pinyin/ShuangPinType")
          combo.set_sensitive(enabled)
@@ -501,7 +510,7 @@ index 4179a91..c5ea341 100644
      def on_chk_correction_enabled_toggled(self, button):
          self.__update_enabling_button("QuanPin/AutoCorrection/Enabled",
                                        "button_correction_setup")
-@@ -581,18 +594,18 @@ class MainWindow():
+@@ -581,18 +605,18 @@
  
      def on_button_correction_setup_clicked(self, button):
          self.__correction_setup.run()
@@ -524,7 +533,7 @@ index 4179a91..c5ea341 100644
      def on_main_apply_clicked(self, button):
          self.__write_config()
  
-@@ -601,7 +614,7 @@ class MainWindow():
+@@ -601,7 +625,7 @@
  
      def __quit(self):
          gtk.main_quit()

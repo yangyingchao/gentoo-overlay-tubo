@@ -1,2 +1,4 @@
 app-emulation
 net-analyzer
+cross-arm-unknown-linux-gnu
+cross-arm-linux-gnu
