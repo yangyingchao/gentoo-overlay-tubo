@@ -1,2 +1,8 @@
 This is some useful ebuilds collected by me. Feel free to modify them if needed.
 tubo <yangyingchao@gmail.com>
+
+
+add this line to make.conf to use this overlay
+
+PORTDIR_OVERLAY="/home/yyc/Work/gentoo-overlay-tubo"
+
