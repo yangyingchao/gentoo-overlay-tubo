@@ -7,25 +7,29 @@ EAPI="5"
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 MOZ_LANGS=( en zh-CN )
 
+MOZ_TB_V="33.0"
+
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
-MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
-MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
+# MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
+# MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
+MOZ_PV="33.0"
 MOZ_PN="${PN/-bin}"
-MOZ_P="${MOZ_PN}-${MOZ_PV}"
+MOZ_P="${MOZ_PN}-${MOZ_TB_V}"
 
 # Upstream ftp release URI that's used by mozlinguas.eclass
 # We don't use the http mirror because it deletes old tarballs.
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+MOZ_FTP_URI="https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
 MOZ_HTTP_URI="https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
 
 inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 MOZ_HTTP_URI="https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+MOZ_FTP_URI="https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
+# MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 SRC_URI="${SRC_URI}
-    ${MOZ_HTTP_URI}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2
-    ${MOZ_FTP_URI}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2"
+    ${MOZ_HTTP_URI}/${MOZ_TB_V}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2
+    ${MOZ_FTP_URI}/${MOZ_TB_V}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2"
 
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
