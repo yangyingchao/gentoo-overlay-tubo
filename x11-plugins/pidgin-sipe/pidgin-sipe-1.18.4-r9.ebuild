@@ -14,13 +14,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug kerberos ocs2005-message-hack openssl voice"
+IUSE="debug kerberos ocs2005-message-hack openssl telepathy voice"
 
 RDEPEND=">=dev-libs/gmime-2.4.16
-	>=sys-apps/dbus-1.1.0
-	>=dev-libs/dbus-glib-0.61
-	>=dev-libs/glib-2.28:2
-	>=net-libs/telepathy-glib-0.18.0
 	dev-libs/libxml2
 	openssl? ( dev-libs/openssl )
 	!openssl? ( dev-libs/nss )
@@ -29,9 +25,17 @@ RDEPEND=">=dev-libs/gmime-2.4.16
 		>=dev-libs/glib-2.28.0
 		>=net-libs/libnice-0.1.0
 		media-libs/gstreamer:0.10
+		>=net-im/pidgin-2.8.0
 	)
 	!voice? (
 		>=dev-libs/glib-2.12.0:2
+		net-im/pidgin
+	)
+	telepathy? (
+		>=sys-apps/dbus-1.1.0
+		>=dev-libs/dbus-glib-0.61
+		>=dev-libs/glib-2.28:2
+		>=net-libs/telepathy-glib-0.18.0
 	)
 "
 
@@ -41,15 +45,15 @@ DEPEND="dev-util/intltool
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/pidgin-sipe-1.18-telepathy.patch
+	epatch "${FILESDIR}"/pidgin-sipe-1.18-alias.patch
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--disable-purple \
+		--enable-purple \
 		--disable-quality-check \
-        --enable-telepathy \
+		$(use_enable telepathy) \
 		$(use_enable debug) \
 		$(use_enable ocs2005-message-hack) \
 		$(use_with kerberos krb5) \
