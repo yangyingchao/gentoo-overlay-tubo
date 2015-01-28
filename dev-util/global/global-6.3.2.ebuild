@@ -8,7 +8,7 @@ inherit autotools elisp-common eutils
 
 DESCRIPTION="GNU Global is a tag system to find the locations of a specified object in various sources"
 HOMEPAGE="http://www.gnu.org/software/global/global.html"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+SRC_URI="http://tamacom.com/global/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,8 +25,25 @@ DEPEND="${DEPEND}
 
 SITEFILE="50gtags-gentoo.el"
 
+DOC_CONTENTS="
+You may need to update environment variables to use ctags,
+adding following lines into your bash configuration:
+
+
+if [ -r $PWD/.globalrc ]; then
+    GTAGSCONF=$PWD/.globalrc
+elif [ -r $HOME/.globalrc ]; then
+    GTAGSCONF=$HOME/.globalrc
+elif [ -r /usr/local/share/gtags/gtags.conf ]; then
+    GTAGSCONF=/usr/local/share/gtags/gtags.conf
+fi
+
+export GTAGSCONF
+export export GTAGSLABEL=exuberant-ctags
+"
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-6.2.9-tinfo.patch"
+    cp "${FILESDIR}/99gtags" .
 	eautoreconf
 }
 
@@ -61,6 +78,9 @@ src_install() {
 
 	insinto /etc
 	doins gtags.conf
+
+    insinto /etc/env.d
+    doins 99gtags
 
 	if use vim; then
 		insinto /usr/share/vim/vimfiles/plugin
