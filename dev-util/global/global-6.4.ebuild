@@ -45,7 +45,6 @@ export export GTAGSLABEL=exuberant-ctags
 "
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-6.2.9-tinfo.patch"
-    cp "${FILESDIR}/99gtags" .
 	eautoreconf
 }
 
