@@ -1,0 +1,52 @@
+#!/bin/bash
+#
+# Author: Yang,Ying-chao <yangyingchao@g-data.com>, 2017-02-07
+#
+
+ARCH=`uname`
+
+_raise_urxvt() {
+    if [ $ARCH = 'Linux' ]; then
+        which wmctrl > /dev/null 2>&1 || return 1
+        window_list=`wmctrl -lx | grep urxvt.URxvt | awk -F " " '{print $1}' `
+        if [ -z "$window_list" ]; then
+            return 1
+        fi
+
+        for win in ${window_list}; do
+            wmctrl -i -a $win
+        done
+    else
+        echo "Unsupported platform"
+    fi
+}
+
+_run_urxvtc() {
+    urxvtc
+    if [ $? -eq 2 ]; then
+        urxvtd -q -o -f
+        if [ $? -eq 0 ]; then
+            urxvtc
+        else
+            urxvt -e sh -c '
+echo "Failed to run urxvtd, please check if rxvt daemon is running..."
+echo "Will run urxvt directly..."
+echo ""
+echo "Press ENTER to continue."
+read s
+
+if [ -z $SHELL ]; then
+    SHELL="/bin/sh"
+fi
+
+$SHELL
+'
+        fi
+    fi
+}
+
+if [ $# -eq 0 ]; then
+    _raise_urxvt || _run_urxvtc
+else
+    _run_urxvtc
+fi

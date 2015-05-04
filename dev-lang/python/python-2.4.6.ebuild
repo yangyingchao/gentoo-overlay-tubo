@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-lang/python/Attic/python-2.4.6.ebuild,v 1.49 2012/02/10 04:18:39 patrick dead $
 
-EAPI="1"
+EAPI="5"
+WANT_LIBTOOL="none"
 
-inherit autotools eutils flag-o-matic multilib python toolchain-funcs
+inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs multiprocessing
 
 MY_P="Python-${PV}"
 
@@ -17,7 +18,7 @@ SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.bz2"
 LICENSE="PSF-2.2"
 SLOT="2.4"
 PYTHON_ABI="${SLOT}"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
 IUSE="-berkdb bootstrap build +cxx doc elibc_uclibc examples gdbm ipv6 +ncurses +readline +ssl +threads tk +wide-unicode wininst +xml"
 
 RDEPEND=">=app-admin/eselect-python-20091230
