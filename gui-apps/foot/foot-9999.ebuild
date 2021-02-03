@@ -8,7 +8,7 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/foot"
 S="${EGIT_CHECKOUT_DIR}"
 SLOT=0
 
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 DESCRIPTION="The fast, lightweight and minimalistic Wayland terminal emulator."
 HOMEPAGE="https://codeberg.org/dnkl/foot"

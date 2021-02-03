@@ -1,7 +1,7 @@
 
 EAPI=7
 
-inherit flag-o-matic  meson desktop xdg-utils
+inherit flag-o-matic meson desktop xdg-utils
 
 SLOT=0
 
@@ -13,7 +13,12 @@ HOMEPAGE="https://codeberg.org/dnkl/foot"
 LICENSE="MIT"
 IUSE="+wayland +xft +pgo"
 
-SRC_URI="https://codeberg.org/dnkl/foot/archive/${PV}.tar.gz -> foot-${PV}.tar.gz"
+PV_TLLIST=1.0.4
+PV_FCFT=2.3.2
+SRC_URI="https://codeberg.org/dnkl/foot/archive/${PV}.tar.gz -> foot-${PV}.tar.gz
+https://codeberg.org/dnkl/tllist/archive/${PV_TLLIST}.tar.gz -> tllist-${PV_TLLIST}.tar.gz
+https://codeberg.org/dnkl/fcft/archive/${PV_FCFT}.tar.gz -> fcft-${PV_FCFT}.tar.gz
+"
 S="${WORKDIR}/foot"
 
 RDEPEND="dev-libs/wayland
@@ -33,9 +38,9 @@ dev-util/ninja
 src_prepare() {
     mkdir -p subprojects
     pushd subprojects
-    # git clone https://codeberg.org/dnkl/tllist.git
-    # git clone https://codeberg.org/dnkl/fcft.git
-    cp -aRf /home/arthas/Work/foot/subprojects/* .
+    cd subprojects
+    unpack ${DISTDIR}/tllist-${PV_TLLIST}.tar.gz
+    unpack ${DISTDIR}/fcft-${PV_FCFT}.tar.gz
     popd
     default
 }
