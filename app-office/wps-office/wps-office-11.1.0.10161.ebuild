@@ -12,9 +12,7 @@ HOMEPAGE="http://wps-community.org/downloads"
 MY_P="${PN}_${PV}"
 BUILD="${PV/*.}"
 
-SRC_URI="https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${BUILD}/${MY_P}.XA_amd64.deb"
-SRC_URI="https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/9719/wps-office_11.1.0.9719_amd64.deb"
-
+SRC_URI="https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/${BUILD}/wps-office_${PV}_amd64.deb"
 LICENSE="WPS"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"

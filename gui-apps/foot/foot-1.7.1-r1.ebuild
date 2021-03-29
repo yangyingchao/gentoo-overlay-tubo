@@ -34,6 +34,7 @@ BDEPEND="
 dev-util/meson
 dev-util/ninja
 "
+PATCHES=("${FILESDIR}/426.patch")
 
 src_prepare() {
     mkdir -p subprojects

@@ -1,0 +1,54 @@
+From 058eba33ec1008cc301b1979b6dd59c7a81c2e7d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Mon, 29 Mar 2021 20:11:32 +0200
+Subject: [PATCH] revert: input: do not include consumed modifiers in the set
+ sent to the client
+
+There were two issues with it:
+
+* Not all applications decode the sequence into a set of modifiers +
+  key, but use a fixed sequence -> combo mapping, that we broke.
+
+* There were unforeseen issues with e.g. F1-12, where the modifier
+  were removed from combos like Ctrl+F12, or Alt+F12. The reason is
+  simple; XKB tells us that Ctrl, or Alt, is a consumed modifier. Now,
+  _why_ it thinks that is a different story.
+
+This reverts 6cd72bdee6c2b11f7cab15df9afb0ed92a7f8ba0
+
+Closes #425
+---
+ input.c      | 10 +++++-----
+ 2 files changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/input.c b/input.c
+index 9a26e77..320b167 100644
+--- a/input.c
++++ b/input.c
+@@ -1026,10 +1026,10 @@ key_press_release(struct seat *seat, struct terminal *term, uint32_t serial,
+      */
+ 
+     enum modifier keymap_mods = MOD_NONE;
+-    keymap_mods |= mods & ~consumed & shift ? MOD_SHIFT : MOD_NONE;
+-    keymap_mods |= mods & ~consumed & alt ? MOD_ALT : MOD_NONE;
+-    keymap_mods |= mods & ~consumed & ctrl ? MOD_CTRL : MOD_NONE;
+-    keymap_mods |= mods & ~consumed & meta ? MOD_META : MOD_NONE;
++    keymap_mods |= seat->kbd.shift ? MOD_SHIFT : MOD_NONE;
++    keymap_mods |= seat->kbd.alt ? MOD_ALT : MOD_NONE;
++    keymap_mods |= seat->kbd.ctrl ? MOD_CTRL : MOD_NONE;
++    keymap_mods |= seat->kbd.meta ? MOD_META : MOD_NONE;
+ 
+     const struct key_data *keymap;
+     if (sym == XKB_KEY_Escape && keymap_mods == MOD_NONE && term->modify_escape_key) {
+@@ -1113,7 +1113,7 @@ key_press_release(struct seat *seat, struct terminal *term, uint32_t serial,
+     }
+ 
+     else {
+-        if (mods & ~consumed & alt) {
++        if (mods & alt) {
+             /*
+              * When the alt modifier is pressed, we do one out of three things:
+              *
+-- 
+2.20.1
+
