@@ -31,7 +31,9 @@ DEPEND=" (
   gui-apps/wl-clipboard
   x11-misc/j4-dmenu-desktop
   dev-libs/bemenu
-  xfce-base/thunar
+
+  media-sound/pavucontrol-qt
+  x11-misc/pcmanfm-qt
   )
 
   X? (
