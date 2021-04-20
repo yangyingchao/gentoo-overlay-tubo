@@ -68,17 +68,18 @@ src_compile() {
 
         tmp_file=$(mktemp)
         ${WORKDIR}/foot/scripts/generate-alt-random-writes.py \
-          --rows=67 \
-          --cols=135 \
-          --scroll \
-          --scroll-region \
-          --colors-regular \
-          --colors-bright \
-          --colors-256 \
-          --colors-rgb \
           --attr-bold \
           --attr-italic \
           --attr-underline \
+          --colors-256 \
+          --colors-bright \
+          --colors-regular \
+          --colors-rgb \
+          --cols=135 \
+          --rows=67 \
+          --scroll \
+          --scroll-region \
+          --sixe \
           ${tmp_file} || die "??"
         ./pgo ${tmp_file} ${tmp_file} ${tmp_file} || die "???"
         rm ${tmp_file}

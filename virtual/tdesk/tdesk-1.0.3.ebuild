@@ -13,13 +13,13 @@ IUSE="wayland X"
 DEPEND=" (
   media-fonts/wqy-microhei
   sys-apps/kmu
-  sys-apps/the_silver_searcher
   sys-process/htop
   sys-apps/ripgrep
   app-shells/zsh
   sys-power/upower
   app-misc/jq
   app-arch/unrar
+  sys-fs/udisks
 
   wayland? (
   gui-wm/sway[-swaybar,swaybg,swayidle,-swaylock,swaymsg,swaynag,systemd,tray,zsh-completion]
