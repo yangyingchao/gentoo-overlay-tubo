@@ -27,7 +27,7 @@ src_install() {
     mkdir -p ${ED}/usr/bin/ || die "create dir"
     mv clash-linux-amd64-v${PV} ${ED}/usr/bin/clash
     chmod +x ${ED}/usr/bin/clash
-	systemd_newunit "${FILESDIR}/clash.service" "${PN}".service
+	systemd_newunit "${FILESDIR}/clash.service" clash.service
 }
 
 pkg_postinst() {
