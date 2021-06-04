@@ -1,0 +1,50 @@
+From 305c0c649d1a53db5cb52cf855c640981c12fe49 Mon Sep 17 00:00:00 2001
+From: yangyingchao <yangyingchao@icloud.com>
+Date: Fri, 21 May 2021 00:20:18 +0000
+Subject: [PATCH] [fix] apply my fixes..
+
+1. Json
+2. Blue color.
+---
+ lisp/term/tty-colors.el | 2 +-
+ src/json.c              | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lisp/term/tty-colors.el b/lisp/term/tty-colors.el
+index 740d0654a1..a660308657 100644
+--- a/lisp/term/tty-colors.el
++++ b/lisp/term/tty-colors.el
+@@ -283,7 +283,7 @@ color-name-rgb-alist
+     ("royalblue3"	14906 24415 52685)
+     ("royalblue4"	10023 16448 35723)
+     ("blue1"		    0     0 65535)
+-    ("blue2"		    0     0 61166)
++    ("blue2"		    0 49087 65535)
+     ("blue3"		    0     0 52685)
+     ("blue4"		    0     0 35723)
+     ("dodgerblue1"	 7710 37008 65535)
+diff --git a/src/json.c b/src/json.c
+index 3f1d27ad7f..c6a9e3d1cd 100644
+--- a/src/json.c
++++ b/src/json.c
+@@ -981,7 +981,7 @@ DEFUN ("json-parse-string", Fjson_parse_string, Sjson_parse_string, 1, MANY,
+ 
+   json_error_t error;
+   json_t *object
+-    = json_loads (SSDATA (encoded), JSON_DECODE_ANY, &error);
++    = json_loads (SSDATA (encoded), JSON_DECODE_ANY | JSON_ALLOW_NUL, &error);
+   if (object == NULL)
+     json_parse_error (&error);
+ 
+@@ -1079,7 +1079,7 @@ DEFUN ("json-parse-buffer", Fjson_parse_buffer, Sjson_parse_buffer,
+   json_error_t error;
+   json_t *object
+     = json_load_callback (json_read_buffer_callback, &data,
+-                          JSON_DECODE_ANY | JSON_DISABLE_EOF_CHECK,
++                          JSON_DECODE_ANY | JSON_DISABLE_EOF_CHECK | JSON_ALLOW_NUL,
+                           &error);
+ 
+   if (object == NULL)
+-- 
+2.31.1
+
