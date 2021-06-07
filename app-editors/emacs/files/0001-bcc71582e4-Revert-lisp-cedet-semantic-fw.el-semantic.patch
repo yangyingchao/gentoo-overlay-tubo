@@ -1,0 +1,36 @@
+From f5b34a2712e26bb13b01d24d99519f401fb54362 Mon Sep 17 00:00:00 2001
+From: yangyingchao <yangyingchao@icloud.com>
+Date: Mon, 7 Jun 2021 07:25:04 +0000
+Subject: [PATCH] bcc71582e4 * Revert "* lisp/cedet/semantic/fw.el
+ (semantic-find-file-noselect)
+
+---
+ lisp/cedet/semantic/fw.el | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/lisp/cedet/semantic/fw.el b/lisp/cedet/semantic/fw.el
+index 4ad70ff7c6..214c82fc72 100644
+--- a/lisp/cedet/semantic/fw.el
++++ b/lisp/cedet/semantic/fw.el
+@@ -328,7 +328,17 @@ semantic-find-file-noselect
+   "Call `find-file-noselect' with various features turned off.
+ Use this when referencing a file that will be soon deleted.
+ FILE, NOWARN, RAWFILE, and WILDCARDS are passed into `find-file-noselect'."
+-  (let* ((recentf-exclude #'always)
++  ;; Hack -
++  ;; Check if we are in set-auto-mode, and if so, warn about this.
++  (when (boundp 'keep-mode-if-same)
++    (let ((filename (or (and (boundp 'filename) filename)
++			"(unknown)")))
++      (message "WARNING: semantic-find-file-noselect called for \
++%s while in set-auto-mode for %s.  You should call the responsible function \
++into `mode-local-init-hook'." file filename)
++      (sit-for 1)))
++
++  (let* ((recentf-exclude '( (lambda (f) t) ))
+ 	 ;; This is a brave statement.  Don't waste time loading in
+ 	 ;; lots of modes.  Especially decoration mode can waste a lot
+ 	 ;; of time for a buffer we intend to kill.
+-- 
+2.31.1
+

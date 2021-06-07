@@ -11,17 +11,10 @@ inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multili
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
-	EGIT_BRANCH="master"
-	inherit git-r3
-	SRC_URI=""
-	#KEYWORDS=""
-else
-	MAJOR_V=$(ver_cut 1)
-	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
-	KEYWORDS="-* amd64 ~x86"
-fi
+MAJOR_V=$(ver_cut 1)
+SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
+KEYWORDS="-* amd64 ~x86"
+
 S="${WORKDIR}/${MY_P}"
 
 GWP_V="20200523"
@@ -110,7 +103,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47.2[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:6.1.1 )
+	mono? ( app-emulation/wine-mono:6.2.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple

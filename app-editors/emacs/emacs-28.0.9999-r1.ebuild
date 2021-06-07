@@ -109,7 +109,8 @@ EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
 PATCHES=(
-    "${FILESDIR}/0001-fix-apply-my-fixes.patch"
+	"${FILESDIR}/0001-fix-apply-my-fixes.patch"
+	"${FILESDIR}/0001-bcc71582e4-Revert-lisp-cedet-semantic-fw.el-semantic.patch"
 )
 
 src_prepare() {
