@@ -11,10 +11,10 @@ DESCRIPTION="The fast, lightweight and minimalistic Wayland terminal emulator."
 HOMEPAGE="https://codeberg.org/dnkl/foot"
 
 LICENSE="MIT"
-IUSE="+wayland +xft +pgo"
+IUSE="+wayland +xft +pgo graphemes"
 
-PV_TLLIST=1.0.4
-PV_FCFT=2.3.2
+PV_TLLIST=1.0.5
+PV_FCFT=2.4.2
 SRC_URI="https://codeberg.org/dnkl/foot/archive/${PV}.tar.gz -> foot-${PV}.tar.gz
 https://codeberg.org/dnkl/tllist/archive/${PV_TLLIST}.tar.gz -> tllist-${PV_TLLIST}.tar.gz
 https://codeberg.org/dnkl/fcft/archive/${PV_FCFT}.tar.gz -> fcft-${PV_FCFT}.tar.gz
@@ -26,6 +26,7 @@ x11-libs/libxkbcommon
 x11-libs/pixman
 media-libs/fontconfig
 media-libs/freetype
+graphemes? ( dev-libs/libutf8proc )
 "
 
 DEPEND="${RDEPEND}"
@@ -34,7 +35,6 @@ BDEPEND="
 dev-util/meson
 dev-util/ninja
 "
-PATCHES=("${FILESDIR}/426.patch")
 
 src_prepare() {
     mkdir -p subprojects
@@ -53,6 +53,12 @@ src_configure() {
         -Dime=true
         -Db_lto=true
     )
+
+    if use graphemes; then
+      emesonargs+=(-Dgrapheme-clustering=true)
+    else
+      emesonargs+=(-Dgrapheme-clustering=disabled)
+    fi
 
     meson_src_configure
 }
