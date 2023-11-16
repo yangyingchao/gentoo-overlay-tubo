@@ -1,3 +1,4 @@
 app-portage/eix eix-extra-econf.conf
-gui-wm/hyprland debug
+dev-db/postgresql debug
 gui-apps/swaylock-effects debug
+gui-wm/hyprland debug
