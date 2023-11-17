@@ -40,6 +40,8 @@ DEPEND=" (
   x11-themes/faenza-icon-theme
   media-sound/pavucontrol
 
+  dev-util/debugedit
+
   hyprland? (
   gui-wm/hyprland
   )
