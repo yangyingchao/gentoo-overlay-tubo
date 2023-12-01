@@ -30,6 +30,7 @@ net-misc/freerdp -X
 net-misc/networkmanager -ppp -bluetooth
 sys-devel/gcc jit
 sys-devel/gdb zstd
+sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
 virtual/tdesk -sway hyprland full video fcitx
 www-client/vivaldi proprietary-codecs widevine
