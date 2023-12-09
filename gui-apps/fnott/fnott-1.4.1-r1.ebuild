@@ -32,16 +32,15 @@ dev-util/ninja
 
 src_configure() {
 	local emesonargs=(
-        --buildtype=release
-    )
-
-    meson_src_configure
+		--buildtype=release
+	)
+	sed -i '/fnott.desktop/d' meson.build
+	meson_src_configure
 }
 
 src_compile() {
-    meson_src_compile
+	meson_src_compile
 }
-
 
 src_install() {
 	meson_src_install
