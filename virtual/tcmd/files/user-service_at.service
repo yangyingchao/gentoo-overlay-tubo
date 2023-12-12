@@ -1,0 +1,12 @@
+[Unit]
+Description=desc
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+Restart=on-abort
+ExecStart=path_of_exec
+
+[Install]
+WantedBy=multi-user.target

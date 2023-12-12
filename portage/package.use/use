@@ -11,6 +11,7 @@ app-emacs/emacs-common -gui -games -gsettings
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude -stroke -terra-pinyin -wubi -bopomofo --cangjie -flypy -pinyin-simp
 dev-db/postgresql debug
 dev-qt/qtgui eglfs
+dev-util/perf slang -gtk caps
 gnome-base/gvfs ios fuse mtp
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar experimental

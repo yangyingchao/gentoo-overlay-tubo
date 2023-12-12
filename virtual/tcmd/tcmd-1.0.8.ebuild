@@ -4,6 +4,8 @@
 
 EAPI=7
 
+inherit systemd
+
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
@@ -36,4 +38,5 @@ EOF
 
   chmod +x ${ED}/etc/kernel/postinst.d/gen-grub-menu
 
+  systemd_newunit "${FILESDIR}/user-service_at.service" user-service@.service
 }
