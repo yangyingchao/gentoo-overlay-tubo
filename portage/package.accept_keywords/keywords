@@ -16,7 +16,7 @@
 =dev-libs/tllist-1.1.0 **
 =dev-libs/wayland-protocols-1.32 **
 =dev-util/perf-6.6
-=gui-apps/waybar-0.9.19 **
+=gui-apps/waybar-0.9.24
 =gui-apps/wf-recorder-0.3.0-r2
 =gui-wm/hyprland-0.32.3
 =media-fonts/nerd-fonts-3.1.1

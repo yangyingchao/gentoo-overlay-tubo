@@ -14,7 +14,7 @@ dev-qt/qtgui eglfs
 dev-util/perf slang -gtk caps
 gnome-base/gvfs ios fuse mtp
 gui-apps/swaybg gdk-pixbuf
-gui-apps/waybar experimental
+gui-apps/waybar tray experimental
 media-fonts/fontawesome ttf
 media-fonts/nerd-fonts nerdfontssymbolsonly
 media-fonts/noto cjk
