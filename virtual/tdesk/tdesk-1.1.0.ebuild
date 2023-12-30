@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -54,7 +54,6 @@ DEPEND=" (
 
   fcitx? (
   app-i18n/fcitx:5
-  app-i18n/fcitx-configtool:5
   app-i18n/fcitx-gtk:5
   app-i18n/fcitx-qt:5
   app-i18n/fcitx-rime:5
