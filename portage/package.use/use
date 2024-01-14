@@ -30,7 +30,8 @@ net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/freerdp -X
 net-misc/networkmanager -ppp -bluetooth
 sys-devel/gcc jit
-sys-devel/gdb zstd
+# move sys-devel/gdb dev-debug/gdb
+dev-debug/gdb zstd
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
 virtual/tdesk -sway hyprland full video fcitx
