@@ -28,6 +28,7 @@
 =media-fonts/nerd-fonts-3.1.1
 =media-libs/libdisplay-info-0.1.1 **
 =media-video/mpv-handler-0.3.4
+=media-video/wl-screenrec-0.1.2
 =net-mail/mu-1.10.6
 =net-misc/freerdp-2.11.2
 =net-proxy/clash-for-windows-bin-0.20.39
