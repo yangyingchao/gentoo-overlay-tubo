@@ -8,16 +8,15 @@ inherit unpacker xdg
 MY_PV="$(ver_cut 4)"
 
 DESCRIPTION="WPS Office is an office productivity suite, Here is the Chinese version"
-HOMEPAGE="http://www.wps.cn/product/wpslinux/ http://wps-community.org/"
+HOMEPAGE="https://linux.wps.cn/#"
 
 KEYWORDS="-* amd64"
-
 SRC_URI="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${MY_PV}/${PN}_${PV}_amd64.deb"
 
 SLOT="0"
 RESTRICT="strip mirror bindist" # mirror as explained at bug #547372
 LICENSE="WPS-EULA"
-IUSE="big-endian systemd +wayland"
+IUSE="big-endian systemd"
 REQUIRED_USE="mips? ( !big-endian )"
 
 # Deps got from this (listed in order):
@@ -72,10 +71,6 @@ src_install() {
 	exeinto /usr/bin
 	exeopts -m0755
 
-	if use wayland; then
-		sed -i "s/gIsFushion=0/gIsFushion=0\nexport QT_QPA_PLATFORM=xcb\nexport QT_SCREEN_SCALE_FACTORS=1\n/g"  "${S}"/usr/bin/*
-	fi
-
 	doexe "${S}"/usr/bin/*
 
 	insinto /usr/share
@@ -89,4 +84,11 @@ src_install() {
 	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
 
 	fperms 0755 /opt/kingsoft/wps-office/office6/{wps,wpp,et,wpspdf,wpsoffice,promecefpluginhost,ksolaunch}
+}
+
+pkg_postinst() {
+	elog ""
+	elog "Build media-libs/freetype-2.13.0 and move libfreetype.so* to /opt/kingsoft/wps-office/office6"
+	elog "to fix font mess..."
+	elog ""
 }
