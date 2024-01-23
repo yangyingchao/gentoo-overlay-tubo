@@ -22,7 +22,7 @@ DEPEND=" (
   gui-apps/slurp
   gui-apps/swaybg[gdk-pixbuf]
   gui-apps/swayidle
-  gui-apps/swaylock-effects
+  gui-apps/gtklock
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
   gui-apps/wob
