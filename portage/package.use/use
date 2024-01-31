@@ -10,6 +10,7 @@ app-editors/emacs jit webp svg png jpeg gif sqlite json libxml2 -X -gui dynamic-
 app-emacs/emacs-common -gui -games -gsettings
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude -stroke -terra-pinyin -wubi -bopomofo --cangjie -flypy -pinyin-simp
 dev-db/postgresql debug
+dev-debug/gdb zstd
 dev-qt/qtgui eglfs
 dev-util/perf slang -gtk caps
 gnome-base/gvfs ios fuse mtp
@@ -30,9 +31,8 @@ net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/freerdp -X
 net-misc/networkmanager -ppp -bluetooth
 sys-devel/gcc jit
-# move sys-devel/gdb dev-debug/gdb
-dev-debug/gdb zstd
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
+sys-kernel/installkernel -systemd grub
 virtual/tdesk -sway hyprland full video fcitx
 www-client/vivaldi proprietary-codecs widevine

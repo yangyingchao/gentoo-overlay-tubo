@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,14 +29,6 @@ src_install() {
 	cat <<-EOF > ${ED}/etc/env.d/98kernel
 KCFLAGS="-O2 -march=native -pipe"
 EOF
-
-	mkdir -p ${ED}/etc/kernel/postinst.d
-	cat <<-EOF >${ED}/etc/kernel/postinst.d/gen-grub-menu
-#!/bin/bash
-command -v grub-mkconfig && grub-mkconfig -o /boot/grub/grub.cfg
-EOF
-
-  chmod +x ${ED}/etc/kernel/postinst.d/gen-grub-menu
 
   systemd_newunit "${FILESDIR}/user-service_at.service" user-service@.service
 }
