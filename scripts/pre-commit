@@ -3,7 +3,7 @@
 
 printf "\nBackup portage...\n"
 pushd $(git rev-parse --show-toplevel)
-rsync -Pa --exclude=00cpu-flags --exclude='savedconfig' /etc/portage/* portage/
+rsync -Pa --exclude=00cpu-flags --exclude='savedconfig'  --exclude='gnupg' /etc/portage/* portage/
 sed -i '/MAKEOPTS/d' portage/make.conf
 
 printf "\nBackup kernel config...\n"

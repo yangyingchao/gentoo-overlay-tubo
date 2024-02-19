@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -70,7 +70,6 @@ S="${WORKDIR}"
 src_install() {
 	exeinto /usr/bin
 	exeopts -m0755
-
 	doexe "${S}"/usr/bin/*
 
 	insinto /usr/share
@@ -84,11 +83,21 @@ src_install() {
 	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
 
 	fperms 0755 /opt/kingsoft/wps-office/office6/{wps,wpp,et,wpspdf,wpsoffice,promecefpluginhost,ksolaunch}
-}
 
-pkg_postinst() {
-	elog ""
-	elog "Build media-libs/freetype-2.13.0 and move libfreetype.so* to /opt/kingsoft/wps-office/office6"
-	elog "to fix font mess..."
-	elog ""
+	# install freetype to fix messes on bold fonts...
+	local freetype=freetype-2.13.0-1
+	local freetype_tar=${freetype}.gpkg.tar
+	local freetype_path=/var/cache/distfiles/${freetype_tar}
+	if [ ! -f "${freetype_path}" ]; then
+		wget -K -O "${freetype_path}" \
+			 https://mirrors.163.com/gentoo/releases/amd64/binpackages/17.1/x86-64/media-libs/freetype/${freetype_tar}
+	fi
+
+	[ -f "${freetype_path}" ] || die "Failed to download pkg: ${freetype_tar}"
+
+	cp "${freetype_path}" .
+	tar xf ${freetype_tar}
+	cd ${freetype} || die "failed to change directory: ${PWD}/${freetype}"
+	tar xjf image.tar.bz2 || die "decompress image"
+	cp image/usr/lib64/*.so* "${S}"/opt/kingsoft/wps-office/office6/
 }
