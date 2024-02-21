@@ -12,6 +12,7 @@ KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-sola
 
 DEPEND=" (
   app-arch/unrar
+  app-admin/stow
   app-shells/zsh
   sys-apps/fd
   sys-apps/ripgrep

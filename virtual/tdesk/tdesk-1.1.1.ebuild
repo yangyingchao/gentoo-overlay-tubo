@@ -53,10 +53,7 @@ DEPEND=" (
   )
 
   fcitx? (
-  app-i18n/fcitx:5
-  app-i18n/fcitx-gtk:5
-  app-i18n/fcitx-qt:5
-  app-i18n/fcitx-rime:5
+  app-i18n/fcitx-meta:5
   )
 
   video? (
