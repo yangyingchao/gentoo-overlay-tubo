@@ -33,7 +33,7 @@ media-sound/pulseaudio -daemon
 media-video/pipewire sound-server -bluetooth
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
-net-misc/freerdp -X
+net-misc/freerdp -xv -usb -systemd -pulseaudio -cups -alsa -X
 net-misc/networkmanager -ppp -bluetooth
 sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN

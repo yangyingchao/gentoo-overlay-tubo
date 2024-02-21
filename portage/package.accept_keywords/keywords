@@ -27,7 +27,7 @@
 =gui-apps/waybar-0.9.24
 =gui-apps/wf-recorder-0.3.0-r2
 =gui-apps/wob-0.15.1
-=gui-wm/hyprland-0.35.0
+=gui-wm/hyprland-0.35.0-r1
 =media-fonts/nerd-fonts-3.1.1
 =media-libs/libdisplay-info-0.1.1 **
 =media-video/mpv-handler-0.3.4
