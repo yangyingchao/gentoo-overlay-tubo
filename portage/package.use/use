@@ -8,7 +8,7 @@
 >=media-libs/mesa-23.1.6 X
 >=x11-libs/libxkbcommon-1.5.0 X
 app-arch/p7zip -wxwidgets
-app-editors/emacs jit webp svg png jpeg gif sqlite json libxml2 -X -gui dynamic-loading
+app-editors/emacs gpm
 app-editors/vim -X -sound -nls -acl
 app-emacs/emacs-common -gui -games -gsettings
 app-i18n/fcitx -enchant
@@ -26,11 +26,12 @@ media-fonts/nerd-fonts nerdfontssymbolsonly
 media-fonts/noto cjk
 media-gfx/imagemagick graphviz webp
 media-gfx/shotwell opencv
+media-libs/freetype harfbuzz hardbuzz
 media-libs/libsdl2 gles2
 media-libs/libsdnfile minimal
 media-libs/libsndfile minimal
 media-sound/pulseaudio -daemon
-media-video/pipewire sound-server -bluetooth
+media-video/pipewire bluetooth sound-server
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/freerdp -xv -usb -systemd -pulseaudio -cups -alsa -X

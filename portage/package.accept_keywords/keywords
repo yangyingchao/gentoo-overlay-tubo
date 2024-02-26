@@ -19,6 +19,8 @@
 =dev-libs/tllist-1.1.0 **
 =dev-libs/wayland-protocols-1.32 **
 =dev-util/perf-6.6
+=dev-util/shellcehck-0.9.0-r2
+=dev-util/shellcheck-0.9.0-r2
 =gnome-extra/nm-applet-1.34.0
 =gui-apps/fnott-1.4.1
 =gui-apps/fuzzel-1.9.2
@@ -32,9 +34,9 @@
 =media-libs/libdisplay-info-0.1.1 **
 =media-video/mpv-handler-0.3.4
 =media-video/wl-screenrec-0.1.2
-=net-mail/mu-1.10.6
+=net-mail/mu-1.12.0
 =net-misc/baidunetdisk-4.17.7
-=net-misc/freerdp-2.11.2
+=net-misc/freerdp-2.11.5
 =net-proxy/clash-for-windows-bin-0.20.39
 =sys-devel/clang-17.0.6
 =sys-devel/clang-common-17.0.6-r1
