@@ -13,6 +13,7 @@
 =app-i18n/rime-prelude-20220122-r1
 =app-office/wps-office-11.1.0.11711-r1
 =dev-cpp/tomlplusplus-3.4.0
+=dev-db/qt5-sqlcipher-1.0.11-r1
 =dev-libs/date-3.0.0 **
 =dev-libs/hyprland-protocols-0.2 **
 =dev-libs/libliftoff-0.4.1 **

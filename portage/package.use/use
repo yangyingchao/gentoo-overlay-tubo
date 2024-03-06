@@ -25,7 +25,6 @@ dev-python/qtwayland qml
 dev-python/qtwebengine qml
 dev-qt/qtgui eglfs
 dev-util/perf slang -gtk caps
-dev-vcs/git -webdav
 gnome-base/gvfs ios fuse mtp
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar tray experimental

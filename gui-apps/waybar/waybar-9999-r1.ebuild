@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/yangyingchao/${PN^}.git"
 EGIT_BRANCH="yc-hacking"
 LICENSE="MIT"
 SLOT="0"
-IUSE="evdev experimental jack +libinput +logind mpd mpris network +popups pipewire pulseaudio sndio systemd test tray +udev upower wifi"
+IUSE="evdev experimental jack +libinput +logind mpd mpris network pipewire pulseaudio sndio systemd test tray +udev upower wifi"
 REQUIRED_USE="
 	mpris? ( logind )
 	upower? ( logind )
@@ -51,7 +51,6 @@ RDEPEND="
 	mpd? ( media-libs/libmpdclient )
 	mpris? ( >=media-sound/playerctl-2 )
 	network? ( dev-libs/libnl:3 )
-	popups? ( gui-libs/gtk-layer-shell )
 	pipewire? ( media-video/wireplumber:0/0.4 )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
@@ -80,7 +79,6 @@ src_configure() {
 		$(meson_feature mpd)
 		$(meson_feature mpris)
 		$(meson_feature network libnl)
-		$(meson_feature popups gtk-layer-shell)
 		$(meson_feature pulseaudio)
 		$(meson_feature pipewire wireplumber)
 		$(meson_feature sndio)
