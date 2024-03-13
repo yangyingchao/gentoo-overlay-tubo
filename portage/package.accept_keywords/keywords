@@ -1,3 +1,4 @@
+=app-benchmarks/stress-ng-0.17.06
 =app-editors/emacs-29.1-r1 **
 =app-i18n/fcitx-5*
 =app-i18n/fcitx-configtool-5.1*
@@ -16,6 +17,7 @@
 =dev-db/qt5-sqlcipher-1.0.11-r1
 =dev-libs/date-3.0.0 **
 =dev-libs/hyprland-protocols-0.2 **
+=dev-libs/hyprlang-0.4.2
 =dev-libs/libliftoff-0.4.1 **
 =dev-libs/tllist-1.1.0 **
 =dev-libs/wayland-protocols-1.32 **
@@ -27,15 +29,16 @@
 =gui-apps/fuzzel-1.9.2
 =gui-apps/gtklock-2.1.0
 =gui-apps/swaylock-effects-1.7.0.0
-=gui-apps/waybar-0.9.24
+=gui-apps/waybar-0.10.0
 =gui-apps/wf-recorder-0.3.0-r2
 =gui-apps/wob-0.15.1
-=gui-wm/hyprland-0.35*
+=gui-libs/hyprcursor-0.1.4
+=gui-wm/hyprland-0.37*
 =media-fonts/nerd-fonts-3.1.1
 =media-libs/libdisplay-info-0.1.1 **
 =media-video/mpv-handler-0.3.4
 =media-video/wl-screenrec-0.1.2
-=net-mail/mu-1.12.0
+=net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
 =net-misc/freerdp-2.11.5
 =net-proxy/clash-for-windows-bin-0.20.39
@@ -49,7 +52,10 @@
 =sys-libs/compiler-rt-17.0.6
 =sys-libs/compiler-rt-sanitizers-17.0.6
 =sys-libs/libomp-17.0.6
+=sys-power/tlp-1.6.1
+=sys-power/tlpui-1.6.0
 =www-apps/hugo-0.115.4
 =x11-libs/libfm-1.3.2 **
 =x11-libs/xcb-imdkit-1.0.6
 =x11-misc/pcmanfm-1.3.2-r1 **
+=x11-themes/neonly-cursor-1.0.0

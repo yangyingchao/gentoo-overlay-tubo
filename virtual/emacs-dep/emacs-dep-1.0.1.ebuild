@@ -8,7 +8,6 @@ KEYWORDS="amd64 ~x86"
 IUSE="+cairo +gif +jit +jpeg +json +libxml2 +svg +png +sqlite +threads +tiff +webp +wide-int +xft +zlib"
 
 RDEPEND="jit? (
-		sys-devel/gcc:=[jit(-)]
 		sys-libs/zlib
 	)
 	json? ( dev-libs/jansson:= )

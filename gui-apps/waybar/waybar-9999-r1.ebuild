@@ -7,7 +7,7 @@ inherit meson git-r3
 
 DESCRIPTION="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 HOMEPAGE="https://github.com/Alexays/Waybar"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 EGIT_REPO_URI="https://github.com/yangyingchao/${PN^}.git"
 EGIT_BRANCH="yc-hacking"

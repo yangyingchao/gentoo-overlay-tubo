@@ -10,14 +10,16 @@ DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
 
-DEPEND=" (
-  app-arch/unrar
-  app-admin/stow
-  app-shells/zsh
-  sys-apps/fd
-  sys-apps/ripgrep
-  sys-process/htop
-  net-misc/networkmanager
+DEPEND="(
+	app-admin/stow
+	app-arch/unrar
+	app-shells/zsh
+	net-misc/networkmanager
+	sys-apps/debianutils
+	sys-apps/fd
+	sys-apps/ripgrep
+	sys-kernel/installkernel
+	sys-process/htop
 )"
 
 src_unpack() {
