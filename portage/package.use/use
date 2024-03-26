@@ -12,7 +12,7 @@
 >=media-libs/mesa-23.1.6 X
 >=x11-libs/libxkbcommon-1.5.0 X
 app-arch/p7zip -wxwidgets
-app-editors/emacs gpm
+app-editors/emacs -svg -gif -jpeg -xpm -xft -tiff -png -sound -gui -gtk -X gpm
 app-editors/vim -X -sound -nls -acl
 app-emacs/emacs-common -gui -games -gsettings
 app-i18n/fcitx -enchant
@@ -38,6 +38,7 @@ media-libs/libsdl2 gles2
 media-libs/libsdnfile minimal
 media-libs/libsndfile minimal
 media-sound/pulseaudio -daemon
+media-video/mkvtoolnix -gui
 media-video/pipewire bluetooth sound-server
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
