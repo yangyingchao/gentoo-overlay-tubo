@@ -12,18 +12,20 @@
 >=media-libs/mesa-23.1.6 X
 >=x11-libs/libxkbcommon-1.5.0 X
 app-arch/p7zip -wxwidgets
-app-editors/emacs gpm
+app-editors/emacs -svg -gif -jpeg -xpm -xft -tiff -png -sound -gui -gtk -X gpm
 app-editors/vim -X -sound -nls -acl
 app-emacs/emacs-common -gui -games -gsettings
 app-i18n/fcitx -enchant
 app-i18n/fcitx-meta -chinese-addons configtool rime
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude stroke -terra-pinyin -wubi -bopomofo -cangjie -flypy -pinyin-simp
+app-text/zathura sqlite synctex
 dev-db/postgresql debug
 dev-python/PyQt4 quick qml
 dev-python/PyQt6 webchannel quick qml
 dev-python/qtwayland qml
 dev-python/qtwebengine qml
 dev-qt/qtgui eglfs
+dev-qt/qtmultimedia gstreamer
 dev-util/perf slang -gtk caps
 gnome-base/gvfs ios fuse mtp
 gui-apps/swaybg gdk-pixbuf
