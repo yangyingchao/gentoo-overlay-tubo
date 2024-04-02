@@ -22,6 +22,7 @@ app-text/zathura sqlite synctex
 dev-db/postgresql debug
 dev-python/PyQt4 quick qml
 dev-python/PyQt6 webchannel quick qml
+dev-python/pillow webp
 dev-python/qtwayland qml
 dev-python/qtwebengine qml
 dev-qt/qtgui eglfs

@@ -4,6 +4,31 @@ echo "PWD: ${PWD}"
 
 # backup kmu
 pushd `git rev-parse --show-toplevel`
+
+# Check the output of `ld.so --help`:
+# larry@noumea ~ $ ld.so --help
+# Usage: ld.so [OPTION]... EXECUTABLE-FILE [ARGS-FOR-PROGRAM...]
+# You have invoked 'ld.so', the program interpreter for dynamically-linked
+# ELF programs.  Usually, the program interpreter is invoked automatically
+# when a dynamically-linked executable is started.
+# [...]
+# [...]
+
+# Subdirectories of glibc-hwcaps directories, in priority order:
+#   x86-64-v4
+#   x86-64-v3 (supported, searched)
+mkdir -p portage/binrepos.conf
+arch='x86-64'
+if ld.so --help | grep 'x86-64-v3' | grep -q supported ; then
+    arch='x86-64-v3'
+fi
+
+cat <<- EOF > portage/binrepos.conf/gentoobinhost.conf
+[binhost]
+priority = 9999
+sync-uri = https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/amd64/binpackages/23.0/${arch}/
+EOF
+
 sudo rsync --exclude=.cache/ --exclude=cmake_build_* -Pa  portage/ /etc/portage/
 popd
 
