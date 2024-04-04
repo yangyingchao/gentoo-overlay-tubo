@@ -1,16 +1,3 @@
-=dev-libs/libxmlb-0.3.14 introspection
-=dev-qt/qtwayland-6.6.2 qml
-=dev-qt/qtwebchannel-6.6.2 qml
-=dev-qt/qtwebengine-6.6.2 bindist qml screencast -vaapi
-=media-libs/libvpx-1.13.1-r1 postproc
->=dev-libs/libdbusmenu-16.04.0-r2 gtk3
->=dev-python/PyQt6-6.6.1 quick
->=dev-qt/qtgui-5.15.10-r1 X
->=gnome-extra/nm-applet-1.32.0 appindicator
->=gui-apps/waybar-0.9.22-r1 pipewire
->=media-libs/gd-2.3.3-r3 fontconfig
->=media-libs/mesa-23.1.6 X
->=x11-libs/libxkbcommon-1.5.0 X
 app-arch/p7zip -wxwidgets
 app-editors/emacs -svg -gif -jpeg -xpm -xft -tiff -png -sound -gui -gtk -X gpm
 app-editors/vim -X -sound -nls -acl
@@ -20,16 +7,25 @@ app-i18n/fcitx-meta -chinese-addons configtool rime
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude stroke -terra-pinyin -wubi -bopomofo -cangjie -flypy -pinyin-simp
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
+dev-libs/libdbusmenu gtk3
+dev-libs/libxmlb introspection
 dev-python/PyQt4 quick qml
+dev-python/PyQt6 quick
 dev-python/PyQt6 webchannel quick qml
 dev-python/pillow webp
 dev-python/qtwayland qml
 dev-python/qtwebengine qml
+dev-qt/qtgui X
 dev-qt/qtgui eglfs
 dev-qt/qtmultimedia gstreamer
+dev-qt/qtwayland qml
+dev-qt/qtwebchannel qml
+dev-qt/qtwebengine bindist qml screencast -vaapi
 dev-util/perf slang -gtk caps
 gnome-base/gvfs ios fuse mtp
+gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
+gui-apps/waybar pipewire
 gui-apps/waybar tray experimental
 media-fonts/fontawesome ttf
 media-fonts/nerd-fonts nerdfontssymbolsonly
@@ -37,9 +33,12 @@ media-fonts/noto cjk
 media-gfx/imagemagick graphviz webp
 media-gfx/shotwell opencv
 media-libs/freetype harfbuzz hardbuzz
+media-libs/gd fontconfig
 media-libs/libsdl2 gles2
 media-libs/libsdnfile minimal
 media-libs/libsndfile minimal
+media-libs/libvpx postproc
+media-libs/mesa X
 media-sound/pulseaudio -daemon
 media-video/pipewire bluetooth sound-server
 net-mail/mu emacs
@@ -53,3 +52,4 @@ sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub
 virtual/tdesk -sway hyprland full video fcitx
 www-client/firefox -l10n_zh-CN
+x11-libs/libxkbcommon X
