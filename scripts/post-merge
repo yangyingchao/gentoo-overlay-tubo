@@ -32,4 +32,10 @@ EOF
 sudo rsync --exclude=.cache/ --exclude=cmake_build_* -Pa  portage/ /etc/portage/
 popd
 
+# generate CPU_FLAGS_X86
+if command -v cpuid2cpuflags > /dev/null; then
+    mkdir -p /etc/portage/package.use/
+    echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
+fi
+
 exit 0
