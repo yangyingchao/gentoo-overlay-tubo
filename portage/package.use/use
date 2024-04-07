@@ -18,6 +18,7 @@ dev-python/qtwebengine qml
 dev-qt/qtgui X
 dev-qt/qtgui eglfs
 dev-qt/qtmultimedia gstreamer
+dev-qt/qttools qml
 dev-qt/qtwayland qml
 dev-qt/qtwebchannel qml
 dev-qt/qtwebengine bindist qml screencast -vaapi
