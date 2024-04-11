@@ -4,6 +4,7 @@ app-editors/vim -X -sound -nls -acl
 app-emacs/emacs-common -gui -games -gsettings
 app-i18n/fcitx -enchant
 app-i18n/fcitx-meta -chinese-addons configtool rime
+app-i18n/fcitx-qt qt6 qt5 wayland
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude stroke -terra-pinyin -wubi -bopomofo -cangjie -flypy -pinyin-simp
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
@@ -51,6 +52,7 @@ sys-apps/man-pages -l10n_zh-CN
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub
+sys-libs/zlib minizip
 virtual/tdesk -sway hyprland full video fcitx
 www-client/firefox -l10n_zh-CN
 x11-libs/libxkbcommon X

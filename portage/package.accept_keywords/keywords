@@ -12,7 +12,7 @@
 =app-i18n/rime-essay-20230204-r1
 =app-i18n/rime-luna-pinyin-20230204
 =app-i18n/rime-prelude-20220122-r1
-=app-office/wps-office-11.1.0.11711-r1
+=app-office/wps-office-11.1.0.11719-r1
 =dev-cpp/tomlplusplus-3.4.0
 =dev-db/qt5-sqlcipher-1.0.11-r1
 =dev-libs/date-3.0.0
@@ -37,6 +37,7 @@
 =media-libs/libdisplay-info-0.1.1
 =media-video/mpv-handler-0.3.4
 =media-video/wl-screenrec-0.1.2
+=net-im/wechat-universal-bwrap-1.0.0.238-r2
 =net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
 =net-misc/freerdp-2.11.5
@@ -56,6 +57,7 @@
 =www-apps/hugo-0.115.4
 =x11-libs/libfm-1.3.2
 =x11-libs/xcb-imdkit-1.0.6
+=x11-misc/flatpak-xdg-utils-1.0.5
 =x11-misc/pcmanfm-1.3.2-r1
 =x11-themes/neonly-cursor-1.0.0
 media-fonts/nerd-fonts
