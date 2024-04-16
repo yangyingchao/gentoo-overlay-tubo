@@ -26,7 +26,8 @@
 =dev-util/shellcheck-0.9.0-r2
 =gnome-extra/nm-applet-1.34.0
 =gui-apps/fnott-1.4.1
-=gui-apps/fuzzel-1.9.2
+=gui-apps/foot-1.17*
+=gui-apps/fuzzel-1.10*
 =gui-apps/gtklock-2.1.0
 =gui-apps/swaylock-effects-1.7.0.0
 =gui-apps/waybar-0.10.0
