@@ -8,6 +8,7 @@ app-i18n/fcitx-qt qt6 qt5 wayland
 app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude stroke -terra-pinyin -wubi -bopomofo -cangjie -flypy -pinyin-simp
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
+dev-lang/rust clippy rustfmt
 dev-libs/libdbusmenu gtk3
 dev-libs/libxmlb introspection
 dev-python/PyQt4 quick qml
@@ -45,6 +46,7 @@ media-sound/pulseaudio -daemon
 media-video/pipewire bluetooth sound-server
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
+net-misc/curl -zstd
 net-misc/freerdp -xv -usb -systemd -pulseaudio -cups -alsa -X
 net-misc/networkmanager -ppp -bluetooth
 sys-apps/fwupd gnutls uefi systemd

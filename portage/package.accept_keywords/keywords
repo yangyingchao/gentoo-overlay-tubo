@@ -33,8 +33,9 @@
 =gui-apps/waybar-0.10.0
 =gui-apps/wf-recorder-0.3.0-r2
 =gui-apps/wob-0.15.1
-=gui-libs/hyprcursor-0.1.4
+=gui-libs/hyprcursor-0.1.7
 =gui-wm/hyprland-0.38*
+=gui-wm/hyprland-0.39.1-r1
 =media-libs/libdisplay-info-0.1.1
 =media-video/mpv-handler-0.3.4
 =media-video/wl-screenrec-0.1.2
@@ -50,6 +51,7 @@
 =sys-devel/llvm-17.0.6
 =sys-devel/llvm-toolchain-symlinks-17
 =sys-devel/llvmgold-17
+=sys-kernel/gentoo-sources-6.6.26-r1
 =sys-libs/compiler-rt-17.0.6
 =sys-libs/compiler-rt-sanitizers-17.0.6
 =sys-libs/libomp-17.0.6
