@@ -48,7 +48,7 @@ DEPEND=" (
 
   sway? (
   gui-wm/sway
-  gui-apps/autotiling
+  x11-misc/autotiling
   gui-apps/swaynagmode
   )
 

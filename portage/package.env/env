@@ -3,5 +3,6 @@ dev-db/mysql debug
 dev-db/postgresql debug
 gui-apps/swaylock-effects debug
 gui-wm/hyprland debug
+media-libs/opencv debug
 net-misc/freerdp debug
 x11-libs/gtk+ debug

@@ -42,6 +42,7 @@ media-libs/libsdnfile minimal
 media-libs/libsndfile minimal
 media-libs/libvpx postproc
 media-libs/mesa X
+media-libs/opencv non-free ffmpeg gstreamer
 media-sound/pulseaudio -daemon
 media-video/pipewire bluetooth sound-server
 net-mail/mu emacs
