@@ -1,0 +1,14 @@
+diff -urNa gtk+-3.24.41.orig/gdk/wayland/gdkwindow-wayland.c gtk+-3.24.41/gdk/wayland/gdkwindow-wayland.c
+--- gtk+-3.24.41.orig/gdk/wayland/gdkwindow-wayland.c	2024-01-24 09:14:34.000000000 +0800
++++ gtk+-3.24.41/gdk/wayland/gdkwindow-wayland.c	2024-04-29 16:27:05.030365524 +0800
+@@ -949,6 +949,10 @@
+         }
+     }
+ 
++  if (impl->staging_cairo_surface) {
++    g_clear_pointer (&impl->staging_cairo_surface, cairo_surface_destroy);
++  }
++
+   /* Release came in, we haven't done any interim updates, so we can just use
+    * the old committed buffer again.
+    */

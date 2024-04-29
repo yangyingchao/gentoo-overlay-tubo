@@ -37,6 +37,7 @@
 =gui-libs/hyprcursor-0.1.7
 =gui-wm/hyprland-0.38*
 =gui-wm/hyprland-0.39.1-r1
+=media-fonts/cascadia-code-2404.23
 =media-libs/libdisplay-info-0.1.1
 =media-video/mpv-handler-0.3.4
 =media-video/wl-screenrec-0.1.2
