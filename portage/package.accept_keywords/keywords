@@ -35,8 +35,7 @@
 =gui-apps/wf-recorder-0.3.0-r2
 =gui-apps/wob-0.15.1
 =gui-libs/hyprcursor-0.1.7
-=gui-wm/hyprland-0.38*
-=gui-wm/hyprland-0.39.1-r1
+=gui-wm/hyprland-0.39*
 =media-fonts/cascadia-code-2404.23
 =media-libs/libdisplay-info-0.1.1
 =media-video/mpv-handler-0.3.4

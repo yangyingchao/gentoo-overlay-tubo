@@ -52,6 +52,7 @@ net-misc/freerdp -xv -usb -systemd -pulseaudio -cups -alsa -X
 net-misc/networkmanager -ppp -bluetooth
 sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN
+sys-apps/portage native-extensions
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub
