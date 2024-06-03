@@ -1,0 +1,3 @@
+# deffer python update, until we get binary package for clang and other tools.
+*/* PYTHON_TARGETS: -* python3_11
+*/* PYTHON_SINGLE_TARGET: -* python3_11
