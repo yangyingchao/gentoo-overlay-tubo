@@ -7,7 +7,7 @@ pushd "$(git rev-parse --show-toplevel)"
 # check whether x86-64-v3 is supported: https://www.gentoo.org/news/2024/02/04/x86-64-v3.html
 mkdir -p portage/binrepos.conf
 arch='x86-64'
-if ld.so --help | grep 'x86-64-v3' | grep -q supported ; then
+if ld.so --help | grep 'x86-64-v3' | grep -q supported; then
     arch='x86-64-v3'
 fi
 
@@ -22,7 +22,7 @@ if command -v cpuid2cpuflags > /dev/null; then
     echo "*/* $(cpuid2cpuflags)" > portage/package.use/00cpu-flags
 fi
 
-sudo rsync --exclude=.cache/ --exclude=cmake_build_* -Pa  portage/ /etc/portage/
+sudo rsync --exclude=.cache/ --exclude=cmake_build_* -Pa portage/ /etc/portage/
 popd
 
 exit 0
