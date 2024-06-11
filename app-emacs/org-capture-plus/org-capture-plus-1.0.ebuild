@@ -1,6 +1,6 @@
 EAPI=6
 
-inherit  eutils multilib  gnome2-utils pax-utils unpacker xdg-utils
+inherit multilib  gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="Org capture plus"
 HOMEPAGE="${2:HOMEPAGE}"

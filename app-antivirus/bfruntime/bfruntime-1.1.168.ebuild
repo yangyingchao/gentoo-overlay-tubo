@@ -1,5 +1,5 @@
 EAPI=6
-inherit  eutils gnome2-utils pax-utils unpacker xdg-utils
+inherit gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="bfruntime-1.1.168"
 HOMEPAGE="HOMEPAGE"
