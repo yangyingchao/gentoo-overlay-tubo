@@ -1,5 +1,6 @@
 CFLAGS="${CFLAGS} -ggdb3"
 CXXFLAGS="${CXXFLAGS} -ggdb3"
 FEATURES="${FEATURES} splitdebug compressdebug -nostrip installsources"
-
+EMESON_BUILDTYPE="debugoptimized"
+CMAKE_BUILD_TYPE="RelWithDebInfo"
 # NOTE: needs dev-util/debugedit so installsources works!

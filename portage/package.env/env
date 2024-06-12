@@ -1,6 +1,7 @@
 app-portage/eix eix-extra-econf.conf
 dev-db/mysql debug
 dev-db/postgresql debug
+dev-libs/wayland debug
 gui-apps/swaylock-effects debug
 gui-wm/hyprland debug
 media-libs/opencv debug
