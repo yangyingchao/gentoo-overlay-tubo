@@ -90,6 +90,7 @@ DEPEND="
 	>=dev-libs/hyprland-protocols-0.2
 	>=dev-libs/hyprlang-0.3.2
 	>=dev-libs/wayland-protocols-1.34
+	>=gui-libs/hyprutils-0.1.2
 "
 BDEPEND="
 	${WLROOTS_BDEPEND}
@@ -100,9 +101,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/0001-fix-crash-when-restarting-fcitx.patch
-)
+# PATCHES=(
+# 	"${FILESDIR}"/0001-fix-crash-when-restarting-fcitx.patch
+# )
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
