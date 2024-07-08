@@ -5,7 +5,7 @@ app-emacs/emacs-common -gui -games -gsettings
 app-i18n/fcitx -enchant
 app-i18n/fcitx-meta -chinese-addons configtool rime
 app-i18n/fcitx-qt qt6 qt5 wayland
-app-i18n/rime-data -double-pinyin -essay -luna-pinyin -octagram -prelude stroke -terra-pinyin -wubi -bopomofo -cangjie -flypy -pinyin-simp
+app-i18n/rime-data -pinyin-simp -flypy -cangjie -bopomofo -wubi -terra-pinyin -stroke -prelude -octagram -luna-pinyin -essay -double-pinyin
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
 dev-lang/rust clippy rustfmt
