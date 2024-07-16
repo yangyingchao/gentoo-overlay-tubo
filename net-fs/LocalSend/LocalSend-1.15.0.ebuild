@@ -1,4 +1,4 @@
-EAPI=6
+EAPI=7
 inherit  gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="localsend-1.14.0"

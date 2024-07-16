@@ -1,4 +1,4 @@
-EAPI=6
+EAPI=7
 inherit gnome2-utils desktop pax-utils unpacker xdg
 
 DESCRIPTION="motrix-1.8.19"
