@@ -27,10 +27,6 @@ src_install() {
 	dosym "${INSTALL_DIR}" "/opt/calibre"
 	unpacker
 
-	dodir /usr/bin
-	exeinto /usr/bin
-	doexe "${FILESDIR}"/calibre.sh
-
 	insinto /usr/share/applications
 	doins "${FILESDIR}"/calibre.desktop
 }
