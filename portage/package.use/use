@@ -34,7 +34,6 @@ media-fonts/fontawesome ttf
 media-fonts/nerd-fonts nerdfontssymbolsonly
 media-fonts/noto cjk
 media-gfx/imagemagick lzma graphviz webp
-media-gfx/shotwell opencv
 media-libs/freetype harfbuzz hardbuzz
 media-libs/gd fontconfig
 media-libs/libsdl2 gles2
