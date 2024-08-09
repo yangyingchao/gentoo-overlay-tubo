@@ -31,7 +31,7 @@ gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar pipewire
 gui-apps/waybar tray experimental
 media-fonts/fontawesome ttf
-media-fonts/nerd-fonts nerdfontssymbolsonly
+media-fonts/nerd-fonts cascadiamono nerdfontssymbolsonly
 media-fonts/noto cjk
 media-gfx/imagemagick lzma graphviz webp
 media-libs/freetype harfbuzz hardbuzz

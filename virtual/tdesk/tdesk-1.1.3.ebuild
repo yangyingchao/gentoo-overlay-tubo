@@ -27,9 +27,8 @@ DEPEND=" (
   gui-apps/wl-clipboard
   gui-apps/wob
 
-  media-fonts/cascadia-code
   media-fonts/wqy-microhei
-  media-fonts/nerd-fonts[nerdfontssymbolsonly]
+  media-fonts/nerd-fonts[nerdfontssymbolsonly,cascadiamono]
 
   sys-fs/udisks
   sys-power/thermald
