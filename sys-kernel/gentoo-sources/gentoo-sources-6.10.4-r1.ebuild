@@ -4,7 +4,7 @@
 EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="10"
+K_GENPATCHES_VER="7"
 
 inherit kernel-2
 detect_version
@@ -20,6 +20,9 @@ pkg_postinst() {
 	kernel-2_pkg_postinst
 	einfo "For more info on this patchset, and how to report problems, see:"
 	einfo "${HOMEPAGE}"
+	einfo "To compile with LLVM:"
+	einfo "LLVM=1 make menuconfig"
+	einfo "LLVM=1 make make -jN"
 }
 
 pkg_postrm() {

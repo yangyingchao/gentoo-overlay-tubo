@@ -14,32 +14,31 @@ DEPEND=" (
 
   app-misc/jq
   app-text/aspell
+  dev-util/debugedit
   gnome-extra/nm-applet[appindicator]
   gui-apps/fnott
   gui-apps/foot
   gui-apps/fuzzel
   gui-apps/grim
+  gui-apps/gtklock
   gui-apps/slurp
   gui-apps/swaybg[gdk-pixbuf]
   gui-apps/swayidle
-  gui-apps/gtklock
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
   gui-apps/wob
-
+  media-fonts/cascadia-code
+  media-fonts/nerd-fonts[nerdfontssymbolsonly]
   media-fonts/wqy-microhei
-  media-fonts/nerd-fonts[nerdfontssymbolsonly,cascadiamono]
-
+  media-sound/pavucontrol
   sys-fs/udisks
   sys-power/thermald
+  sys-power/tlp
   sys-power/upower
   x11-libs/libnotify
   x11-misc/pcmanfm
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
-  media-sound/pavucontrol
-
-  dev-util/debugedit
 
   hyprland? (
   gui-wm/hyprland
