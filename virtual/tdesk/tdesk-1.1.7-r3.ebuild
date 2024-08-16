@@ -7,11 +7,12 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="fcitx video -hyprland +sway full"
+IUSE="fcitx video full"
 
 DEPEND=" (
   virtual/tcmd
 
+  app-misc/brightnessctl
   app-misc/jq
   app-text/aspell
   dev-util/debugedit
@@ -20,35 +21,26 @@ DEPEND=" (
   gui-apps/foot
   gui-apps/fuzzel
   gui-apps/grim
-  gui-apps/gtklock
+  gui-apps/hypridle
+  gui-apps/hyprlock
+  gui-apps/hyprpaper
   gui-apps/slurp
-  gui-apps/swaybg[gdk-pixbuf]
-  gui-apps/swayidle
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
   gui-apps/wob
+  gui-wm/hyprland
   media-fonts/cascadia-code
   media-fonts/nerd-fonts[nerdfontssymbolsonly]
   media-fonts/wqy-microhei
   media-sound/pavucontrol
   sys-fs/udisks
+  sys-power/power-profiles-daemon
   sys-power/thermald
-  sys-power/tlp
   sys-power/upower
   x11-libs/libnotify
   x11-misc/pcmanfm
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
-
-  hyprland? (
-  gui-wm/hyprland
-  )
-
-  sway? (
-  gui-wm/sway
-  x11-misc/autotiling
-  gui-apps/swaynagmode
-  )
 
   fcitx? (
   app-i18n/fcitx-meta:5
