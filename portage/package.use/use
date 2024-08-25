@@ -25,7 +25,7 @@ dev-qt/qtwayland qml
 dev-qt/qtwebchannel qml
 dev-qt/qtwebengine bindist qml screencast -vaapi
 dev-util/perf slang -gtk caps
-gnome-base/gvfs ios fuse mtp
+gnome-base/gvfs -samba -cdda -mtp -udisks -udev ios fuse
 gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar pipewire
@@ -59,4 +59,5 @@ sys-kernel/installkernel -systemd grub
 sys-libs/zlib minizip
 virtual/tdesk -sway hyprland full video fcitx
 www-client/firefox -l10n_zh-CN
+x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
