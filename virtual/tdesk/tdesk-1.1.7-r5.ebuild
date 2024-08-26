@@ -28,7 +28,6 @@ DEPEND=" (
   gui-apps/slurp
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
-  gui-apps/wob
   gui-wm/hyprland
   media-fonts/cascadia-code
   media-fonts/nerd-fonts[nerdfontssymbolsonly]

@@ -25,7 +25,7 @@ dev-qt/qtwayland qml
 dev-qt/qtwebchannel qml
 dev-qt/qtwebengine bindist qml screencast -vaapi
 dev-util/perf slang -gtk caps
-gnome-base/gvfs -samba -cdda -mtp -udisks -udev ios fuse
+gnome-base/gvfs -samba udisks -cdda -mtp ios fuse
 gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar pipewire
@@ -41,7 +41,6 @@ media-libs/libsdnfile minimal
 media-libs/libsndfile minimal
 media-libs/libvpx postproc
 media-libs/mesa X
-media-libs/opencv non-free ffmpeg gstreamer
 media-sound/pulseaudio -daemon
 media-video/pipewire bluetooth sound-server
 net-mail/mu emacs
@@ -53,6 +52,7 @@ net-misc/remmina rdp
 sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN
 sys-apps/portage native-extensions
+sys-devel/clang-runtime libcxx default-compiler-rt default-lld
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub

@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/Alexays/Waybar"
 KEYWORDS="amd64"
 
 EGIT_REPO_URI="https://github.com/yangyingchao/${PN^}.git"
-EGIT_BRANCH="master"
+EGIT_BRANCH="yc-hacking"
 LICENSE="MIT"
 SLOT="0"
 IUSE="evdev experimental jack +libinput +logind mpd mpris network pipewire pulseaudio sndio systemd test tray +udev upower wifi"
