@@ -43,7 +43,6 @@
 =gui-apps/waybar-0.10.3
 =gui-apps/wf-recorder-0.4.1
 =gui-apps/wob-0.15.1
-=gui-libs/aquamarine-0.1.1-r1
 =gui-libs/gtk-session-lock-0.2.0-r5
 =gui-libs/hyprcursor-0.1.7
 =gui-libs/hyprutils-0.2.1
@@ -55,7 +54,7 @@
 =media-video/pipewire-1.0.5-r1
 =media-video/wireplumber-0.5.2
 =media-video/wl-screenrec-0.1.2
-=net-im/wechat-universal-bwrap-1.0.0.238-r2
+=net-im/wechat-universal-bwrap-1.0.0.242
 =net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
 =net-misc/freerdp-2.11.5

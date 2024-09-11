@@ -3,9 +3,11 @@ dev-cpp/gtkmm debug
 dev-db/mysql debug
 dev-db/postgresql debug
 dev-libs/wayland debug
+gui-apps/hypridle debug
 gui-apps/hyprlock debug
 gui-apps/hyprpaper debug
 gui-apps/waybar debug
+gui-libs/aquamarine debug
 gui-wm/hyprland debug
 media-libs/opencv debug
 net-misc/freerdp debug
