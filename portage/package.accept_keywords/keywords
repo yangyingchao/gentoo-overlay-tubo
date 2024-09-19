@@ -33,7 +33,7 @@
 =gui-apps/fnott-1.4.1
 =gui-apps/foot-1.17*
 =gui-apps/foot-1.18.1
-=gui-apps/fuzzel-1.10*
+=gui-apps/fuzzel-1.11.1
 =gui-apps/gtklock-3.0.0-r1
 =gui-apps/hypridle-0.1.2-r2
 =gui-apps/hyprlock-0.4.1-r1
@@ -55,6 +55,7 @@
 =media-video/wireplumber-0.5.2
 =media-video/wl-screenrec-0.1.2
 =net-im/wechat-universal-bwrap-1.0.0.242
+=net-im/weixin-uos-2.1.8
 =net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
 =net-misc/freerdp-2.11.5
