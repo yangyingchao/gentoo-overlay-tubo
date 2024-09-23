@@ -22,7 +22,8 @@ if command -v cpuid2cpuflags > /dev/null; then
     echo "*/* $(cpuid2cpuflags)" > portage/package.use/00cpu-flags
 fi
 
-sudo rsync --exclude=.cache/ --exclude=cmake_build_* -Pa portage/ /etc/portage/
+if ! mount | grep -q portage; then
+    sudo mount -o bind "${PWD}"/portage /etc/portage
+fi
 popd
-
 exit 0

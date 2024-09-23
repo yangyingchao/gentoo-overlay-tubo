@@ -1,0 +1,27 @@
+From 3824efa1d04456812af9fe430f8c63d6d0d6e75e Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Wed, 11 Sep 2024 08:31:34 +0800
+Subject: [PATCH] disable c++26
+
+---
+ src/debug/Log.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/debug/Log.cpp b/src/debug/Log.cpp
+index a4c5b08e..e8154ecc 100644
+--- a/src/debug/Log.cpp
++++ b/src/debug/Log.cpp
+@@ -10,8 +10,8 @@
+ void Debug::init(const std::string& IS) {
+     logFile = IS + (ISDEBUG ? "/hyprlandd.log" : "/hyprland.log");
+     logOfs.open(logFile, std::ios::out | std::ios::app);
+-    auto handle = logOfs.native_handle();
+-    fcntl(handle, F_SETFD, FD_CLOEXEC);
++    // auto handle = logOfs.native_handle();
++    // fcntl(handle, F_SETFD, FD_CLOEXEC);
+ }
+ 
+ void Debug::close() {
+-- 
+2.45.2
+

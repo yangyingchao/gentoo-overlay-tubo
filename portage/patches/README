@@ -1,0 +1,19 @@
+# Adding user patches
+
+First choose the location for the patches. Granularity can be determined by package name and the version(s) for which the patch is intended. Use the following locations and optionally append :${SLOT} to any of them:
+
+``` text
+/etc/portage/patches/${CATEGORY}/${P}
+/etc/portage/patches/${CATEGORY}/${PN}
+/etc/portage/patches/${CATEGORY}/${P}-${PR}
+```
+
+Examples:
+
+``` text
+/etc/portage/patches/dev-lang/python
+/etc/portage/patches/dev-lang/python:3.4
+/etc/portage/patches/dev-lang/python-3.4.2
+/etc/portage/patches/dev-lang/python-3.3.5-r0
+/etc/portage/patches/dev-lang/python-3.3.5-r1
+```
