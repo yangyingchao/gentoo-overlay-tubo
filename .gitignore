@@ -5,3 +5,4 @@ GTAGS
 metadata/md5-cache/
 portage/binrepos.conf/
 /portage/package.use/00cpu-flags
+/portage/gnupg/

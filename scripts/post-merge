@@ -11,10 +11,12 @@ if ld.so --help | grep 'x86-64-v3' | grep -q supported; then
     arch='x86-64-v3'
 fi
 
+# host=mirrors.tuna.tsinghua.edu.cn
+host=mirrors.163.com
 cat <<- EOF > portage/binrepos.conf/gentoobinhost.conf
 [binhost]
 priority = 9999
-sync-uri = https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/amd64/binpackages/23.0/${arch}/
+sync-uri = https://${host}/gentoo/releases/amd64/binpackages/23.0/${arch}/
 EOF
 
 # generate CPU_FLAGS_X86
