@@ -68,6 +68,7 @@
 =sys-devel/llvm-toolchain-symlinks-17
 =sys-devel/llvmgold-17
 =sys-kernel/gentoo-sources-6.6.26-r1
+=sys-kernel/zen-sources-6.10.10
 =sys-libs/compiler-rt-17.0.6
 =sys-libs/compiler-rt-sanitizers-17.0.6
 =sys-libs/libomp-17.0.6
