@@ -1,0 +1,25 @@
+From b33521bf6f17dcfd3d9dd2e48725354161e65db8 Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Sun, 29 Sep 2024 14:52:58 +0800
+Subject: [PATCH] be quiet
+
+---
+ log.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/log.c b/log.c
+index 7e19e2e..5ebac69 100644
+--- a/log.c
++++ b/log.c
+@@ -29,7 +29,7 @@ fcft_log_init(enum fcft_log_colorize _colorize, bool _do_syslog,
+         : _colorize == FCFT_LOG_COLORIZE_ALWAYS ? true
+         : !no_color && isatty(STDERR_FILENO);
+     do_syslog = _do_syslog;
+-    log_level = _log_level;
++    log_level = FCFT_LOG_CLASS_ERROR;
+ }
+ 
+ static void
+-- 
+2.45.2
+

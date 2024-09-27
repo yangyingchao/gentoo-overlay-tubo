@@ -3,12 +3,12 @@
 
 EAPI=8
 
-inherit meson git-r3
+inherit meson
 
 DESCRIPTION="Keyboard driven and lightweight Wayland notification daemon."
 HOMEPAGE="https://codeberg.org/dnkl/fnott"
-EGIT_REPO_URI="https://codeberg.org/yangyingchao/fnott.git"
-EGIT_BRANCH="yc-hacking"
+SRC_URI="https://codeberg.org/dnkl/fnott/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 KEYWORDS="amd64"
 LICENSE="MIT ZLIB"
 SLOT="0"
