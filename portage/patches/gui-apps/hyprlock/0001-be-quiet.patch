@@ -1,0 +1,32 @@
+From 7da6328868810f0d5009f9b6303b2f059f078bd8 Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Sat, 12 Oct 2024 12:35:39 +0800
+Subject: [PATCH] be quiet
+
+---
+ src/helpers/Log.hpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/helpers/Log.hpp b/src/helpers/Log.hpp
+index 863512e..146749a 100644
+--- a/src/helpers/Log.hpp
++++ b/src/helpers/Log.hpp
+@@ -34,7 +34,7 @@ namespace Debug {
+         if (!verbose && level == TRACE)
+             return;
+ 
+-        if (quiet)
++        if (quiet && level < ERR)
+             return;
+ 
+         if (level != NONE) {
+@@ -55,4 +55,4 @@ namespace Debug {
+ 
+         std::cout << std::vformat(fmt, std::make_format_args(args...)) << "\n";
+     }
+-};
+\ No newline at end of file
++};
+-- 
+2.45.2
+
