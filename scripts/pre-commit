@@ -14,6 +14,21 @@
 
 KCONF=/proc/config
 
+die() {
+    set +xe
+    echo '================================ DIE ===============================' >&2
+    echo >&2 "$*"
+    echo >&2 "Call stack:"
+    local n=$((${#BASH_LINENO[@]} - 1))
+    local i=0
+    while [ $i -lt $n ]; do
+        echo >&2 "    [$i] -- line ${BASH_LINENO[i]} -- ${FUNCNAME[i + 1]}"
+        i=$((i + 1))
+    done
+    echo >&2 '================================ END ==============================='
+    [[ $- == *i* ]] && return 1 || exit 1
+}
+
 while [ $# -gt 0 ] && [[ "$1" = -* ]]; do
     case "$1" in
         -h | --help) help 1 ;;
@@ -21,19 +36,14 @@ while [ $# -gt 0 ] && [[ "$1" = -* ]]; do
             shift
             KCONF="$1"
             ;;
-        *) die "Unrecognized opt: $1, showing usage." "$(help)" ;;
+        *) die "Unrecognized opt: $1, showing usage." "$(help)";;
     esac
     shift
 done
 
+mount | grep -q portage || die "/etc/portage not mount..."
 printf "\nBackup portage...\n"
 pushd "$(git rev-parse --show-toplevel)"
-if ! mount | grep -q portage; then
-    rsync -Pa --exclude=00cpu-flags --exclude='savedconfig' --exclude='gnupg' --exclude=priv \
-          /etc/portage/* portage/
-    sed -i '/MAKEOPTS/d' portage/make.conf
-fi
-
 
 printf "\nBackup kernel config...\n"
 config_dir=profiles/kernel.conf
