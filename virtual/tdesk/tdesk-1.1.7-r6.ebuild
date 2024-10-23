@@ -48,7 +48,6 @@ DEPEND=" (
 
   video? (
   media-video/mpv
-  net-misc/yt-dlp
   media-gfx/imv
   media-gfx/imagemagick
   )

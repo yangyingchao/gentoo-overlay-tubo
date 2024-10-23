@@ -7,3 +7,4 @@ portage/binrepos.conf/
 /portage/package.use/00cpu-flags
 /portage/gnupg/
 /portage/savedconfig/sys-kernel/linux-firmware-20240909-r1
+/portage/savedconfig/
