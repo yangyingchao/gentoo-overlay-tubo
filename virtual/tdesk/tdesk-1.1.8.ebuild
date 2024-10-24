@@ -30,7 +30,7 @@ DEPEND=" (
   gui-apps/wl-clipboard
   gui-wm/hyprland
   media-fonts/cascadia-code
-  media-fonts/nerd-fonts[nerdfontssymbolsonly]
+  media-fonts/symbols-nerd-font
   media-fonts/wqy-microhei
   media-sound/pavucontrol
   sys-fs/udisks
