@@ -4,7 +4,7 @@
 EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="4"
+K_GENPATCHES_VER="8" # NOTE: update this based on gentoo-sources when updating zen-sources
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
 
@@ -12,17 +12,19 @@ inherit kernel-2 unpacker
 detect_version
 detect_arch
 
-DESCRIPTION="The Zen Kernel Live Sources"
+KEYWORDS="amd64 ~arm64 ~x86"
 HOMEPAGE="https://github.com/zen-kernel"
+IUSE=""
 
-# Needed for zstd compression of the patch
+SLOT="${PV%.*_*}"
+
+# needed since patch is now zstd compressed
 BDEPEND="$(unpacker_src_uri_depends)"
+
+DESCRIPTION="The Zen Kernel Live Sources"
 
 ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV%_*}-zen${PV#*p}/linux-v${PV%_*}-zen${PV#*p}.patch.zst"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
-
-KEYWORDS="amd64 ~arm64 ~x86"
-SLOT="${PV%.*_*}"
 
 UNIPATCH_LIST="${WORKDIR}/linux-v${PV%_*}-zen${PV#*p}.patch"
 UNIPATCH_STRICTORDER="yes"

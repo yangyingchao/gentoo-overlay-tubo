@@ -1,3 +1,10 @@
+>=dev-ruby/minitest-5.25.1 ruby_targets_ruby31
+>=dev-ruby/psych-5.1.2 ruby_targets_ruby31
+>=dev-ruby/rake-13.2.1 ruby_targets_ruby31
+>=dev-ruby/reline-0.5.10 ruby_targets_ruby31
+>=dev-ruby/rexml-3.3.7 ruby_targets_ruby31
+>=dev-ruby/rss-0.3.1 ruby_targets_ruby31
+>=dev-ruby/test-unit-3.6.2 ruby_targets_ruby31
 app-arch/p7zip -wxwidgets
 app-editors/emacs -svg -gif -jpeg -xpm -xft -tiff -png -sound -gui -gtk -X gpm
 app-editors/vim -X -sound -nls -acl
@@ -53,6 +60,7 @@ sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN
 sys-apps/portage native-extensions
 sys-devel/clang-runtime libcxx default-compiler-rt default-lld
+sys-devel/gcc -jit pgo lto
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub
@@ -61,45 +69,3 @@ virtual/tdesk -sway hyprland full video fcitx
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by virtual/ruby-ssl-13::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/racc-1.8.1::gentoo
-# required by dev-ruby/rdoc-6.6.3.1-r1::gentoo[ruby_targets_ruby32]
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
->=dev-ruby/minitest-5.25.1 ruby_targets_ruby31
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by virtual/ruby-ssl-13::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/racc-1.8.1::gentoo
-# required by dev-ruby/rdoc-6.6.3.1-r1::gentoo[ruby_targets_ruby32]
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
->=dev-ruby/rake-13.2.1 ruby_targets_ruby31
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by virtual/ruby-ssl-13::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/racc-1.8.1::gentoo
-# required by dev-ruby/rdoc-6.6.3.1-r1::gentoo[ruby_targets_ruby32]
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
->=dev-ruby/rexml-3.3.7 ruby_targets_ruby31
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by virtual/ruby-ssl-13::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/racc-1.8.1::gentoo
-# required by dev-ruby/rdoc-6.6.3.1-r1::gentoo[ruby_targets_ruby32]
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
->=dev-ruby/rss-0.3.1 ruby_targets_ruby31
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by virtual/ruby-ssl-13::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/racc-1.8.1::gentoo
-# required by dev-ruby/rdoc-6.6.3.1-r1::gentoo[ruby_targets_ruby32]
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
->=dev-ruby/test-unit-3.6.2 ruby_targets_ruby31
-# required by dev-ruby/rdoc-6.6.3.1-r1::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by virtual/ruby-ssl-13::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/racc-1.8.1::gentoo
->=dev-ruby/psych-5.1.2 ruby_targets_ruby31
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by virtual/ruby-ssl-13::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/racc-1.8.1::gentoo
-# required by dev-ruby/rdoc-6.6.3.1-r1::gentoo[ruby_targets_ruby32]
->=dev-ruby/reline-0.5.10 ruby_targets_ruby31

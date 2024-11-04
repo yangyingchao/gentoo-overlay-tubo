@@ -11,4 +11,5 @@ gui-libs/aquamarine debug
 gui-wm/hyprland debug
 media-libs/opencv debug
 net-misc/freerdp debug
+sys-devel/gcc compiler-gcc
 x11-libs/gtk+ debug
