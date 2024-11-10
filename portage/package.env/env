@@ -3,6 +3,7 @@ dev-cpp/gtkmm debug
 dev-db/mysql debug
 dev-db/postgresql debug
 dev-libs/wayland debug
+dev-util/android-tools gcc
 gui-apps/hypridle debug
 gui-apps/hyprlock debug
 gui-apps/hyprpaper debug
@@ -11,5 +12,5 @@ gui-libs/aquamarine debug
 gui-wm/hyprland debug
 media-libs/opencv debug
 net-misc/freerdp debug
-sys-devel/gcc compiler-gcc
+sys-devel/gcc gcc
 x11-libs/gtk+ debug
