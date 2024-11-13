@@ -2,5 +2,4 @@
 =dev-libs/nss-3.90.2-r1
 =sys-kernel/gentoo-sources-6.6.13
 >dev-lang/rust-1.76.0
->net-libs/webkit-gtk-2.42.5
 >virtual/rust-1.77.0
