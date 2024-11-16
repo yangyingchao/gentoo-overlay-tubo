@@ -69,3 +69,13 @@ virtual/tdesk -sway hyprland full video fcitx
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
+# required by dev-lang/ruby-3.1.6-r1::gentoo
+# required by dev-ruby/rbs-3.6.1::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
+>=dev-ruby/power_assert-2.0.4 ruby_targets_ruby31
+# required by dev-lang/ruby-3.1.6-r1::gentoo
+# required by dev-ruby/power_assert-2.0.4::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/test-unit-3.6.2::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.2.5-r2::gentoo
+# required by dev-ruby/net-imap-0.4.17::gentoo
+>=dev-ruby/rbs-3.6.1 ruby_targets_ruby31
