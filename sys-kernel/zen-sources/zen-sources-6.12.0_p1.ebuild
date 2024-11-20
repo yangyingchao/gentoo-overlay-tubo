@@ -4,7 +4,7 @@
 EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="8" # NOTE: update this based on gentoo-sources when updating zen-sources
+K_GENPATCHES_VER="1" # NOTE: update this based on gentoo-sources when updating zen-sources
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
 
@@ -23,17 +23,25 @@ BDEPEND="$(unpacker_src_uri_depends)"
 
 DESCRIPTION="The Zen Kernel Live Sources"
 
-ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV%_*}-zen${PV#*p}/linux-v${PV%_*}-zen${PV#*p}.patch.zst"
+FULL_VERSION="${PV%_*}"
+PATCH_VERSION=${FULL_VERSION%.*}
+REVISION=${FULL_VERSION##*.}
+
+if [[ "${REVISION}" != "0" ]]; then
+	PATCH_VERSION="${PATCH_VERSION}.${REVISION}"
+fi
+
+ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PATCH_VERSION}-zen${PV#*p}/linux-v${PATCH_VERSION}-zen${PV#*p}.patch.zst"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
 
-UNIPATCH_LIST="${WORKDIR}/linux-v${PV%_*}-zen${PV#*p}.patch"
+UNIPATCH_LIST="${WORKDIR}/linux-v${PATCH_VERSION}-zen${PV#*p}.patch"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
 ${HOMEPAGE}, also go to #zen-sources on oftc"
 
 src_unpack() {
-	unpacker "linux-v${PV%_*}-zen${PV#*p}.patch.zst"
+	unpacker "linux-v${PATCH_VERSION}-zen${PV#*p}.patch.zst"
 	kernel-2_src_unpack
 }
 
@@ -48,7 +56,7 @@ pkg_setup() {
 }
 
 src_install() {
-	rm "${WORKDIR}/linux-v${PV%_*}-zen${PV#*p}.patch" || die
+	rm "${WORKDIR}/linux-v${PATCH_VERSION}-zen${PV#*p}.patch" || die
 	kernel-2_src_install
 }
 
