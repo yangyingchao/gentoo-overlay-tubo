@@ -41,7 +41,10 @@ while [ $# -gt 0 ] && [[ "$1" = -* ]]; do
     shift
 done
 
-mount | grep -q portage || die "/etc/portage not mount..."
+if ! mount | grep -q portage; then
+    sudo mount -o bind "${PWD}"/portage /etc/portage || die "/etc/portage not mount..."
+fi
+
 printf "\nBackup portage...\n"
 pushd "$(git rev-parse --show-toplevel)"
 

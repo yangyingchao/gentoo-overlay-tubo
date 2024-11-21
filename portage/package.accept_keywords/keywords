@@ -30,8 +30,7 @@
 =dev-util/shellcheck-0.9.0-r2
 =gnome-extra/nm-applet-1.34.0
 =gui-apps/fnott-1.6.0
-=gui-apps/foot-1.17*
-=gui-apps/foot-1.18.1
+=gui-apps/foot-1.19.0
 =gui-apps/fuzzel-1.11.1
 =gui-apps/gtklock-3.0.0-r1
 =gui-apps/hyprpaper-0.7.0
