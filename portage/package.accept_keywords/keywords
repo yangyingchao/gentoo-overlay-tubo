@@ -44,7 +44,7 @@
 =gui-libs/gtk-session-lock-0.2.0-r5
 =gui-libs/hyprcursor-0.1.7
 =gui-libs/hyprutils-0.2.3
-=gui-wm/hyprland-0.44.1
+=gui-wm/hyprland-0.45.2
 =media-fonts/cascadia-code-2404.23
 =media-libs/libdisplay-info-0.1.1
 =media-video/mpv-handler-0.3.4
