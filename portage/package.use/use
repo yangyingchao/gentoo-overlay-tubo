@@ -59,7 +59,8 @@ net-misc/remmina rdp
 sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN
 sys-apps/portage native-extensions
-sys-devel/clang-runtime libcxx default-compiler-rt default-lld
+# move sys-devel/clang-runtime llvm-core/clang-runtime
+llvm-core/clang-runtime libcxx default-compiler-rt default-lld
 sys-devel/gcc -jit pgo lto
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
