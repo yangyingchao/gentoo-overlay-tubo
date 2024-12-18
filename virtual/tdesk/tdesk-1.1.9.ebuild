@@ -44,6 +44,8 @@ DEPEND=" (
 
   fcitx? (
   app-i18n/fcitx-meta:5
+  app-i18n/librime
+  app-i18n/librime-lua
   )
 
   video? (

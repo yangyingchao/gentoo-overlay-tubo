@@ -1,0 +1,65 @@
+From 603dc194ea6c43f0607d73e085fba4ea41390b3e Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Wed, 18 Dec 2024 17:36:20 +0800
+Subject: [PATCH] fix header search path & disable logs
+
+---
+ CMakeLists.txt  | 2 ++
+ src/octagram.cc | 9 ---------
+ 2 files changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0de8cc..fc46cf9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,8 @@ option(BUILD_TOOLS "Build tools" ON)
+ 
+ aux_source_directory(src octagram_src)
+ 
++include_directories(/usr/include/utf8cpp/)
++
+ add_library(rime-octagram-objs OBJECT ${octagram_src})
+ if(BUILD_SHARED_LIBS)
+   set_target_properties(rime-octagram-objs
+diff --git a/src/octagram.cc b/src/octagram.cc
+index 98ace59..e12945b 100644
+--- a/src/octagram.cc
++++ b/src/octagram.cc
+@@ -126,13 +126,9 @@ double Octagram::Query(const string& context,
+        context_len > 0;
+        --context_len, context_ptr = grammar::next_unicode(context_ptr)) {
+     int num_results = db_->Lookup(context_ptr, word_query, matches);
+-    DLOG(INFO) << "Lookup(" << context_ptr << " + " << word_query << ") returns "
+-               << num_results << " results";
+     for (auto i = 0; i < num_results; ++i) {
+       const auto& match(matches[i]);
+       const int match_len = grammar::unicode_length(word_query, match.length);
+-      DLOG(INFO) << "match[" << match.length << "] = "
+-                 << scale_value(match.value);
+       const int collocation_len = context_len + match_len;
+       if (update_result(result,
+                         scale_value(match.value) +
+@@ -141,8 +137,6 @@ double Octagram::Query(const string& context,
+                                              match.length, word_query)
+                          ? config_->collocation_penalty
+                          : config_->weak_collocation_penalty))) {
+-        DLOG(INFO) << "update: " << context << "[" << context_len << "] + "
+-                   << word << "[" << match_len << "] = " << result;
+       }
+     }
+   }
+@@ -153,11 +147,8 @@ double Octagram::Query(const string& context,
+         db_->Lookup(word_query, "$", matches) > 0 &&
+         update_result(result,
+                       scale_value(matches[0].value) + config_->rear_penalty)) {
+-      DLOG(INFO) << "update: " << word << "$ / " << result;
+     }
+   }
+-  DLOG(INFO) << "context = " << context << ", word = " << word
+-             << " / " << result;
+   return result;
+ }
+ 
+-- 
+2.45.2
+

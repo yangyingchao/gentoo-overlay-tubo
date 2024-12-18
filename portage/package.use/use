@@ -80,3 +80,4 @@ x11-libs/libxkbcommon X
 # required by dev-lang/ruby-3.2.5-r2::gentoo
 # required by dev-ruby/net-imap-0.4.17::gentoo
 >=dev-ruby/rbs-3.6.1 ruby_targets_ruby31
+app-i18n/librime-lua LUA_SINGLE_TARGET: -* lua5-4
