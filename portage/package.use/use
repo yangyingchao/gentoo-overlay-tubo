@@ -81,3 +81,15 @@ x11-libs/libxkbcommon X
 # required by dev-ruby/net-imap-0.4.17::gentoo
 >=dev-ruby/rbs-3.6.1 ruby_targets_ruby31
 app-i18n/librime-lua LUA_SINGLE_TARGET: -* lua5-4
+# required by dev-lang/ruby-3.1.6-r1::gentoo
+# required by dev-ruby/racc-1.8.1::gentoo[ruby_targets_ruby31]
+>=dev-ruby/rdoc-6.8.1 ruby_targets_ruby31
+# required by dev-ruby/rdoc-6.8.1::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/debug-1.9.2::gentoo[ruby_targets_ruby32]
+# required by dev-lang/ruby-3.2.5-r2::gentoo
+# required by net-libs/webkit-gtk-2.46.4-r410::gentoo
+# required by media-gfx/shotwell-0.32.10::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-ruby/racc-1.8.1 ruby_targets_ruby31
