@@ -56,8 +56,7 @@
 =media-video/pipewire-1.0.5-r1
 =media-video/wireplumber-0.5.2
 =media-video/wl-screenrec-0.1.2
-=net-im/wechat-4.0.0.30
-=net-im/wechat-universal-bwrap-4.0.0.23
+=net-im/wechat-4*
 =net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
 =net-misc/freerdp-2.11.5

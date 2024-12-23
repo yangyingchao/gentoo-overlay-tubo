@@ -6,7 +6,7 @@
 EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="5" # NOTE: update this based on gentoo-sources when updating zen-sources
+K_GENPATCHES_VER="9" # NOTE: update this based on gentoo-sources when updating zen-sources
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
 
