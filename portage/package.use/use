@@ -1,6 +1,10 @@
 >=dev-ruby/minitest-5.25.1 ruby_targets_ruby31
+>=dev-ruby/power_assert-2.0.4 ruby_targets_ruby31
 >=dev-ruby/psych-5.1.2 ruby_targets_ruby31
+>=dev-ruby/racc-1.8.1 ruby_targets_ruby31
 >=dev-ruby/rake-13.2.1 ruby_targets_ruby31
+>=dev-ruby/rbs-3.6.1 ruby_targets_ruby31
+>=dev-ruby/rdoc-6.8.1 ruby_targets_ruby31
 >=dev-ruby/reline-0.5.10 ruby_targets_ruby31
 >=dev-ruby/rexml-3.3.7 ruby_targets_ruby31
 >=dev-ruby/rss-0.3.1 ruby_targets_ruby31
@@ -12,6 +16,7 @@ app-emacs/emacs-common -gui -games -gsettings
 app-i18n/fcitx -enchant
 app-i18n/fcitx-meta -chinese-addons -configtool rime
 app-i18n/fcitx-qt qt6 qt5 wayland
+app-i18n/librime-lua LUA_SINGLE_TARGET: -* lua5-4
 app-i18n/rime-data -pinyin-simp -flypy -cangjie -bopomofo -wubi -terra-pinyin -stroke -prelude -octagram -luna-pinyin -essay -double-pinyin
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
@@ -37,6 +42,7 @@ gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar pipewire
 gui-apps/waybar tray experimental
+llvm-core/clang-runtime libcxx default-compiler-rt default-lld
 media-fonts/fontawesome ttf
 media-fonts/nerd-fonts -cascadiamono nerdfontssymbolsonly
 media-fonts/noto cjk
@@ -59,8 +65,6 @@ net-misc/remmina rdp
 sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN
 sys-apps/portage native-extensions
-# move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime libcxx default-compiler-rt default-lld
 sys-devel/gcc -jit pgo lto
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
@@ -70,26 +74,3 @@ virtual/tdesk -sway hyprland full video fcitx
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by dev-ruby/rbs-3.6.1::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
->=dev-ruby/power_assert-2.0.4 ruby_targets_ruby31
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by dev-ruby/power_assert-2.0.4::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/test-unit-3.6.2::gentoo[ruby_targets_ruby31]
-# required by dev-lang/ruby-3.2.5-r2::gentoo
-# required by dev-ruby/net-imap-0.4.17::gentoo
->=dev-ruby/rbs-3.6.1 ruby_targets_ruby31
-app-i18n/librime-lua LUA_SINGLE_TARGET: -* lua5-4
-# required by dev-lang/ruby-3.1.6-r1::gentoo
-# required by dev-ruby/racc-1.8.1::gentoo[ruby_targets_ruby31]
->=dev-ruby/rdoc-6.8.1 ruby_targets_ruby31
-# required by dev-ruby/rdoc-6.8.1::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
-# required by dev-ruby/debug-1.9.2::gentoo[ruby_targets_ruby32]
-# required by dev-lang/ruby-3.2.5-r2::gentoo
-# required by net-libs/webkit-gtk-2.46.4-r410::gentoo
-# required by media-gfx/shotwell-0.32.10::gentoo
-# required by @selected
-# required by @world (argument)
->=dev-ruby/racc-1.8.1 ruby_targets_ruby31
