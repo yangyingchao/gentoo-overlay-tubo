@@ -18,6 +18,8 @@ app-i18n/fcitx-meta -chinese-addons -configtool rime
 app-i18n/fcitx-qt qt6 qt5 wayland
 app-i18n/librime-lua LUA_SINGLE_TARGET: -* lua5-4
 app-i18n/rime-data -pinyin-simp -flypy -cangjie -bopomofo -wubi -terra-pinyin -stroke -prelude -octagram -luna-pinyin -essay -double-pinyin
+app-office/freeoffice l10n_zh
+app-text/ghostscript-gpl -l10n_zh-CN
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
 dev-lang/rust clippy rustfmt
@@ -56,6 +58,7 @@ media-libs/libvpx postproc
 media-libs/mesa X
 media-sound/pulseaudio -daemon
 media-video/pipewire bluetooth sound-server
+net-libs/nodejs npm
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/curl -zstd

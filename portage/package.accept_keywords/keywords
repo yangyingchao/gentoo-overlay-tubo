@@ -14,6 +14,7 @@
 =app-i18n/rime-luna-pinyin-20230204
 =app-i18n/rime-prelude-20220122-r1
 =app-misc/brightnessctl-0.5.1
+=app-office/freeoffice-1220
 =app-office/wps-office-12.1.0.17900
 =app-text/zotero-bin-6.0.35
 =dev-cpp/sdbus-c++-2.0.0
@@ -22,7 +23,7 @@
 =dev-libs/date-3.0.0
 =dev-libs/hyprgraphics-0.1.1
 =dev-libs/hyprland-protocols-0.4.0
-=dev-libs/hyprlang-0.4.2
+=dev-libs/hyprlang-0.6.0
 =dev-libs/libliftoff-0.4.1
 =dev-libs/tllist-1.1.0
 =dev-libs/wayland-protocols-1.32
@@ -37,8 +38,8 @@
 =gui-apps/fuzzel-1.11.1
 =gui-apps/gtklock-3.0.0-r1
 =gui-apps/hyprlock-0.6.0
-=gui-apps/hyprpaper-0.7.1
-=gui-apps/hyprpicker-0.3.0-r1
+=gui-apps/hyprpaper-0.7.3-r1
+=gui-apps/hyprpicker-0.3.0-r2
 =gui-apps/swaylock-effects-1.7.0.0
 =gui-apps/swaync-0.10.1-r1
 =gui-apps/waybar-0.10.3

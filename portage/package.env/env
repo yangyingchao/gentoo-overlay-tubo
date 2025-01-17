@@ -1,4 +1,5 @@
 app-portage/eix eix-extra-econf.conf
+app-text/texlive-core gcc
 dev-cpp/gtkmm debug
 dev-db/mysql debug
 dev-db/postgresql debug
@@ -7,6 +8,7 @@ dev-util/android-tools gcc
 gui-apps/hypridle debug
 gui-apps/hyprlock debug
 gui-apps/hyprpaper debug
+gui-apps/hyprpicker gcc
 gui-apps/waybar debug
 gui-libs/aquamarine debug
 gui-wm/hyprland debug
