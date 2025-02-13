@@ -58,7 +58,6 @@ media-libs/libvpx postproc
 media-libs/mesa X
 media-sound/pulseaudio -daemon
 media-video/pipewire bluetooth sound-server
-net-libs/nodejs npm
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/curl -zstd
