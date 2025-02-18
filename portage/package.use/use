@@ -22,7 +22,7 @@ app-office/freeoffice l10n_zh
 app-text/ghostscript-gpl -l10n_zh-CN
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
-dev-lang/rust clippy rustfmt
+dev-lang/rust-bin clippy rustfmt
 dev-libs/libdbusmenu gtk3
 dev-libs/libxmlb introspection
 dev-python/PyQt4 quick qml
@@ -61,7 +61,7 @@ media-video/pipewire bluetooth sound-server
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/curl -zstd
-net-misc/freerdp wayland
+net-misc/freerdp openh264 wayland
 net-misc/networkmanager -ppp -bluetooth
 net-misc/remmina rdp
 sys-apps/fwupd gnutls uefi systemd

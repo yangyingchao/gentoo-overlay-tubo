@@ -60,7 +60,7 @@
 =net-im/wechat-4*
 =net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
-=net-misc/freerdp-2.11.5
+=net-misc/freerdp-3.12.0
 =sys-devel/gcc-14.2.1_p20241026
 =sys-kernel/gentoo-sources-6.6.26-r1
 =sys-kernel/zen-sources-6.10.10
