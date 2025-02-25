@@ -5,8 +5,7 @@
 
 EAPI="8"
 ETYPE="sources"
-K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="3"
+K_GENPATCHES_VER="20"
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
 
@@ -14,36 +13,44 @@ inherit kernel-2 unpacker
 detect_version
 detect_arch
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 HOMEPAGE="https://github.com/zen-kernel"
 IUSE=""
-
 SLOT="${PV%.*_*}"
-
-# needed since patch is now zstd compressed
 BDEPEND="$(unpacker_src_uri_depends)"
-
 DESCRIPTION="The Zen Kernel Live Sources"
 
 FULL_VERSION="${PV%_*}"
 PATCH_VERSION=${FULL_VERSION%.*}
 REVISION=${FULL_VERSION##*.}
 
+ZEN_TYPE="lqx" # or zen
+
+if [[ "${ZEN_TYPE}" = "zen" ]]; then
+	K_WANT_GENPATCHES="base extras"
+	ZEN_PREFIX="linux-"
+	ZEN_SUFFIX="zst"
+else
+	K_WANT_GENPATCHES=""
+	ZEN_PREFIX=""
+	ZEN_SUFFIX="xz"
+fi
+
 if [[ "${REVISION}" != "0" ]]; then
 	PATCH_VERSION="${PATCH_VERSION}.${REVISION}"
 fi
 
-ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PATCH_VERSION}-zen${PV#*p}/linux-v${PATCH_VERSION}-zen${PV#*p}.patch.zst"
+ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PATCH_VERSION}-${ZEN_TYPE}${PV#*p}/${ZEN_PREFIX}v${PATCH_VERSION}-${ZEN_TYPE}${PV#*p}.patch.${ZEN_SUFFIX}"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
 
-UNIPATCH_LIST="${WORKDIR}/linux-v${PATCH_VERSION}-zen${PV#*p}.patch"
+UNIPATCH_LIST="${WORKDIR}/${ZEN_PREFIX}v${PATCH_VERSION}-${ZEN_TYPE}${PV#*p}.patch"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
 ${HOMEPAGE}, also go to #zen-sources on oftc"
 
 src_unpack() {
-	unpacker "linux-v${PATCH_VERSION}-zen${PV#*p}.patch.zst"
+	unpacker "${ZEN_PREFIX}v${PATCH_VERSION}-${ZEN_TYPE}${PV#*p}.patch.${ZEN_SUFFIX}"
 	kernel-2_src_unpack
 }
 
@@ -58,7 +65,7 @@ pkg_setup() {
 }
 
 src_install() {
-	rm "${WORKDIR}/linux-v${PATCH_VERSION}-zen${PV#*p}.patch" || die
+	rm "${WORKDIR}/${ZEN_PREFIX}v${PATCH_VERSION}-${ZEN_TYPE}${PV#*p}.patch" || die
 	kernel-2_src_install
 }
 
