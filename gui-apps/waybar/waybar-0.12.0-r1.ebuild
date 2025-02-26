@@ -3,14 +3,20 @@
 
 EAPI=8
 
-inherit meson git-r3
+inherit meson
 
 DESCRIPTION="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 HOMEPAGE="https://github.com/Alexays/Waybar"
-KEYWORDS="~amd64"
 
-EGIT_REPO_URI="https://github.com/yangyingchao/${PN^}.git"
-EGIT_BRANCH="yc-hacking"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/Alexays/${PN^}.git"
+else
+	SRC_URI="https://github.com/Alexays/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64 ~arm64"
+	S="${WORKDIR}/${PN^}-${PV}"
+fi
+
 LICENSE="MIT"
 SLOT="0"
 IUSE="evdev experimental jack +libinput +logind mpd mpris network pipewire pulseaudio sndio systemd test tray +udev upower wifi"
@@ -23,6 +29,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	>=app-text/scdoc-1.9.2
 	dev-util/gdbus-codegen
+	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -31,17 +38,16 @@ RDEPEND="
 	dev-cpp/gtkmm:3.0
 	dev-libs/glib:2
 	dev-libs/jsoncpp:=
-	dev-libs/libinput:=
 	dev-libs/libsigc++:2
 	>=dev-libs/libfmt-8.1.1:=
 	>=dev-libs/spdlog-1.10.0:=
 	dev-libs/date:=
 	dev-libs/wayland
-	gui-libs/gtk-layer-shell
-	gui-libs/wlroots:=
+	>=gui-libs/gtk-layer-shell-0.9.0
+	media-video/pipewire:=
 	x11-libs/gtk+:3[wayland]
 	x11-libs/libxkbcommon
-	evdev? ( dev-libs/libevdev:= )
+	evdev? ( dev-libs/libevdev )
 	jack? ( virtual/jack )
 	libinput? ( dev-libs/libinput:= )
 	logind? (
@@ -56,17 +62,21 @@ RDEPEND="
 	sndio? ( media-sound/sndio:= )
 	systemd? ( sys-apps/systemd:= )
 	tray? (
-		dev-libs/libdbusmenu[gtk3]
 		dev-libs/libayatana-appindicator
+		dev-libs/libdbusmenu[gtk3]
 	)
 	udev? ( virtual/libudev:= )
-	upower? ( sys-power/upower )
+	upower? ( sys-power/upower:= )
 	wifi? ( sys-apps/util-linux )
 "
 DEPEND="${RDEPEND}
 	dev-libs/wayland-protocols
 	test? ( dev-cpp/catch:0 )
 "
+
+# PATCHES=(
+# 	"${FILESDIR}"/tray-icons-fix.patch
+# )
 
 src_configure() {
 	local emesonargs=(

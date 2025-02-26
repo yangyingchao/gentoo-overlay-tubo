@@ -19,6 +19,7 @@ app-i18n/fcitx-qt qt6 qt5 wayland
 app-i18n/librime-lua LUA_SINGLE_TARGET: -* lua5-4
 app-i18n/rime-data -pinyin-simp -flypy -cangjie -bopomofo -wubi -terra-pinyin -stroke -prelude -octagram -luna-pinyin -essay -double-pinyin
 app-office/freeoffice l10n_zh
+app-office/libreoffice -eds -gstreamer -bluetooth
 app-text/ghostscript-gpl -l10n_zh-CN
 app-text/zathura sqlite synctex
 dev-db/postgresql debug
@@ -42,8 +43,7 @@ dev-util/perf slang -gtk caps
 gnome-base/gvfs -samba udisks -cdda -mtp ios fuse
 gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
-gui-apps/waybar pipewire
-gui-apps/waybar tray experimental
+gui-apps/waybar tray experimental pipewire
 llvm-core/clang-runtime libcxx default-compiler-rt default-lld
 media-fonts/fontawesome ttf
 media-fonts/nerd-fonts -cascadiamono nerdfontssymbolsonly
