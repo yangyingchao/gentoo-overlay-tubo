@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,6 +26,7 @@ DEPEND=" (
   gui-apps/hyprpaper
   gui-apps/hyprpicker
   gui-apps/slurp
+  gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
   gui-wm/hyprland
