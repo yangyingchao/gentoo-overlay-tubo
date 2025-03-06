@@ -63,7 +63,7 @@ net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/curl -zstd
 net-misc/freerdp openh264 wayland
 net-misc/networkmanager -ppp -bluetooth
-net-misc/remmina rdp
+net-misc/remmina -zeroconf vnc rdp
 sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN
 sys-apps/portage native-extensions
