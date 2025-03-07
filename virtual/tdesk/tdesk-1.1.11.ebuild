@@ -19,7 +19,7 @@ DEPEND=" (
   gnome-extra/nm-applet[appindicator]
   gui-apps/fnott
   gui-apps/foot
-  gui-apps/fuzzel
+  gui-apps/fuzzel-x
   gui-apps/grim
   gui-apps/hypridle
   gui-apps/hyprlock

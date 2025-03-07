@@ -3,18 +3,10 @@
 
 EAPI=8
 
-inherit meson optfeature
+inherit meson optfeature git-r3
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://codeberg.org/yangyingchao/fuzzel.git"
-	KEYWORDS="amd64"
-else
-	SRC_URI="https://codeberg.org/dnkl/fuzzel/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}"
-fi
-
+EGIT_REPO_URI="https://github.com/yangyingchao/fuzzel-x.git"
+KEYWORDS="amd64"
 DESCRIPTION="Application launcher for wlroots based Wayland compositors."
 HOMEPAGE="https://codeberg.org/dnkl/fuzzel"
 LICENSE="MIT"
