@@ -29,11 +29,13 @@ DEPEND=" (
   gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
+  gui-libs/xdg-desktop-portal-hyprland
   gui-wm/hyprland
   media-fonts/cascadia-code
   media-fonts/symbols-nerd-font
   media-fonts/wqy-microhei
   media-sound/pavucontrol
+  sys-auth/hyprpolkitagent
   sys-fs/udisks
   sys-power/power-profiles-daemon
   sys-power/thermald
