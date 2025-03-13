@@ -1,0 +1,4 @@
+app-containers/docker
+app-containers/docker-cli
+app-office/libreoffice
+sys-devel/gcc
