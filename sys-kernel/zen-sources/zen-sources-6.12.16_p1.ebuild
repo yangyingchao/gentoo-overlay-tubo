@@ -71,4 +71,7 @@ src_install() {
 
 pkg_postrm() {
 	kernel-2_pkg_postrm
+
+	ewarn "If you have vmware installed, issue following command:"
+	ewarn "vmware-modconfig --console --install-all"
 }
