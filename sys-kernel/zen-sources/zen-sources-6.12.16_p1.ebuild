@@ -69,9 +69,24 @@ src_install() {
 	kernel-2_src_install
 }
 
-pkg_postrm() {
-	kernel-2_pkg_postrm
+pkg_postinst() {
+	kernel-2_pkg_postinst
 
+	local Z_CONFIG=${FILESDIR}/kernel-config-$(LANG=C lscpu | grep -i 'vendor' | awk -F ':' '{print $2}' | xargs)
+
+	echo ""
+	einfo "Install config..."
+	if [[ -f "${EROOT}"/usr/src/linux/.config ]]; then
+		cp -aRfv "${EROOT}"/usr/src/linux/.config "${EROOT}"/usr/src/linux/.config.bak
+	fi
+
+	cp -aRfv "${Z_CONFIG}" "${EROOT}"/usr/src/linux/.config
+
+	echo ""
 	ewarn "If you have vmware installed, issue following command:"
 	ewarn "vmware-modconfig --console --install-all"
+}
+
+pkg_postrm() {
+	kernel-2_pkg_postrm
 }

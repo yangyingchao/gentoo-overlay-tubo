@@ -68,7 +68,6 @@ net-misc/remmina -zeroconf vnc rdp
 sys-apps/fwupd gnutls uefi systemd
 sys-apps/man-pages -l10n_zh-CN
 sys-apps/portage native-extensions
-sys-devel/gcc ada objc++ objc d jit pgo lto
 sys-fs/btrfs-progs -man
 sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub

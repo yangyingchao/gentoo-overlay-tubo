@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+printf "\nBackup kernel config...\n"
+config_dir=/home/yyc/Work/gentoo-overlay-tubo/sys-kernel/zen-sources/files/
+config_file=$config_dir/kernel-config-$(LANG=C lscpu | grep -i 'vendor' | awk -F ':' '{print $2}' | xargs)
+
+mkdir -p "${config_dir}"
+conf=$(find /boot -name "config-*" -printf "%T@|%p\n" | sort -n | awk -F "|" '{print $2}' | tail -1)
+tail -n +4  "${conf}" | sed -E "/^CONFIG_(AS|GCC|CLANG|CC|LD|LLD)_VERSION/d" > "${config_file}"
+echo "Config ${conf} saved to ${config_file}."
