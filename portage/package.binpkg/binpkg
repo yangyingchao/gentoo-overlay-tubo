@@ -1,4 +1,5 @@
 app-containers/docker
 app-containers/docker-cli
 app-office/libreoffice
+dev-lang/go
 sys-devel/gcc
