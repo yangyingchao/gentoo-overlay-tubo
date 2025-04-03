@@ -35,7 +35,7 @@ DEPEND=" (
   media-fonts/symbols-nerd-font
   media-fonts/wqy-microhei
   media-sound/pavucontrol
-  sys-auth/hyprpolkitagent
+  sys-auth/polkit[gtk]
   sys-fs/udisks
   sys-power/power-profiles-daemon
   sys-power/thermald
