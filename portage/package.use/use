@@ -76,3 +76,24 @@ virtual/tdesk -sway hyprland full video fcitx
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
+# required by dev-ruby/psych-5.1.2::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/rdoc-6.8.1::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.2.7::gentoo
+# required by dev-ruby/logger-1.6.6::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/rbs-3.6.1::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.1.6-r3::gentoo
+# required by dev-ruby/test-unit-3.6.7::gentoo[ruby_targets_ruby31]
+>=dev-ruby/stringio-3.1.5 ruby_targets_ruby31
+# required by dev-ruby/rbs-3.6.1::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.2.7::gentoo
+# required by dev-ruby/test-unit-3.6.7::gentoo[ruby_targets_ruby32]
+# required by dev-lang/ruby-3.1.6-r3::gentoo
+# required by dev-ruby/stringio-3.1.5::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/psych-5.1.2::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/rdoc-6.8.1::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/irb-1.13.2::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/debug-1.9.2::gentoo[ruby_targets_ruby32]
+>=dev-ruby/logger-1.6.6 ruby_targets_ruby31
