@@ -16,6 +16,7 @@
 =app-misc/brightnessctl-0.5.1
 =app-office/freeoffice-1220
 =app-office/wps-office-12.1.0.17900
+=app-portage/fetchcommandwrapper-0.8.4-r5
 =app-text/zotero-bin-6.0.35
 =dev-cpp/sdbus-c++-2.0.0
 =dev-cpp/tomlplusplus-3.4.0

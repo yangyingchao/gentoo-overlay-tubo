@@ -13,6 +13,7 @@ KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-sola
 DEPEND="(
 	app-admin/stow
 	app-arch/unrar
+	app-portage/mirrorselect
 	app-shells/zsh
 	net-misc/networkmanager
 	sys-apps/debianutils
