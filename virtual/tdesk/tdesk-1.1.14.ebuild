@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="fcitx video full"
+IUSE="fcitx video full +niri -hyprland"
 
 DEPEND=" (
   virtual/tcmd
@@ -23,14 +23,11 @@ DEPEND=" (
   gui-apps/grim
   gui-apps/hypridle
   gui-apps/hyprlock
-  gui-apps/hyprpaper
   gui-apps/hyprpicker
   gui-apps/slurp
   gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
-  gui-libs/xdg-desktop-portal-hyprland
-  gui-wm/hyprland
   media-fonts/cascadia-code
   media-fonts/symbols-nerd-font
   media-fonts/wqy-microhei
@@ -63,6 +60,16 @@ DEPEND=" (
   media-fonts/noto-emoji
   )
 
+  hyprland? (
+  gui-libs/xdg-desktop-portal-hyprland
+  gui-wm/hyprland
+  )
+
+  niri? (
+  gui-wm/niri
+  gui-apps/swaybg
+  gui-apps/hyprpaper
+  )
 )"
 
 src_unpack() {
