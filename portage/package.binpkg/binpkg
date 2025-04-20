@@ -3,4 +3,5 @@ app-containers/docker-cli
 app-office/libreoffice
 app-text/texlive-core
 dev-lang/go
+dev-qt/qtbase
 sys-devel/gcc

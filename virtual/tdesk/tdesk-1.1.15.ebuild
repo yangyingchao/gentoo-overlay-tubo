@@ -63,12 +63,12 @@ DEPEND=" (
   hyprland? (
   gui-libs/xdg-desktop-portal-hyprland
   gui-wm/hyprland
+  gui-apps/hyprpaper
   )
 
   niri? (
   gui-wm/niri
   gui-apps/swaybg
-  gui-apps/hyprpaper
   )
 )"
 
