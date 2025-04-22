@@ -25,6 +25,7 @@ DEPEND=" (
   gui-apps/hyprlock
   gui-apps/hyprpicker
   gui-apps/slurp
+  gui-apps/wlrctl
   gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
