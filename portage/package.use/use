@@ -36,7 +36,6 @@ gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar tray experimental pipewire
 llvm-core/clang-runtime libcxx default-compiler-rt default-lld
 media-fonts/fontawesome ttf
-media-fonts/nerd-fonts -cascadiamono nerdfontssymbolsonly
 media-fonts/noto cjk
 media-gfx/imagemagick lzma graphviz webp
 media-libs/freetype harfbuzz hardbuzz

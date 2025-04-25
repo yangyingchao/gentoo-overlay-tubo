@@ -23,15 +23,15 @@ DEPEND=" (
   gui-apps/grim
   gui-apps/hypridle
   gui-apps/hyprlock
+  gui-apps/hyprpaper
   gui-apps/hyprpicker
   gui-apps/slurp
-  gui-apps/wlrctl
   gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
-  media-fonts/cascadia-code
-  media-fonts/symbols-nerd-font
-  media-fonts/wqy-microhei
+  gui-apps/wlrctl
+  gui-libs/xdg-desktop-portal-hyprland
+  gui-wm/hyprland
   media-sound/pavucontrol
   sys-auth/polkit[gtk]
   sys-fs/udisks
@@ -59,17 +59,6 @@ DEPEND=" (
   full? (
   media-fonts/noto[cjk,extra]
   media-fonts/noto-emoji
-  )
-
-  hyprland? (
-  gui-libs/xdg-desktop-portal-hyprland
-  gui-wm/hyprland
-  gui-apps/hyprpaper
-  )
-
-  niri? (
-  gui-wm/niri
-  gui-apps/swaybg
   )
 )"
 
