@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="fcitx video full +niri -hyprland"
+IUSE="fcitx video +fonts +niri -hyprland"
 
 DEPEND=" (
   virtual/tcmd
@@ -21,17 +21,11 @@ DEPEND=" (
   gui-apps/foot
   gui-apps/fuzzel-x
   gui-apps/grim
-  gui-apps/hypridle
-  gui-apps/hyprlock
-  gui-apps/hyprpaper
-  gui-apps/hyprpicker
   gui-apps/slurp
   gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
   gui-apps/wlrctl
-  gui-libs/xdg-desktop-portal-hyprland
-  gui-wm/hyprland
   media-sound/pavucontrol
   sys-auth/polkit[gtk]
   sys-fs/udisks
@@ -56,9 +50,25 @@ DEPEND=" (
   media-gfx/imagemagick
   )
 
-  full? (
+  fonts? (
   media-fonts/noto[cjk,extra]
   media-fonts/noto-emoji
+  )
+
+  hyprland? (
+  gui-libs/xdg-desktop-portal-hyprland
+  gui-apps/hypridle
+  gui-apps/hyprlock
+  gui-apps/hyprpaper
+  gui-apps/hyprpicker
+  gui-wm/hyprland
+  )
+  niri? (
+  gui-wm/niri
+  gui-apps/swayidle
+  gui-apps/swaylock-effects
+  gui-apps/xwayland-satellite
+  gui-apps/swaybg
   )
 )"
 
@@ -69,7 +79,7 @@ src_unpack() {
 
 src_install() {
 	mkdir -p ${ED}/etc/env.d || die "failed to create directory."
-	cat <<EOF > ${ED}/etc/env.d/98theme
+	cat << EOF > ${ED}/etc/env.d/98theme
 QT_STYLE_OVERRIDE=adwaita
 EOF
 }
