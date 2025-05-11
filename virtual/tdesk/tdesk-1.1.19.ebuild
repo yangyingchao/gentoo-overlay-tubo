@@ -77,6 +77,7 @@ DEPEND=" (
   gui-apps/swaylock-effects
   gui-apps/xwayland-satellite
   gui-apps/swaybg
+  x11-misc/autotiling
   )
 )"
 
