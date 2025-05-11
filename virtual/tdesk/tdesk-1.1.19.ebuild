@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="fcitx video +fonts +niri -hyprland"
+IUSE="fcitx video +fonts +sway -niri -hyprland"
 
 DEPEND=" (
   virtual/tcmd
@@ -65,6 +65,14 @@ DEPEND=" (
   )
   niri? (
   gui-wm/niri
+  gui-apps/swayidle
+  gui-apps/swaylock-effects
+  gui-apps/xwayland-satellite
+  gui-apps/swaybg
+  )
+
+  sway? (
+  gui-wm/sway
   gui-apps/swayidle
   gui-apps/swaylock-effects
   gui-apps/xwayland-satellite
