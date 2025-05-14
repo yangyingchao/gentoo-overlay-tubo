@@ -48,6 +48,7 @@ DEPEND=" (
   media-video/mpv
   media-gfx/imv
   media-gfx/imagemagick
+  media-sound/playerctl
   )
 
   fonts? (
@@ -55,29 +56,19 @@ DEPEND=" (
   media-fonts/noto-emoji
   )
 
+  gui-apps/hyprlock
+  gui-apps/hypridle
+  gui-apps/hyprpicker
+
   hyprland? (
   gui-libs/xdg-desktop-portal-hyprland
-  gui-apps/hypridle
-  gui-apps/hyprlock
   gui-apps/hyprpaper
-  gui-apps/hyprpicker
   gui-wm/hyprland
   )
   niri? (
   gui-wm/niri
-  gui-apps/swayidle
-  gui-apps/swaylock-effects
   gui-apps/xwayland-satellite
   gui-apps/swaybg
-  )
-
-  sway? (
-  gui-wm/sway
-  gui-apps/swayidle
-  gui-apps/swaylock-effects
-  gui-apps/xwayland-satellite
-  gui-apps/swaybg
-  x11-misc/autotiling
   )
 )"
 
