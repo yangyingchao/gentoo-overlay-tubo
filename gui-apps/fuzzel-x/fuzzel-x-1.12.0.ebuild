@@ -3,9 +3,10 @@
 
 EAPI=8
 
-inherit meson optfeature git-r3
+inherit meson optfeature
 
-EGIT_REPO_URI="https://github.com/yangyingchao/fuzzel-x.git"
+SRC_URI="https://github.com/yangyingchao/fuzzel-x/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${PV}"
 KEYWORDS="amd64"
 DESCRIPTION="Application launcher for wlroots based Wayland compositors."
 HOMEPAGE="https://codeberg.org/dnkl/fuzzel"
