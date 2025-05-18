@@ -19,7 +19,6 @@
 =gui-libs/gtk4-layer-shell-1.0.4
 =gui-libs/hyprutils-0.5.2
 =gui-libs/xdg-desktop-portal-hyprland-1.3.9-r1
-=gui-wm/niri-25.02
 =net-analyzer/ifmetric-0.3-r4
 =net-im/wechat-4*
 =net-mail/mu-1.12*
