@@ -2,6 +2,7 @@ app-containers/docker
 app-containers/docker-cli
 app-office/libreoffice
 app-text/texlive-core
+dev-debug/gdb
 dev-lang/go
 dev-qt/qtbase
 kde-frameworks/kirigami
