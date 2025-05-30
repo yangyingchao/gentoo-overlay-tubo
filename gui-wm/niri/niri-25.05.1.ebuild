@@ -3,13 +3,13 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 19 )
+LLVM_COMPAT=( {18..20} )
 RUST_MIN_VER="1.80.1"
 
 # used for version string
-export NIRI_BUILD_COMMIT="b94a5db"
+export NIRI_BUILD_COMMIT="8ba57fc"
 
-inherit cargo llvm-r2 systemd
+inherit cargo llvm-r2 optfeature systemd
 
 DESCRIPTION="Scrollable-tiling Wayland compositor"
 HOMEPAGE="https://github.com/YaLTeR/niri"
@@ -22,7 +22,7 @@ LICENSE="GPL-3+"
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD ISC MIT MPL-2.0
-	Unicode-3.0 Unicode-DFS-2016
+	Unicode-3.0
 "
 SLOT="0"
 KEYWORDS="amd64"
@@ -92,9 +92,17 @@ src_install() {
 
 src_test() {
 	# tests create a wayland socket in the xdg runtime dir
-	export XDG_RUNTIME_DIR="${T}/xdg"
+	local -x XDG_RUNTIME_DIR="${T}/xdg"
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
-	cargo_src_test
+	# bug 950626
+	# https://github.com/YaLTeR/niri/blob/main/wiki/Packaging-niri.md#running-tests
+	local -x RAYON_NUM_THREADS=2
+	cargo_src_test -- --test-threads=2
+}
+
+pkg_postinst() {
+	optfeature "Default application launcher" "gui-apps/fuzzel"
+	optfeature "Default status bar" "gui-apps/waybar"
 }
