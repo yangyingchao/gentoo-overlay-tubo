@@ -27,6 +27,7 @@ DEPEND=" (
   gui-apps/wl-clipboard
   gui-apps/wlrctl
   media-sound/pavucontrol
+  sys-apps/usbutils
   sys-auth/polkit[gtk]
   sys-fs/udisks
   sys-power/power-profiles-daemon
