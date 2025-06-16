@@ -6,4 +6,13 @@ dev-debug/gdb
 dev-lang/go
 dev-qt/qtbase
 kde-frameworks/kirigami
+llvm-core/clang
+llvm-core/clang-common
+llvm-core/clang-runtime
+llvm-core/clang-toolchain-symlinks
+llvm-core/libclc
+llvm-core/llvm
+llvm-core/llvm-common
+llvm-core/llvm-toolchain-symlinks
+llvm-core/llvmgold
 sys-devel/gcc
