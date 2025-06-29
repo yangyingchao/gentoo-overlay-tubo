@@ -15,4 +15,5 @@ llvm-core/llvm
 llvm-core/llvm-common
 llvm-core/llvm-toolchain-symlinks
 llvm-core/llvmgold
+media-gfx/shotwell
 sys-devel/gcc
