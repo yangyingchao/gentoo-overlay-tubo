@@ -1,6 +1,6 @@
 =app-i18n/ibus-rime-1.5.1
 =app-i18n/librime-1.13.1
-=app-i18n/librime-lua-20240819212322
+=app-i18n/librime-lua-20240819212322-r1
 =app-misc/brightnessctl-0.5.1
 =app-office/wps-office-12.1.0.17900
 =dev-cpp/sdbus-c++-2.0.0
