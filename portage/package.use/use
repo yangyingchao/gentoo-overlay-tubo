@@ -38,6 +38,7 @@ gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar tray experimental pipewire
 media-fonts/fontawesome ttf
 media-fonts/noto cjk
+media-gfx/chafa webp
 media-gfx/imagemagick lzma graphviz webp
 media-libs/freetype harfbuzz hardbuzz
 media-libs/gd fontconfig
@@ -48,6 +49,7 @@ media-libs/libsndfile minimal
 media-libs/libvpx postproc
 media-libs/mesa X
 media-sound/pulseaudio -daemon
+media-video/mpv -xv -X wayland
 media-video/pipewire bluetooth sound-server
 net-fs/samba -systemd
 net-mail/mu emacs
@@ -64,7 +66,7 @@ sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub
 sys-libs/slang cjk
 sys-libs/zlib minizip
-virtual/tdesk -sway fcitx video full niri -hyprland
+virtual/tdesk hyprland -niri fcitx video full
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X

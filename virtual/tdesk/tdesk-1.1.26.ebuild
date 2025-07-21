@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="fcitx video +fonts +sway -niri -hyprland"
+IUSE="+fcitx +media +fonts niri +hyprland"
 
 DEPEND=" (
   virtual/tcmd
@@ -27,6 +27,7 @@ DEPEND=" (
   gui-apps/wl-clipboard
   gui-apps/wlrctl
   media-sound/pavucontrol
+  sys-apps/dbus-broker
   sys-apps/usbutils
   sys-auth/polkit[gtk]
   sys-fs/udisks
@@ -45,11 +46,13 @@ DEPEND=" (
   app-i18n/librime-octagram
   )
 
-  video? (
-  media-video/mpv
-  media-gfx/imv
+  media? (
+  media-gfx/chafa
   media-gfx/imagemagick
+  media-gfx/imv
   media-sound/playerctl
+  media-video/mpv
+  net-misc/yt-dlp
   )
 
   fonts? (
@@ -66,6 +69,7 @@ DEPEND=" (
   gui-apps/hyprpaper
   gui-wm/hyprland
   )
+
   niri? (
   gui-wm/niri
   gui-apps/xwayland-satellite
@@ -83,4 +87,10 @@ src_install() {
 	cat << EOF > ${ED}/etc/env.d/98theme
 QT_STYLE_OVERRIDE=adwaita
 EOF
+}
+
+pkg_postinst() {
+	echo "enable dbus-broker..."
+	systemctl enable --global dbus-broker.service
+	systemctl enable dbus-broker.service
 }
