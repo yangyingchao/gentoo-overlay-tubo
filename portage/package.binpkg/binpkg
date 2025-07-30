@@ -3,7 +3,6 @@ app-containers/docker-cli
 app-office/libreoffice
 app-text/texlive-core
 dev-lang/go
-dev-qt/qtbase
 kde-frameworks/kirigami
 llvm-core/clang
 llvm-core/clang-common
