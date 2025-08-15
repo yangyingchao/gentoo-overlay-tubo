@@ -6,8 +6,8 @@ EAPI=7
 
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="+fcitx +media +fonts niri +hyprland"
+KEYWORDS="amd64 ~arm ~arm64 x86"
+IUSE="+fcitx +media +fonts +niri hyprland"
 
 DEPEND=" (
   virtual/tcmd
