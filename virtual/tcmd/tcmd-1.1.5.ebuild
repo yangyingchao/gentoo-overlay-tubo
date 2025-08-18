@@ -17,9 +17,7 @@ DEPEND="(
 	app-shells/zsh
 	net-misc/networkmanager
 	sys-apps/debianutils
-	sys-fs/duperemove
 	sys-kernel/installkernel
-	sys-process/htop
 )"
 
 src_unpack() {
