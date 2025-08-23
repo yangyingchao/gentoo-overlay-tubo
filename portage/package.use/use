@@ -1,3 +1,6 @@
+>=dev-qt/qtbase-6.9.1-r3 opengl
+>=dev-qt/qtdeclarative-6.9.1-r2 opengl
+>=kde-frameworks/sonnet-6.16.0 qml
 >=sys-libs/libunwind-1.8.1 static-libs
 >=sys-libs/zlib-1.3.1-r1 static-libs
 app-arch/p7zip -wxwidgets
@@ -27,7 +30,7 @@ dev-python/qtwebengine qml
 dev-qt/qtgui X
 dev-qt/qtgui eglfs
 dev-qt/qtmultimedia gstreamer
-dev-qt/qttools qml
+dev-qt/qttools opengl qml
 dev-qt/qtwayland qml
 dev-qt/qtwebchannel qml
 dev-qt/qtwebengine bindist qml screencast -vaapi
@@ -50,7 +53,7 @@ media-libs/libvpx postproc
 media-libs/mesa X
 media-sound/pulseaudio -daemon
 media-video/mpv -xv -X wayland
-media-video/pipewire bluetooth sound-server
+media-video/pipewire sound-server
 net-fs/samba -systemd
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent

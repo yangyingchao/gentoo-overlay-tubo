@@ -1,1 +1,1 @@
-../../var/db/repos/gentoo/profiles/default/linux/amd64/23.0/desktop/systemd
+../../home/yyc/Work/gentoo-overlay-tubo/profiles/no-multilib-desktop
