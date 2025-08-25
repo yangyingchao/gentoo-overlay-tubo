@@ -17,6 +17,7 @@ DEPEND="(
 	app-shells/zsh
 	net-misc/networkmanager
 	sys-apps/debianutils
+	sys-process/htop
 	sys-kernel/installkernel
 )"
 
