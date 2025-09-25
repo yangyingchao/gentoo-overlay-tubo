@@ -69,7 +69,7 @@ sys-kernel/gentoo-sources symlink
 sys-kernel/installkernel -systemd grub
 sys-libs/slang cjk
 sys-libs/zlib minizip
-virtual/tdesk hyprland -niri fcitx video full
+virtual/tdesk full video fcitx niri -hyprland
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
