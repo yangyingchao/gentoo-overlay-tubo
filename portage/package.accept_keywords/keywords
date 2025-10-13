@@ -29,7 +29,6 @@
 =net-misc/baidunetdisk-4.17.7
 =net-misc/freerdp-3.16.0
 =net-misc/localsend-bin-1.17.0
-=sys-kernel/gentoo-sources-6.16.9
 =x11-libs/libfm-1.3.2-r1
 =x11-misc/pcmanfm-1.3.2-r2
 =x11-themes/neonly-cursor-1.0.0
