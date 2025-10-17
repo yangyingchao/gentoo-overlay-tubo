@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86"
-IUSE="+fcitx +media +fonts +niri hyprland"
+IUSE="+fcitx +media +fonts"
 
 DEPEND=" (
   virtual/tcmd
@@ -63,18 +63,9 @@ DEPEND=" (
   gui-apps/hyprlock
   gui-apps/hypridle
   gui-apps/hyprpicker
-
-  hyprland? (
-  gui-libs/xdg-desktop-portal-hyprland
-  gui-apps/hyprpaper
-  gui-wm/hyprland
-  )
-
-  niri? (
-  gui-wm/niri
+  x11-misc/autotiling
+  gui-wm/swayfx
   gui-apps/xwayland-satellite
-  gui-apps/swaybg
-  )
 )"
 
 src_unpack() {

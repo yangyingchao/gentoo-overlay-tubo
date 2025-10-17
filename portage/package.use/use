@@ -39,6 +39,7 @@ gnome-base/gvfs -samba udisks -cdda -mtp ios fuse
 gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar tray experimental pipewire
+gui-wm/swayfx swaynag
 media-fonts/fontawesome ttf
 media-fonts/noto cjk
 media-gfx/chafa webp
