@@ -28,7 +28,6 @@ DEPEND=" (
   gui-apps/wlrctl
   gui-apps/hyprlock
   gui-apps/hypridle
-  gui-apps/hyprpicker
   media-sound/pavucontrol
   sys-apps/dbus-broker
   sys-apps/usbutils
