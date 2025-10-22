@@ -74,9 +74,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/catch:0 )
 "
 
-# PATCHES=(
-# 	"${FILESDIR}"/tray-icons-fix.patch
-# )
+PATCHES=(
+	"${FILESDIR}"/0001-niri-window-add-col-max_col-parameters.patch
+)
 
 src_configure() {
 	local emesonargs=(
