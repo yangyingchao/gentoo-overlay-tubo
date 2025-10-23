@@ -1,6 +1,8 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NOTE: wps-12.1.22571 issue: `wps xxx.docx` always fails...
+
 EAPI=8
 
 inherit unpacker xdg
@@ -18,7 +20,6 @@ LICENSE="WPS-EULA"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="systemd"
-REQUIRED_USE=""
 
 RESTRICT="strip mirror bindist" # mirror as explained at bug #547372
 
@@ -39,7 +40,7 @@ RDEPEND="
 	dev-libs/libpcre:3
 	media-libs/flac
 	media-libs/fontconfig:1.0
-	media-libs/freetype:2
+	media-libs/freetype-wps
 	media-libs/libogg
 	media-libs/libsndfile
 	media-libs/libvorbis
@@ -78,6 +79,8 @@ pkg_nofetch() {
 src_install() {
 	exeinto /usr/bin
 	exeopts -m0755
+	sed -i 's/import sys, urllib; print urllib.unquote(sys.argv\[1\])/import sys, urllib.parse; print (urllib.parse.unquote(sys.argv[1]))/g' \
+		"${S}"/usr/bin/wps
 	doexe "${S}"/usr/bin/*
 
 	insinto /usr/share
