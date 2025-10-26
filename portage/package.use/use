@@ -4,6 +4,7 @@
 >=sys-libs/libunwind-1.8.1 static-libs
 >=sys-libs/zlib-1.3.1-r1 static-libs
 app-arch/p7zip -wxwidgets
+app-crypt/pinentry -X -qt6
 app-editors/emacs -svg -gif -jpeg -xpm -xft -tiff -png -sound -gui -gtk -X gpm
 app-editors/vim -X -sound -nls -acl
 app-emacs/emacs-common -gui -games -gsettings
