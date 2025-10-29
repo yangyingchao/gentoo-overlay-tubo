@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86"
-IUSE="+fcitx +media +fonts  +niri hyprland sway"
+IUSE="+fcitx +media +fonts  niri hyprland sway"
 
 DEPEND=" (
   virtual/tcmd

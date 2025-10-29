@@ -1,13 +1,12 @@
+=app-emulation/wine-staging-10.17
 =app-i18n/librime-1.13.1
 =app-i18n/librime-lua-20240819212322-r1
 =app-misc/brightnessctl-0.5.1
-=app-office/libreoffice-bin-25.2.0-r5
 =app-office/wps-office-12.1.0.17900
 =dev-cpp/sdbus-c++-2.0.0
 =dev-libs/hyprlang-0.6.0
 =dev-python/i3ipc-2.2.1-r2
 =gui-apps/fnott-1.7.1
-=gui-apps/foot-1.22.3
 =gui-apps/fuzzel-1.11.1
 =gui-apps/hypridle-0.1.6
 =gui-apps/hyprlock-0.9.1
