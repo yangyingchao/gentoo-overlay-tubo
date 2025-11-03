@@ -12,14 +12,16 @@ inherit bash-completion-r1 flag-o-matic linux-info ninja-utils pax-utils python-
 HOMEPAGE="https://nodejs.org/"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
+HOMEPAGE="https://nodejs.org/"
+LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT npm? ( Artistic-2 )"
 
-SRC_URI="https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}-linux-x64.tar.xz -> ${P}.tar.xz"
 KEYWORDS="-* amd64"
 SLOT="0"
 
 S="${WORKDIR}/node-v${PV}-linux-x64"
 
-IUSE="doc"
+IUSE="corepack cpu_flags_x86_sse2 debug doc +icu +inspector lto npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
 
 RDEPEND=">=app-arch/brotli-1.0.9:=
 	>=dev-libs/libuv-1.40.0:=
