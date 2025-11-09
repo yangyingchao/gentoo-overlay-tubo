@@ -16,4 +16,5 @@ llvm-core/llvm-toolchain-symlinks
 llvm-core/llvmgold
 media-gfx/shotwell
 net-fs/samba
+net-libs/webkit-gtk
 sys-devel/gcc
