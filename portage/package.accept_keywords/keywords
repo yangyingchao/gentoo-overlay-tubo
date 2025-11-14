@@ -24,6 +24,7 @@
 =gui-wm/sway-1.11
 =gui-wm/swayfx-0.5.3
 =media-libs/sdl3-ttf-3.2.2
+=media-sound/listen1_desktop-bin-2.32.0
 =net-analyzer/ifmetric-0.3-r4
 =net-im/wechat-4*
 =net-mail/mu-1.12*
