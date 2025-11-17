@@ -1,0 +1,205 @@
+From 9ddb8e73af82e46183c0e23d992ab52c3bec1b97 Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Mon, 17 Nov 2025 10:27:10 +0800
+Subject: [PATCH] (tray) Be able to control order for system tray items.
+
+---
+ include/modules/sni/host.hpp |  4 ++++
+ include/modules/sni/item.hpp | 10 +++++++++-
+ man/waybar-tray.5.scd        | 10 ++++++++++
+ src/modules/sni/host.cpp     | 26 ++++++++++++++++++++++++--
+ src/modules/sni/item.cpp     | 19 +++++++++++++++++--
+ 5 files changed, 64 insertions(+), 5 deletions(-)
+
+diff --git a/include/modules/sni/host.hpp b/include/modules/sni/host.hpp
+index 6c62ac31..1dc2308b 100644
+--- a/include/modules/sni/host.hpp
++++ b/include/modules/sni/host.hpp
+@@ -19,6 +19,8 @@ class Host {
+        const std::function<void(std::unique_ptr<Item>&)>&);
+   ~Host();
+ 
++  void reorderItems();
++
+  private:
+   void busAcquired(const Glib::RefPtr<Gio::DBus::Connection>&, Glib::ustring);
+   void nameAppeared(const Glib::RefPtr<Gio::DBus::Connection>&, Glib::ustring,
+@@ -43,6 +45,8 @@ class Host {
+   const Bar& bar_;
+   const std::function<void(std::unique_ptr<Item>&)> on_add_;
+   const std::function<void(std::unique_ptr<Item>&)> on_remove_;
++
++  ItemOrderMap orders_;
+ };
+ 
+ }  // namespace waybar::modules::SNI
+diff --git a/include/modules/sni/item.hpp b/include/modules/sni/item.hpp
+index c5e86d37..95e25391 100644
+--- a/include/modules/sni/item.hpp
++++ b/include/modules/sni/item.hpp
+@@ -23,9 +23,13 @@ struct ToolTip {
+   Glib::ustring text;
+ };
+ 
++class Host;
++
++using ItemOrderMap = std::unordered_map<std::string, int>;
++
+ class Item : public sigc::trackable {
+  public:
+-  Item(const std::string&, const std::string&, const Json::Value&, const Bar&);
++  Item(const std::string&, const std::string&, const Json::Value&, const Bar&, Host&, const ItemOrderMap&);
+   ~Item() = default;
+ 
+   std::string bus_name;
+@@ -56,6 +60,7 @@ class Item : public sigc::trackable {
+    * while compliant SNI implementation would always reset the flag to desired value.
+    */
+   bool item_is_menu = true;
++  int order_ = -1;  // -1 means not set
+ 
+  private:
+   void onConfigure(GdkEventConfigure* ev);
+@@ -92,6 +97,9 @@ class Item : public sigc::trackable {
+   Glib::RefPtr<Gio::DBus::Proxy> proxy_;
+   Glib::RefPtr<Gio::Cancellable> cancellable_;
+   std::set<std::string_view> update_pending_;
++
++  Host& host_;
++  const ItemOrderMap& orders_;
+ };
+ 
+ }  // namespace waybar::modules::SNI
+diff --git a/man/waybar-tray.5.scd b/man/waybar-tray.5.scd
+index dec5347f..050eef9c 100644
+--- a/man/waybar-tray.5.scd
++++ b/man/waybar-tray.5.scd
+@@ -42,6 +42,13 @@ Addressed by *tray*
+ 	default: false ++
+ 	Enables this module to consume all left over space dynamically.
+ 
++*orders*: ++
++	typeof: object ++
++	Ordres for items to be placed in tray. When not set, orders are controlled by DBus.
++	Key: name of item.
++	Value: integer, higher value means to place this item to the right.
++
++
+ # EXAMPLES
+ 
+ ```
+@@ -51,6 +58,9 @@ Addressed by *tray*
+   "icons": {
+     "blueman": "bluetooth",
+     "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
++  },
++    "orders" : {
++    "wechat" : 99
+   }
+ }
+ 
+diff --git a/src/modules/sni/host.cpp b/src/modules/sni/host.cpp
+index 54faa16c..1a1d9401 100644
+--- a/src/modules/sni/host.cpp
++++ b/src/modules/sni/host.cpp
+@@ -2,6 +2,9 @@
+ 
+ #include <spdlog/spdlog.h>
+ 
++#include <algorithm>
++
++#include "modules/sni/item.hpp"
+ #include "util/scope_guard.hpp"
+ 
+ namespace waybar::modules::SNI {
+@@ -17,7 +20,18 @@ Host::Host(const std::size_t id, const Json::Value& config, const Bar& bar,
+       config_(config),
+       bar_(bar),
+       on_add_(on_add),
+-      on_remove_(on_remove) {}
++      on_remove_(on_remove) {
++  auto orders = config["orders"];
++  if (!orders.isNull()) {
++    for (auto itr = orders.begin(); itr != orders.end(); ++itr) {
++      auto key = itr.name();
++      auto& value = *itr;
++      assert(value.isInt());
++
++      orders_[key] = value.asInt();
++    }
++  }
++}
+ 
+ Host::~Host() {
+   if (bus_name_id_ > 0) {
+@@ -139,9 +153,17 @@ void Host::addRegisteredItem(std::string service) {
+     return bus_name == item->bus_name && object_path == item->object_path;
+   });
+   if (it == items_.end()) {
+-    items_.emplace_back(new Item(bus_name, object_path, config_, bar_));
++    items_.emplace_back(new Item(bus_name, object_path, config_, bar_, *this, orders_));
+     on_add_(items_.back());
+   }
+ }
+ 
++void Host::reorderItems() {
++  std::ranges::for_each(items_, on_remove_);
++  std::ranges::sort(items_, [](std::unique_ptr<Item>& item1, std::unique_ptr<Item>& item2) {
++    return item1->order_ < item2->order_;
++  });
++  std::ranges::for_each(items_, on_add_);
++}
++
+ }  // namespace waybar::modules::SNI
+diff --git a/src/modules/sni/item.cpp b/src/modules/sni/item.cpp
+index 4e80eba7..9bf72ca5 100644
+--- a/src/modules/sni/item.cpp
++++ b/src/modules/sni/item.cpp
+@@ -10,6 +10,7 @@
+ #include <map>
+ 
+ #include "gdk/gdk.h"
++#include "modules/sni/host.hpp"
+ #include "modules/sni/icon_manager.hpp"
+ #include "util/format.hpp"
+ #include "util/gtk_icon.hpp"
+@@ -37,13 +38,16 @@ namespace waybar::modules::SNI {
+ static const Glib::ustring SNI_INTERFACE_NAME = sn_item_interface_info()->name;
+ static const unsigned UPDATE_DEBOUNCE_TIME = 10;
+ 
+-Item::Item(const std::string& bn, const std::string& op, const Json::Value& config, const Bar& bar)
++Item::Item(const std::string& bn, const std::string& op, const Json::Value& config, const Bar& bar,
++           Host& host, const ItemOrderMap& orders)
+     : bus_name(bn),
+       object_path(op),
+       icon_size(16),
+       effective_icon_size(0),
+       icon_theme(Gtk::IconTheme::create()),
+-      bar_(bar) {
++      bar_(bar),
++      host_(host),
++      orders_(orders) {
+   if (config["icon-size"].isUInt()) {
+     icon_size = config["icon-size"].asUInt();
+   }
+@@ -223,6 +227,17 @@ void Item::setStatus(const Glib::ustring& value) {
+ void Item::setCustomIcon(const std::string& id) {
+   spdlog::debug("SNI tray id: {}", id);
+ 
++  if (order_ == -1) {
++    auto iter = orders_.find(id);
++    if (iter != orders_.end()) {
++      order_ = iter->second;
++      spdlog::debug("reordering tray item {}, order: {}", id, order_);
++    } else {
++      order_ = 0;
++    }
++    host_.reorderItems();
++  }
++
+   std::string custom_icon = IconManager::instance().getIconForApp(id);
+   if (!custom_icon.empty()) {
+     if (std::filesystem::exists(custom_icon)) {
+-- 
+2.51.0
+
