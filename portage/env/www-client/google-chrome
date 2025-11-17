@@ -1,0 +1,5 @@
+pkg_postinst ()
+{
+	# Passwords are stored via Bitwarden, so don't start gnome-keyting...
+	sed -i 's#Exec=/usr/bin/google-chrome-stable#Exec=/usr/bin/google-chrome-stable --password-store=basic#g' /usr/share/applications/google-chrome.desktop
+}
