@@ -1,9 +1,1 @@
-src_configure() {
-	cd "${S}" || die
-	local Z_CONFIG=${FILESDIR}/kernel-config-$(LANG=C lscpu | grep -i 'vendor' | awk -F ':' '{print $2}' | xargs)
 
-	echo ""
-	einfo "Install config..."
-	cat "${Z_CONFIG}" > .config
-	einfo "Done.. config file: $(realpath .config)..."
-}

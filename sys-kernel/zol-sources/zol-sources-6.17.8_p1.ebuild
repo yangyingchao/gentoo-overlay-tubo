@@ -1,5 +1,6 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+# zol(zen or lqx) sources
 
 # (yc/update-genpatch-version)
 
@@ -53,13 +54,17 @@ src_unpack() {
 }
 
 pkg_setup() {
-	ewarn
-	ewarn "${PN} is *not* supported by the Gentoo Kernel Project in any way."
-	ewarn "If you need support, please contact the zen developers directly."
-	ewarn "Do *not* open bugs in Gentoo's bugzilla unless you have issues with"
-	ewarn "the ebuilds. Thank you."
-	ewarn
 	kernel-2_pkg_setup
+}
+
+src_configure() {
+	cd "${S}" || die
+	local Z_CONFIG=${FILESDIR}/kernel-config-$(LANG=C lscpu | grep -i 'vendor' | awk -F ':' '{print $2}' | xargs)
+
+	echo ""
+	einfo "Install config..."
+	cat "${Z_CONFIG}" > .config
+	einfo "Done.. config file: $(realpath .config)..."
 }
 
 src_install() {
