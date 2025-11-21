@@ -24,13 +24,5 @@ if command -v cpuid2cpuflags > /dev/null; then
     echo "*/* $(cpuid2cpuflags)" > portage/package.use/00cpu-flags
 fi
 
-if mount | grep -q portage; then
-    sudo umount /etc/portage/
-fi
-
-if ! mount | grep -q portage; then
-    sudo rsync -av "${PWD}"/portage /etc/
-    sudo mount -o bind "${PWD}"/portage /etc/portage
-fi
 popd
 exit 0

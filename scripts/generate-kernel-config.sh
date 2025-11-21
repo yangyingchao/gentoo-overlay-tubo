@@ -15,7 +15,8 @@ else
     conf=$(cat "${KCONF}")
 fi
 
-echo "${conf}" | tail -n +4 | sed -E "/^CONFIG_(AS|GCC|CLANG|CC|LD|LLD)_VERSION/d" > ${config_file}
+# echo "${conf}" | tail -n +4 | sed -E "/^CONFIG_(AS|GCC|CLANG|CC|LD|LLD)_VERSION/d" > ${config_file}
+cp "${conf}" "${config_file}"
 
 printf "\nBackup portage...\n"
 pushd "$(git rev-parse --show-toplevel)"

@@ -1,1 +1,24 @@
+src_configure() {
+	cd "${S}" || die
 
+	local overlay_conf=/etc/portage/repos.conf/gentoo-ovelay-tubo.conf
+	if ! [[ -f ${overlay_conf} ]]; then
+		einfo "Overlay does not exist, continue without config file..."
+		return
+	fi
+
+	local overlay_path=
+	overlay_path=$(grep "location" < "${overlay_conf}" | awk -F " = " '{print $2}')
+	local suffix=
+	suffix=$(LANG=C lscpu | grep -i 'vendor' | awk -F ':' '{print $2}' | xargs)
+	local Z_CONFIG="${overlay_path}/profiles/kernel.conf/kernel-config-${suffix}"
+	if ! [[ -f ${Z_CONFIG} ]]; then
+		einfo "Config file (${Z_CONFIG}) does not exist, continue without config file..."
+		return
+	fi
+
+	echo ""
+	einfo "Install config..."
+	cat "${Z_CONFIG}" > .config
+	einfo "Done.. config file: $(realpath .config)..."
+}
