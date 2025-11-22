@@ -77,3 +77,7 @@ virtual/tdesk full video fcitx -niri hyprland
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
+# required by app-containers/lxc-6.0.4-r1::gentoo[tools,caps]
+# required by app-containers/waydroid-1.5.4::guru
+# required by waydroid (argument)
+>=sys-libs/libcap-2.76 static-libs
