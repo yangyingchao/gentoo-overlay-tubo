@@ -1,2 +1,4 @@
 <app-i18n/fcitx-5.1.0
 =dev-libs/nss-3.90.2-r1
+>net-analyzer/wireshark-4.5.0
+>sys-devel/gcc-15.2.0
