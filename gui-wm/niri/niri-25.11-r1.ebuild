@@ -3,20 +3,31 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..20} )
-RUST_MIN_VER="1.80.1"
+CRATES="
+"
 
-# used for version string
-export NIRI_BUILD_COMMIT="01be0e6"
+LLVM_COMPAT=( {18..21} )
+RUST_MIN_VER="1.82.0"
 
 inherit cargo llvm-r2 optfeature shell-completion systemd
 
 DESCRIPTION="Scrollable-tiling Wayland compositor"
 HOMEPAGE="https://github.com/YaLTeR/niri"
-SRC_URI="
-	https://github.com/YaLTeR/niri/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/YaLTeR/niri/releases/download/v${PV}/${P}-vendored-dependencies.tar.xz
-"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/YaLTeR/niri.git"
+else
+	SRC_URI="
+		https://github.com/YaLTeR/niri/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/YaLTeR/niri/releases/download/v${PV}/${P}-vendored-dependencies.tar.xz
+		${CARGO_CRATE_URIS}
+	"
+	KEYWORDS="amd64"
+
+	# used for version string
+	export NIRI_BUILD_COMMIT="b35bcae"
+fi
 
 LICENSE="GPL-3+"
 # Dependent crate licenses
@@ -25,7 +36,6 @@ LICENSE+="
 	Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64"
 IUSE="+dbus screencast systemd"
 REQUIRED_USE="
 	screencast? ( dbus )
@@ -62,6 +72,15 @@ QA_FLAGS_IGNORED="usr/bin/niri"
 pkg_setup() {
 	llvm-r2_pkg_setup
 	rust_pkg_setup
+}
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+		cargo_live_src_unpack
+	else
+		cargo_src_unpack
+	fi
 }
 
 src_prepare() {

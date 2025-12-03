@@ -1,0 +1,69 @@
+From abc1b34a7eb25cdba9f51d517d7facdea422218b Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Wed, 3 Dec 2025 13:24:23 +0800
+Subject: [PATCH] disable image capture notification
+
+---
+ src/utils/mod.rs | 46 ----------------------------------------------
+ 1 file changed, 46 deletions(-)
+
+diff --git a/src/utils/mod.rs b/src/utils/mod.rs
+index fdde46f8..304752ac 100644
+--- a/src/utils/mod.rs
++++ b/src/utils/mod.rs
+@@ -472,52 +472,6 @@ pub fn baba_is_float_offset(now: Duration, view_height: f64) -> f64 {
+ 
+ #[cfg(feature = "dbus")]
+ pub fn show_screenshot_notification(image_path: Option<&Path>) -> anyhow::Result<()> {
+-    use std::collections::HashMap;
+-
+-    use zbus::zvariant;
+-
+-    let conn = zbus::blocking::Connection::session()?;
+-
+-    // Try to add the screenshot as an image if possible.
+-    let mut image_url = None;
+-    if let Some(path) = image_path {
+-        match path.canonicalize() {
+-            Ok(path) => match url::Url::from_file_path(path) {
+-                Ok(url) => {
+-                    image_url = Some(url);
+-                }
+-                Err(err) => {
+-                    warn!("error converting screenshot path to file url: {err:?}");
+-                }
+-            },
+-            Err(err) => {
+-                warn!("error canonicalizing screenshot path: {err:?}");
+-            }
+-        }
+-    }
+-
+-    let actions: &[&str] = &[];
+-
+-    conn.call_method(
+-        Some("org.freedesktop.Notifications"),
+-        "/org/freedesktop/Notifications",
+-        Some("org.freedesktop.Notifications"),
+-        "Notify",
+-        &(
+-            "niri",
+-            0u32,
+-            image_url.as_ref().map(|url| url.as_str()).unwrap_or(""),
+-            "Screenshot captured",
+-            "You can paste the image from the clipboard.",
+-            actions,
+-            HashMap::from([
+-                ("transient", zvariant::Value::Bool(true)),
+-                ("urgency", zvariant::Value::U8(1)),
+-            ]),
+-            -1,
+-        ),
+-    )?;
+-
+     Ok(())
+ }
+ 
+-- 
+2.51.2
+
