@@ -78,3 +78,7 @@ virtual/tdesk full video fcitx niri
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
+# required by dev-db/redis-8.2.2::gentoo[jemalloc]
+# required by net-analyzer/openvas-scanner-23.17.0::gentoo
+# required by net-analyzer/openvas-scanner (argument)
+>=dev-libs/jemalloc-5.3.0-r1 stats
