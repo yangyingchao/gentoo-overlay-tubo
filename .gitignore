@@ -9,3 +9,4 @@ portage/binrepos.conf/
 /portage/savedconfig/sys-kernel/linux-firmware-20240909-r1
 /portage/savedconfig/
 /portage/package.use/00video
+no_sync
