@@ -120,7 +120,7 @@ QA_NO_DEPCHECK="${QA_PREBUILT}"
 
 fix_gemspec() {
 	einfo "Fixing Gemfile and gemspec for sanity"
-	pushd "${S}/all" > /dev/null || die
+	pushd "${S}/metasploit-framework-${PV}" > /dev/null || die
 	#The Gemfile contains real known deps
 	sed -i "/gem 'fivemat'/s/, '1.2.1'//" Gemfile || die
 	#use released packetfu
@@ -194,7 +194,7 @@ src_unpack() {
 		default_src_unpack
 	fi
 	fix_gemspec
-	pushd "${S}/all" > /dev/null || die
+	pushd "${S}/metasploit-framework-${PV}" > /dev/null || die
 	${USE_RUBY} -S bundle-audit --update || true
 	GEM_HOME="${T}" MSF_ROOT="." ${USE_RUBY} -S bundle config set --local path 'vendor'
 	GEM_HOME="${T}" MSF_ROOT="." ${USE_RUBY} -S bundle install ${makeopts_jobs} || die
