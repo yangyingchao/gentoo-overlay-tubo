@@ -11,8 +11,12 @@
 =dev-libs/libglibutil-1.0.80
 =dev-python/gbinder-1.1.2-r2
 =dev-python/i3ipc-2.2.1-r2
+=dev-python/moddb-0.13.0
 =dev-python/pyclip-0.7.0-r2
+=dev-python/pypresence-4.6.1
 =dev-ruby/bundler-audit-0.9.3
+=game-utils/lutris-0.5.19
+=games-util/lutris-0.5.19
 =gui-apps/fnott-1.7.1
 =gui-apps/fuzzel-1.11.1
 =gui-apps/hypridle-0.1.6
