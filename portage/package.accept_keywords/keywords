@@ -4,6 +4,7 @@
 =app-i18n/librime-1.13.1
 =app-i18n/librime-lua-20240819212322-r1
 =app-misc/brightnessctl-0.5.1
+=app-text/mupdf-1.26.3
 =dev-cpp/sdbus-c++-2.0.0
 =dev-libs/gbinder-1.1.42
 =dev-libs/hyprlang-0.6.0
