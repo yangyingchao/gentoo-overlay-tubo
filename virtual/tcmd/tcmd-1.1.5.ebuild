@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,6 @@ DEPEND="(
 	app-shells/zsh
 	net-misc/networkmanager
 	sys-apps/debianutils
-	sys-process/htop
 	sys-kernel/installkernel
 )"
 
