@@ -28,7 +28,7 @@ src_unpack() {
 src_install() {
 	mkdir -p "${ED}"/etc/env.d || die "failed to create directory."
 	cat <<- EOF > "${ED}"/etc/env.d/98kernel
-		KCFLAGS="-O2 -march=native -pipe"
+		KCFLAGS="-O3 -march=native -pipe"
 	EOF
 
 	systemd_newunit "${FILESDIR}/user-service_at.service" user-service@.service
