@@ -1,0 +1,120 @@
+From 765a0cb53dc45f947c11b54667bdc634f536801e Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Thu, 4 Dec 2025 09:20:27 +0800
+Subject: [PATCH] adding-config: stay-foccused
+
+---
+ niri-config/src/lib.rs         |  4 ++++
+ niri-config/src/window_rule.rs |  2 ++
+ src/layout/workspace.rs        |  4 ++++
+ src/niri.rs                    | 11 +++++++++++
+ src/window/mod.rs              |  7 +++++++
+ 5 files changed, 28 insertions(+)
+
+diff --git a/niri-config/src/lib.rs b/niri-config/src/lib.rs
+index 28e54e6b..3104905f 100644
+--- a/niri-config/src/lib.rs
++++ b/niri-config/src/lib.rs
+@@ -817,6 +817,7 @@ mod tests {
+                 open-fullscreen false
+                 open-floating false
+                 open-focused true
++                stay-focused true
+                 default-window-height { fixed 500; }
+                 default-column-display "tabbed"
+                 default-floating-position x=100 y=-200 relative-to="bottom-left"
+@@ -1713,6 +1714,9 @@ mod tests {
+                     open_focused: Some(
+                         true,
+                     ),
++                    stay_focused: Some(
++                        true,
++                    ),
+                     min_width: None,
+                     min_height: None,
+                     max_width: None,
+diff --git a/niri-config/src/window_rule.rs b/niri-config/src/window_rule.rs
+index 0465d28f..eccdd15b 100644
+--- a/niri-config/src/window_rule.rs
++++ b/niri-config/src/window_rule.rs
+@@ -31,6 +31,8 @@ pub struct WindowRule {
+     pub open_floating: Option<bool>,
+     #[knuffel(child, unwrap(argument))]
+     pub open_focused: Option<bool>,
++    #[knuffel(child, unwrap(argument))]
++    pub stay_focused: Option<bool>,
+ 
+     // Rules applied dynamically.
+     #[knuffel(child, unwrap(argument))]
+diff --git a/src/layout/workspace.rs b/src/layout/workspace.rs
+index f6f2bab4..cd11f581 100644
+--- a/src/layout/workspace.rs
++++ b/src/layout/workspace.rs
+@@ -1581,6 +1581,10 @@ impl<W: LayoutElement> Workspace<W> {
+         self.windows_mut().find(|win| win.is_wl_surface(wl_surface))
+     }
+ 
++    pub fn find_wl_stayfocused_mut(&mut self, wl_surface: &WlSurface) -> Option<&mut W> {
++        self.windows_mut().find(|win| win.is_wl_surface(wl_surface))
++    }
++
+     pub fn tiles_with_render_positions(
+         &self,
+     ) -> impl Iterator<Item = (&Tile<W>, Point<f64, Logical>, bool)> {
+diff --git a/src/niri.rs b/src/niri.rs
+index e59de48b..b4e8354b 100644
+--- a/src/niri.rs
++++ b/src/niri.rs
+@@ -1113,6 +1113,14 @@ impl State {
+         }
+ 
+         // Compute the current focus.
++        // Check if there's a window that should stay focused.
++        let stay_focused_window = self.niri.layout.windows()
++            .find(|(_, win)| win.rules().stay_focused.is_some_and(|x| x))
++            .map(|(_, win)| win.toplevel().wl_surface().clone())
++            .map(|surface| KeyboardFocus::Layout {
++                surface: Some(surface),
++            });
++
+         let focus = if self.niri.exit_confirm_dialog.is_open() {
+             KeyboardFocus::ExitConfirmDialog
+         } else if self.niri.is_locked() {
+@@ -1123,6 +1131,9 @@ impl State {
+             KeyboardFocus::ScreenshotUi
+         } else if self.niri.window_mru_ui.is_open() {
+             KeyboardFocus::Mru
++        } else if let Some(stay_focused) = stay_focused_window.clone() {
++            // If there's a stay_focused window, prioritize it over normal layout focus.
++            stay_focused
+         } else if let Some(output) = self.niri.layout.active_output() {
+             let mon = self.niri.layout.monitor_for_output(output).unwrap();
+             let layers = layer_map_for_output(output);
+diff --git a/src/window/mod.rs b/src/window/mod.rs
+index c8c358f1..9df4c7e3 100644
+--- a/src/window/mod.rs
++++ b/src/window/mod.rs
+@@ -73,6 +73,9 @@ pub struct ResolvedWindowRules {
+     /// Whether the window should open focused.
+     pub open_focused: Option<bool>,
+ 
++    /// Whether the window should stay focused.
++    pub stay_focused: Option<bool>,
++
+     /// Extra bound on the minimum window width.
+     pub min_width: Option<u16>,
+     /// Extra bound on the minimum window height.
+@@ -251,6 +254,10 @@ impl ResolvedWindowRules {
+                     resolved.open_focused = Some(x);
+                 }
+ 
++                if let Some(x) = rule.stay_focused {
++                    resolved.stay_focused = Some(x);
++                }
++
+                 if let Some(x) = rule.min_width {
+                     resolved.min_width = Some(x);
+                 }
+-- 
+2.52.0
+
