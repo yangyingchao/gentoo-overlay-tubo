@@ -1,16 +1,14 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CONFIG_CHECK="~ADVISE_SYSCALLS"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 flag-o-matic linux-info ninja-utils pax-utils python-any-r1 toolchain-funcs xdg-utils
 
-HOMEPAGE="https://nodejs.org/"
-LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT npm? ( Artistic-2 )"
@@ -23,14 +21,18 @@ S="${WORKDIR}/node-v${PV}-linux-x64"
 
 IUSE="corepack cpu_flags_x86_sse2 debug doc +icu +inspector lto npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
 
-RDEPEND=">=app-arch/brotli-1.0.9:=
-	>=dev-libs/libuv-1.40.0:=
-	>=net-dns/c-ares-1.17.2:=
-	>=net-libs/nghttp2-1.41.0:=
-	sys-libs/zlib
-	>=dev-libs/icu-67:=
-	>=dev-libs/openssl-1.1.1:0=
-	sys-devel/gcc:*"
+RDEPEND=">=app-arch/brotli-1.1.0:=
+	dev-db/sqlite:3
+	>=dev-cpp/ada-3.3.0:=
+	>=dev-cpp/simdutf-7.3.4:=
+	>=dev-libs/libuv-1.51.0:=
+	>=dev-libs/simdjson-4.0.7:=
+	>=net-dns/c-ares-1.34.5:=
+	virtual/zlib:=
+	>=dev-libs/icu-73:=
+	>=dev-libs/openssl-3.5.4:0=
+	sys-devel/gcc:*
+"
 
 DEPEND="${RDEPEND}"
 
