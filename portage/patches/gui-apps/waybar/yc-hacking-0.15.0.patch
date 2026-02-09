@@ -1,16 +1,23 @@
-From 9ddb8e73af82e46183c0e23d992ab52c3bec1b97 Mon Sep 17 00:00:00 2001
-From: yangyingchao <yang.yingchao@qq.com>
-Date: Mon, 17 Nov 2025 10:27:10 +0800
-Subject: [PATCH] (tray) Be able to control order for system tray items.
-
----
- include/modules/sni/host.hpp |  4 ++++
- include/modules/sni/item.hpp | 10 +++++++++-
- man/waybar-tray.5.scd        | 10 ++++++++++
- src/modules/sni/host.cpp     | 26 ++++++++++++++++++++++++--
- src/modules/sni/item.cpp     | 19 +++++++++++++++++--
- 5 files changed, 64 insertions(+), 5 deletions(-)
-
+diff --git a/include/client.hpp b/include/client.hpp
+index c3df3f21..10dc8992 100644
+--- a/include/client.hpp
++++ b/include/client.hpp
+@@ -4,6 +4,7 @@
+ #include <gdk/gdk.h>
+ #include <gdk/gdkwayland.h>
+ #include <wayland-client.h>
++#include <unordered_set>
+ 
+ #include "bar.hpp"
+ #include "config.hpp"
+@@ -56,6 +57,7 @@ class Client {
+   std::list<struct waybar_output> outputs_;
+   std::unique_ptr<CssReloadHelper> m_cssReloadHelper;
+   std::string m_cssFile;
++  std::unordered_set<std::string> m_monitors_inprocess;
+   sigc::connection monitor_added_connection_;
+   sigc::connection monitor_removed_connection_;
+ };
 diff --git a/include/modules/sni/host.hpp b/include/modules/sni/host.hpp
 index 6c62ac31..1dc2308b 100644
 --- a/include/modules/sni/host.hpp
@@ -34,10 +41,10 @@ index 6c62ac31..1dc2308b 100644
  
  }  // namespace waybar::modules::SNI
 diff --git a/include/modules/sni/item.hpp b/include/modules/sni/item.hpp
-index c5e86d37..95e25391 100644
+index 503ab637..a84f4cb6 100644
 --- a/include/modules/sni/item.hpp
 +++ b/include/modules/sni/item.hpp
-@@ -23,9 +23,13 @@ struct ToolTip {
+@@ -23,9 +23,14 @@ struct ToolTip {
    Glib::ustring text;
  };
  
@@ -48,11 +55,12 @@ index c5e86d37..95e25391 100644
  class Item : public sigc::trackable {
   public:
 -  Item(const std::string&, const std::string&, const Json::Value&, const Bar&);
-+  Item(const std::string&, const std::string&, const Json::Value&, const Bar&, Host&, const ItemOrderMap&);
-   ~Item() = default;
++  Item(const std::string&, const std::string&, const Json::Value&, const Bar&, Host&,
++       const ItemOrderMap&);
+   ~Item();
  
    std::string bus_name;
-@@ -56,6 +60,7 @@ class Item : public sigc::trackable {
+@@ -56,6 +61,7 @@ class Item : public sigc::trackable {
     * while compliant SNI implementation would always reset the flag to desired value.
     */
    bool item_is_menu = true;
@@ -60,7 +68,7 @@ index c5e86d37..95e25391 100644
  
   private:
    void onConfigure(GdkEventConfigure* ev);
-@@ -92,6 +97,9 @@ class Item : public sigc::trackable {
+@@ -92,6 +98,9 @@ class Item : public sigc::trackable {
    Glib::RefPtr<Gio::DBus::Proxy> proxy_;
    Glib::RefPtr<Gio::Cancellable> cancellable_;
    std::set<std::string_view> update_pending_;
@@ -70,6 +78,21 @@ index c5e86d37..95e25391 100644
  };
  
  }  // namespace waybar::modules::SNI
+diff --git a/man/waybar-niri-window.5.scd b/man/waybar-niri-window.5.scd
+index 8e886c29..c836f057 100644
+--- a/man/waybar-niri-window.5.scd
++++ b/man/waybar-niri-window.5.scd
+@@ -48,6 +48,10 @@ See the output of "niri msg windows" for examples
+ 
+ *{app_id}*: The current app ID of the focused window.
+ 
++*{col}*: The current column of the focused window in the workspace.
++
++*{max_col}*: The maximum column inside the workspace of the focused window.
++
+ # REWRITE RULES
+ 
+ *rewrite* is an object where keys are regular expressions and values are
 diff --git a/man/waybar-tray.5.scd b/man/waybar-tray.5.scd
 index dec5347f..050eef9c 100644
 --- a/man/waybar-tray.5.scd
@@ -98,6 +121,96 @@ index dec5347f..050eef9c 100644
    }
  }
  
+diff --git a/src/client.cpp b/src/client.cpp
+index 103b093f..15178731 100644
+--- a/src/client.cpp
++++ b/src/client.cpp
+@@ -78,11 +78,18 @@ void waybar::Client::handleOutputDone(void* data, struct zxdg_output_v1* /*xdg_o
+       output.xdg_output.reset();
+       spdlog::debug("Output detection done: {} ({})", output.name, output.identifier);
+ 
+-      auto configs = client->getOutputConfigs(output);
+-      if (!configs.empty()) {
+-        for (const auto& config : configs) {
+-          client->bars.emplace_back(std::make_unique<Bar>(&output, config));
++      if (client->m_monitors_inprocess.contains(output.name)) {
++        spdlog::debug("Ignore output detection done event: {} ({})", output.name,
++                      output.identifier);
++      } else {
++        client->m_monitors_inprocess.emplace(output.name);
++        auto configs = client->getOutputConfigs(output);
++        if (!configs.empty()) {
++          for (const auto &config : configs) {
++            client->bars.emplace_back(std::make_unique<Bar>(&output, config));
++          }
+         }
++        client->m_monitors_inprocess.erase(output.name);
+       }
+     }
+   } catch (const std::exception& e) {
+diff --git a/src/modules/niri/backend.cpp b/src/modules/niri/backend.cpp
+index 1ee1bf3f..fb4532e4 100644
+--- a/src/modules/niri/backend.cpp
++++ b/src/modules/niri/backend.cpp
+@@ -202,6 +202,18 @@ void IPC::parseIPC(const std::string& line) {
+       for (auto& win : windows_) {
+         win["is_focused"] = focused && win["id"].asUInt64() == id;
+       }
++    } else if (const auto& payload = ev["WindowLayoutsChanged"]) {
++      const auto& values = payload["changes"];
++      for (const auto& changed : values) {
++        const auto id = changed[0].asUInt64();
++        const auto& change = changed[1];
++        for (auto& win : windows_) {
++          if (win["id"].asUInt64() == id) {
++            win["layout"] = change;
++            break;
++          }
++        }
++      }
+     }
+   }
+ 
+diff --git a/src/modules/niri/window.cpp b/src/modules/niri/window.cpp
+index c3537769..874f52da 100644
+--- a/src/modules/niri/window.cpp
++++ b/src/modules/niri/window.cpp
+@@ -17,6 +17,7 @@ Window::Window(const std::string& id, const Bar& bar, const Json::Value& config)
+   gIPC->registerForIPC("WindowOpenedOrChanged", this);
+   gIPC->registerForIPC("WindowClosed", this);
+   gIPC->registerForIPC("WindowFocusChanged", this);
++  gIPC->registerForIPC("WindowLayoutsChanged", this);
+ 
+   dp.emit();
+ }
+@@ -54,15 +55,26 @@ void Window::doUpdate() {
+   if (it != windows.cend()) {
+     const auto& window = *it;
+ 
++    auto max_col = -1;
++    for (const auto& win : windows) {
++      if (win["workspace_id"].asUInt64() != window["workspace_id"].asUInt64()) {
++        continue;
++      }
++      const auto col = win["layout"]["pos_in_scrolling_layout"][0].asInt64();
++      if (col > max_col) max_col = col;
++    }
++
+     const auto title = window["title"].asString();
+     const auto appId = window["app_id"].asString();
++    const auto col = window["layout"]["pos_in_scrolling_layout"][0].asInt64();
+     const auto sanitizedTitle = waybar::util::sanitize_string(title);
+     const auto sanitizedAppId = waybar::util::sanitize_string(appId);
+ 
+     label_.show();
+     label_.set_markup(waybar::util::rewriteString(
+         fmt::format(fmt::runtime(format_), fmt::arg("title", sanitizedTitle),
+-                    fmt::arg("app_id", sanitizedAppId)),
++                    fmt::arg("app_id", sanitizedAppId), fmt::arg("col", col),
++                    fmt::arg("max_col", max_col)),
+         config_["rewrite"]));
+ 
+     updateAppIconName(appId, "");
 diff --git a/src/modules/sni/host.cpp b/src/modules/sni/host.cpp
 index 54faa16c..1a1d9401 100644
 --- a/src/modules/sni/host.cpp
@@ -152,7 +265,7 @@ index 54faa16c..1a1d9401 100644
 +
  }  // namespace waybar::modules::SNI
 diff --git a/src/modules/sni/item.cpp b/src/modules/sni/item.cpp
-index 4e80eba7..9bf72ca5 100644
+index ef2543b5..10e8f62a 100644
 --- a/src/modules/sni/item.cpp
 +++ b/src/modules/sni/item.cpp
 @@ -10,6 +10,7 @@
@@ -182,7 +295,7 @@ index 4e80eba7..9bf72ca5 100644
    if (config["icon-size"].isUInt()) {
      icon_size = config["icon-size"].asUInt();
    }
-@@ -223,6 +227,17 @@ void Item::setStatus(const Glib::ustring& value) {
+@@ -234,6 +238,17 @@ void Item::setStatus(const Glib::ustring& value) {
  void Item::setCustomIcon(const std::string& id) {
    spdlog::debug("SNI tray id: {}", id);
  
@@ -200,6 +313,3 @@ index 4e80eba7..9bf72ca5 100644
    std::string custom_icon = IconManager::instance().getIconForApp(id);
    if (!custom_icon.empty()) {
      if (std::filesystem::exists(custom_icon)) {
--- 
-2.51.0
-
