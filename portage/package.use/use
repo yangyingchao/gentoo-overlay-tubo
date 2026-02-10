@@ -36,7 +36,7 @@ dev-qt/qtwayland qml
 dev-qt/qtwebchannel qml
 dev-qt/qtwebengine bindist qml screencast -vaapi
 dev-util/perf slang -gtk caps
-gnome-base/gvfs mtp -samba udisks -cdda ios fuse
+gnome-base/gvfs -mtp -samba udisks -cdda ios fuse
 gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar tray experimental pipewire
@@ -75,7 +75,6 @@ sys-libs/libunwind static-libs
 sys-libs/slang cjk
 sys-libs/zlib minizip
 sys-libs/zlib static-libs
-virtual/tdesk full video fcitx niri
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X

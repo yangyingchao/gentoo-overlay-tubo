@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="1.7"
 KEYWORDS="amd64 ~arm ~arm64 x86"
-IUSE="+fcitx +media +fonts  niri hyprland"
+IUSE="fcitx media fonts niri"
 
 DEPEND=" (
   virtual/tcmd
@@ -26,8 +26,8 @@ DEPEND=" (
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
   gui-apps/wlrctl
-  gui-apps/hyprlock
-  gui-apps/hypridle
+  gui-apps/swaylock-effects
+  gui-apps/swayidle
   media-sound/pavucontrol
   sys-apps/dbus-broker
   sys-apps/usbutils
@@ -41,39 +41,25 @@ DEPEND=" (
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
 
-  fcitx? (
   app-i18n/fcitx-meta:5
   app-i18n/librime
   app-i18n/librime-lua
   app-i18n/librime-octagram
-  )
 
-  media? (
   media-gfx/chafa
   media-gfx/imagemagick
   media-gfx/imv
   media-sound/playerctl
   media-video/mpv
   net-misc/yt-dlp
-  )
 
-  fonts? (
   media-fonts/noto[cjk,extra]
   media-fonts/noto-emoji
-  )
 
-  niri? (
   gui-wm/niri
   gui-apps/xwayland-satellite
   gui-apps/swaybg
   gui-apps/wl-mirror
-  )
-
-  hyprland? (
-  gui-libs/xdg-desktop-portal-hyprland
-  gui-apps/hyprpaper
-  gui-wm/hyprland
-  )
 )"
 
 src_unpack() {
