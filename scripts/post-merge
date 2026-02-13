@@ -11,7 +11,7 @@ if ld.so --help | grep 'x86-64-v3' | grep -q supported; then
     arch='x86-64-v3'
 fi
 
-host=mirrors.neusoft.edu.cn
+host=mirrors.163.com #mirrors.neusoft.edu.cn
 
 cat <<- EOF > portage/binrepos.conf/gentoobinhost.conf
 [binhost]
