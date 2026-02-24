@@ -58,6 +58,7 @@ media-sound/pulseaudio -daemon
 media-video/mpv -xv -X wayland
 media-video/pipewire sound-server
 net-fs/samba -systemd
+net-im/wechat fcitx
 net-libs/webkit-gtk keyring
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent

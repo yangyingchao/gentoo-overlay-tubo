@@ -28,7 +28,6 @@
 =media-sound/listen1_desktop-bin-2.32.0
 =net-analyzer/ifmetric-0.3-r4
 =net-analyzer/nikto-2.5.0
-=net-im/wechat-4*
 =net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
 =net-misc/freerdp-3.17.2-r1
@@ -40,3 +39,4 @@
 =x11-themes/neonly-cursor-1.0.0
 app-containers/waydroid
 app-i18n/fcitx-meta
+net-im/wechat
