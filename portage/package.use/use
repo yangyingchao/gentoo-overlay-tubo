@@ -36,7 +36,7 @@ dev-qt/qtwayland qml
 dev-qt/qtwebchannel qml
 dev-qt/qtwebengine bindist qml screencast -vaapi
 dev-util/perf slang -gtk caps
-gnome-base/gvfs -mtp -samba udisks -cdda ios fuse
+gnome-base/gvfs samba -mtp udisks -cdda ios fuse
 gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar tray experimental pipewire
