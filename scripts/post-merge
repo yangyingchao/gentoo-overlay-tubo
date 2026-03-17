@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "PWD: ${PWD}"
-
 pushd "$(git rev-parse --show-toplevel)"
 
 # check whether x86-64-v3 is supported: https://www.gentoo.org/news/2024/02/04/x86-64-v3.html
@@ -11,7 +9,7 @@ if ld.so --help | grep 'x86-64-v3' | grep -q supported; then
     arch='x86-64-v3'
 fi
 
-host=mirrors.163.com #mirrors.neusoft.edu.cn
+host=mirrors.tuna.tsinghua.edu.cn #mirrors.163.com #mirrors.neusoft.edu.cn
 
 cat <<- EOF > portage/binrepos.conf/gentoobinhost.conf
 [binhost]
