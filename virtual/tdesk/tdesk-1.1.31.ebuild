@@ -22,12 +22,12 @@ DEPEND=" (
   gui-apps/fuzzel-x
   gui-apps/grim
   gui-apps/slurp
+  gui-apps/swayidle
+  gui-apps/swaylock-effects
   gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wl-clipboard
   gui-apps/wlrctl
-  gui-apps/swaylock-effects
-  gui-apps/swayidle
   media-sound/pavucontrol
   sys-apps/dbus-broker
   sys-apps/usbutils
