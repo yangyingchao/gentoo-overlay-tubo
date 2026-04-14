@@ -9,9 +9,7 @@ app-i18n/fcitx-meta
 =app-misc/cliphist-0.7.0
 =app-text/mupdf-1.26.3
 =dev-cpp/sdbus-c++-2.0.0
-=dev-libs/gbinder-1.1.42
 =dev-libs/libglibutil-1.0.80
-=dev-python/gbinder-1.1.2-r2
 =dev-python/i3ipc-2.2.1-r2
 =dev-python/moddb-0.13.0
 =dev-python/pyclip-0.7.0-r2

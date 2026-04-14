@@ -79,3 +79,4 @@ sys-libs/zlib static-libs
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
 x11-libs/libxkbcommon X
+>=net-libs/ngtcp2-1.22.0 gnutls
