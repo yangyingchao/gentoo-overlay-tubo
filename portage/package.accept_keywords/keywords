@@ -7,9 +7,13 @@ app-i18n/fcitx-meta
 =app-i18n/librime-lua-20240819212322-r1
 =app-misc/brightnessctl-0.5.1
 =app-misc/cliphist-0.7.0
+=app-mobilephoe/scrcpy-3.3.4
+=app-mobilephone/scrcpy-3.3.4
 =app-text/mupdf-1.26.3
 =dev-cpp/sdbus-c++-2.0.0
+=dev-libs/gbinder-1.1.43
 =dev-libs/libglibutil-1.0.80
+=dev-python/gbinder-1.3.1
 =dev-python/i3ipc-2.2.1-r2
 =dev-python/moddb-0.13.0
 =dev-python/pyclip-0.7.0-r2
@@ -30,6 +34,7 @@ app-i18n/fcitx-meta
 =net-analyzer/ifmetric-0.3-r4
 =net-analyzer/nikto-2.5.0
 net-im/wechat
+=net-im/wemeet-3.26.10.401
 =net-mail/mu-1.12*
 =net-misc/baidunetdisk-4.17.7
 =net-misc/localsend-bin-1.17.0
