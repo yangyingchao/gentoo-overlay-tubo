@@ -2,7 +2,6 @@ app-containers/docker
 app-containers/docker-cli
 app-office/libreoffice
 app-text/texlive-core
-dev-lang/go
 dev-libs/nss
 kde-frameworks/kirigami
 llvm-core/clang
@@ -13,7 +12,6 @@ llvm-core/libclc
 llvm-core/llvm
 llvm-core/llvm-common
 llvm-core/llvm-toolchain-symlinks
-llvm-core/llvmgold
 media-gfx/shotwell
 net-fs/samba
 net-libs/webkit-gtk
