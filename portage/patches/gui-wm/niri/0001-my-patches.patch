@@ -1,21 +1,8 @@
-From 765a0cb53dc45f947c11b54667bdc634f536801e Mon Sep 17 00:00:00 2001
-From: yangyingchao <yang.yingchao@qq.com>
-Date: Thu, 4 Dec 2025 09:20:27 +0800
-Subject: [PATCH] adding-config: stay-foccused
-
----
- niri-config/src/lib.rs         |  4 ++++
- niri-config/src/window_rule.rs |  2 ++
- src/layout/workspace.rs        |  4 ++++
- src/niri.rs                    | 11 +++++++++++
- src/window/mod.rs              |  7 +++++++
- 5 files changed, 28 insertions(+)
-
 diff --git a/niri-config/src/lib.rs b/niri-config/src/lib.rs
-index 28e54e6b..3104905f 100644
+index 329b7669..a87079a7 100644
 --- a/niri-config/src/lib.rs
 +++ b/niri-config/src/lib.rs
-@@ -817,6 +817,7 @@ mod tests {
+@@ -886,6 +886,7 @@ mod tests {
                  open-fullscreen false
                  open-floating false
                  open-focused true
@@ -23,7 +10,7 @@ index 28e54e6b..3104905f 100644
                  default-window-height { fixed 500; }
                  default-column-display "tabbed"
                  default-floating-position x=100 y=-200 relative-to="bottom-left"
-@@ -1713,6 +1714,9 @@ mod tests {
+@@ -1790,6 +1791,9 @@ mod tests {
                      open_focused: Some(
                          true,
                      ),
@@ -34,10 +21,10 @@ index 28e54e6b..3104905f 100644
                      min_height: None,
                      max_width: None,
 diff --git a/niri-config/src/window_rule.rs b/niri-config/src/window_rule.rs
-index 0465d28f..eccdd15b 100644
+index f2bc2ad1..829066d5 100644
 --- a/niri-config/src/window_rule.rs
 +++ b/niri-config/src/window_rule.rs
-@@ -31,6 +31,8 @@ pub struct WindowRule {
+@@ -34,6 +34,8 @@ pub struct WindowRule {
      pub open_floating: Option<bool>,
      #[knuffel(child, unwrap(argument))]
      pub open_focused: Option<bool>,
@@ -47,10 +34,10 @@ index 0465d28f..eccdd15b 100644
      // Rules applied dynamically.
      #[knuffel(child, unwrap(argument))]
 diff --git a/src/layout/workspace.rs b/src/layout/workspace.rs
-index f6f2bab4..cd11f581 100644
+index 49548a83..9372b9bd 100644
 --- a/src/layout/workspace.rs
 +++ b/src/layout/workspace.rs
-@@ -1581,6 +1581,10 @@ impl<W: LayoutElement> Workspace<W> {
+@@ -1582,6 +1582,10 @@ impl<W: LayoutElement> Workspace<W> {
          self.windows_mut().find(|win| win.is_wl_surface(wl_surface))
      }
  
@@ -62,10 +49,10 @@ index f6f2bab4..cd11f581 100644
          &self,
      ) -> impl Iterator<Item = (&Tile<W>, Point<f64, Logical>, bool)> {
 diff --git a/src/niri.rs b/src/niri.rs
-index e59de48b..b4e8354b 100644
+index ec40e01c..c6d52176 100644
 --- a/src/niri.rs
 +++ b/src/niri.rs
-@@ -1113,6 +1113,14 @@ impl State {
+@@ -1134,6 +1134,14 @@ impl State {
          }
  
          // Compute the current focus.
@@ -80,7 +67,7 @@ index e59de48b..b4e8354b 100644
          let focus = if self.niri.exit_confirm_dialog.is_open() {
              KeyboardFocus::ExitConfirmDialog
          } else if self.niri.is_locked() {
-@@ -1123,6 +1131,9 @@ impl State {
+@@ -1144,6 +1152,9 @@ impl State {
              KeyboardFocus::ScreenshotUi
          } else if self.niri.window_mru_ui.is_open() {
              KeyboardFocus::Mru
@@ -90,8 +77,66 @@ index e59de48b..b4e8354b 100644
          } else if let Some(output) = self.niri.layout.active_output() {
              let mon = self.niri.layout.monitor_for_output(output).unwrap();
              let layers = layer_map_for_output(output);
+diff --git a/src/utils/mod.rs b/src/utils/mod.rs
+index bbeac5bc..d7ce40dd 100644
+--- a/src/utils/mod.rs
++++ b/src/utils/mod.rs
+@@ -542,53 +542,6 @@ pub fn baba_is_float_offset(now: Duration, view_height: f64) -> f64 {
+ 
+ #[cfg(feature = "dbus")]
+ pub fn show_screenshot_notification(image_path: Option<&Path>) -> anyhow::Result<()> {
+-    use std::collections::HashMap;
+-
+-    use pango::glib;
+-    use zbus::zvariant;
+-
+-    let conn = zbus::blocking::Connection::session()?;
+-
+-    // Try to add the screenshot as an image if possible.
+-    let mut image_url = None;
+-    if let Some(path) = image_path {
+-        match path.canonicalize() {
+-            Ok(path) => match glib::filename_to_uri(path, None) {
+-                Ok(url) => {
+-                    image_url = Some(url);
+-                }
+-                Err(err) => {
+-                    warn!("error converting screenshot path to file url: {err:?}");
+-                }
+-            },
+-            Err(err) => {
+-                warn!("error canonicalizing screenshot path: {err:?}");
+-            }
+-        }
+-    }
+-
+-    let actions: &[&str] = &[];
+-
+-    conn.call_method(
+-        Some("org.freedesktop.Notifications"),
+-        "/org/freedesktop/Notifications",
+-        Some("org.freedesktop.Notifications"),
+-        "Notify",
+-        &(
+-            "niri",
+-            0u32,
+-            image_url.as_ref().map(|url| url.as_str()).unwrap_or(""),
+-            "Screenshot captured",
+-            "You can paste the image from the clipboard.",
+-            actions,
+-            HashMap::from([
+-                ("transient", zvariant::Value::Bool(true)),
+-                ("urgency", zvariant::Value::U8(1)),
+-            ]),
+-            -1,
+-        ),
+-    )?;
+-
+     Ok(())
+ }
+ 
 diff --git a/src/window/mod.rs b/src/window/mod.rs
-index c8c358f1..9df4c7e3 100644
+index 14527cd2..1bb63e51 100644
 --- a/src/window/mod.rs
 +++ b/src/window/mod.rs
 @@ -73,6 +73,9 @@ pub struct ResolvedWindowRules {
@@ -104,7 +149,7 @@ index c8c358f1..9df4c7e3 100644
      /// Extra bound on the minimum window width.
      pub min_width: Option<u16>,
      /// Extra bound on the minimum window height.
-@@ -251,6 +254,10 @@ impl ResolvedWindowRules {
+@@ -257,6 +260,10 @@ impl ResolvedWindowRules {
                      resolved.open_focused = Some(x);
                  }
  
@@ -115,6 +160,3 @@ index c8c358f1..9df4c7e3 100644
                  if let Some(x) = rule.min_width {
                      resolved.min_width = Some(x);
                  }
--- 
-2.52.0
-
