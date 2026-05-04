@@ -50,7 +50,6 @@ DEPEND=" (
   media-gfx/imagemagick
   media-gfx/imv
   media-sound/playerctl
-  media-video/mpv
   net-misc/yt-dlp
 
   media-fonts/noto[cjk,extra]

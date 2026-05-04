@@ -1,7 +1,9 @@
 app-containers/waydroid
 =app-editors/cursor-2.4.21
 =app-editors/typora-1.12.4
+=app-emulation/wine-proton-11.0.1_beta2
 =app-emulation/wine-staging-10.17
+=app-emulation/winetricks-20260125
 =app-exploits/exploitdb-999999999
 app-i18n/fcitx-meta
 =app-i18n/librime-lua-20240819212322-r1
@@ -20,7 +22,7 @@ app-i18n/fcitx-meta
 =dev-python/pypresence-4.6.1
 =dev-ruby/bundler-audit-0.9.3
 =game-utils/lutris-0.5.19
-=games-util/lutris-0.5.19
+=games-util/lutris-0.5.22-r1
 =gui-apps/fnott-1.7.1
 =gui-apps/fuzzel-1.11.1
 =gui-apps/swaylock-effects-1.7.0.0
