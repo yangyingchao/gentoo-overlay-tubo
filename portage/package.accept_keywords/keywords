@@ -22,6 +22,7 @@ app-i18n/fcitx-meta
 =dev-python/pypresence-4.6.1
 =dev-ruby/bundler-audit-0.9.3
 =game-utils/lutris-0.5.19
+=games-util/gamemode-1.8.2
 =games-util/lutris-0.5.22-r1
 =gui-apps/fnott-1.7.1
 =gui-apps/fuzzel-1.11.1
