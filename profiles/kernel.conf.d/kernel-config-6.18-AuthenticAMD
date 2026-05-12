@@ -1,6 +1,5 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.18.10-gentoo-r1 Kernel Configuration
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_AS_IS_GNU=y
