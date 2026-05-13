@@ -12,6 +12,10 @@ IUSE="fcitx media fonts niri"
 DEPEND=" (
   virtual/tcmd
 
+  app-i18n/fcitx-meta:5
+  app-i18n/librime
+  app-i18n/librime-lua
+  app-i18n/librime-octagram
   app-misc/brightnessctl
   app-misc/jq
   app-text/aspell
@@ -22,13 +26,26 @@ DEPEND=" (
   gui-apps/fuzzel-x
   gui-apps/grim
   gui-apps/slurp
+  gui-apps/swaybg
   gui-apps/swayidle
   gui-apps/swaylock-effects
   gui-apps/swayosd
   gui-apps/waybar[tray,pipewire,experimental]
+  gui-apps/wf-recorder
   gui-apps/wl-clipboard
+  gui-apps/wl-mirror
   gui-apps/wlrctl
+  gui-apps/xwayland-satellite
+  gui-wm/niri
+  media-fonts/noto-emoji
+  media-fonts/noto[cjk,extra]
+  media-gfx/chafa
+  media-gfx/imagemagick
+  media-gfx/imv
   media-sound/pavucontrol
+  media-sound/playerctl
+  media-video/ffmpeg[xvid]
+  net-misc/yt-dlp
   sys-apps/dbus-broker
   sys-apps/usbutils
   sys-auth/polkit[gtk]
@@ -41,24 +58,6 @@ DEPEND=" (
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
 
-  app-i18n/fcitx-meta:5
-  app-i18n/librime
-  app-i18n/librime-lua
-  app-i18n/librime-octagram
-
-  media-gfx/chafa
-  media-gfx/imagemagick
-  media-gfx/imv
-  media-sound/playerctl
-  net-misc/yt-dlp
-
-  media-fonts/noto[cjk,extra]
-  media-fonts/noto-emoji
-
-  gui-wm/niri
-  gui-apps/xwayland-satellite
-  gui-apps/swaybg
-  gui-apps/wl-mirror
 )"
 
 src_unpack() {

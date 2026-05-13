@@ -56,6 +56,7 @@ media-libs/libsndfile minimal
 media-libs/libvpx postproc
 media-libs/mesa X
 media-sound/pulseaudio -daemon
+media-video/ffmpeg xvid
 media-video/mpv -vdpau blueray -xv -X wayland
 media-video/pipewire sound-server
 media-video/vlc upnp opus
