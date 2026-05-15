@@ -48,6 +48,7 @@ DEPEND=" (
   net-misc/yt-dlp
   sys-apps/dbus-broker
   sys-apps/usbutils
+  sys-apps/xdg-desktop-portal-gnome
   sys-auth/polkit[gtk]
   sys-fs/udisks
   sys-power/power-profiles-daemon
