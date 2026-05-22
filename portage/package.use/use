@@ -29,7 +29,6 @@ dev-python/qtwayland qml
 dev-python/qtwebengine qml
 dev-qt/qtbase opengl
 dev-qt/qtdeclarative opengl
-dev-qt/qtgui eglfs X
 dev-qt/qtmultimedia -vappi
 =dev-qt/qtmultimedia-6.9.3 -vaapi
 dev-qt/qttools opengl qml
@@ -81,4 +80,7 @@ sys-libs/zlib minizip
 sys-libs/zlib static-libs
 www-client/firefox -l10n_zh-CN
 x11-libs/libfm -automount -udisks
-x11-libs/libxkbcommon X
+x11-libs/libxkbcommon X# required by dev-qt/qtwayland-5.15.18::gentoo-overlay-tubo
+# required by net-proxy/SecoClient-7.0.2.26::gentoo-overlay-tubo
+# required by net-proxy/SecoClient (argument)
+>=dev-qt/qtgui-5.15.18-r1 egl

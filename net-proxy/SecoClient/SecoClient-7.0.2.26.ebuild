@@ -9,7 +9,13 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="
+=dev-qt/qtcore-5.15.18
+=dev-qt/qtdbus-5.15.18
+=dev-qt/qtgui-5.15.18-r1
+=dev-qt/qtnetwork-5.15.18
+=dev-qt/qtwayland-5.15.18
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
