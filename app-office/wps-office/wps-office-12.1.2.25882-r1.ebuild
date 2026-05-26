@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="WPS Office is an office productivity suite, Here is the Chinese ver
 HOMEPAGE="https://www.wps.cn/product/wpslinux/"
 
 SRC_URI="
-https://github.com/Rongronggg9/wps-office-repack/releases/download/v${PV}/${PN}_${PV}.AK.preread.sw_542488_amd64.deb  -> ${PN}_${PV}_amd64.deb
+https://github.com/Rongronggg9/wps-office-repack/releases/download/v${PV}/${PN}_${PV}.AK.preread.sw+prefixed_amd64.deb  -> ${PN}_${PV}_amd64.deb
 "
 
 S="${WORKDIR}"

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+SECO_DIR=/usr/local/SecoClient
+
+[ -f ~/.local/bin/setup_mac.sh ] && ~/.local/bin/setup_mac.sh
+
+die() {
+    set +xe
+    echo '================================ DIE ===============================' >&2
+    echo >&2 "$*"
+    echo >&2 "Call stack:"
+    local n=$((${#BASH_LINENO[@]} - 1))
+    local i=0
+    while [ $i -lt $n ]; do
+        echo >&2 "    [$i] -- line ${BASH_LINENO[i]} -- ${FUNCNAME[i + 1]}"
+        i=$((i + 1))
+    done
+    echo >&2 '================================ END ==============================='
+    [[ $- == *i* ]] && return 1 || exit 1
+}
+
+pushd ${SECO_DIR} || die "Target directory does not exist: ${SECO_DIR}"
+
+if ! pgrep -f SecoClientPromoteService > /dev/null; then
+    pushd promote || die "push"
+    sudo ./SecoClientPromoteService
+    popd > /dev/null || die "pop"
+fi
+
+pgrep -f SecoClientPromoteService > /dev/null || die "Failed to start SecoClientPromoteService"
+
+./SecoClient

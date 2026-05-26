@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=SecoClient
+Comment=Huawei SecoClient
+Exec=secoclient
+Path=
+Icon=/usr/local/SecoClient/image/SecoClient.png
+Terminal=false
+Type=Application
+Categories=Application;Network;
+GenericName[POSIX]=
