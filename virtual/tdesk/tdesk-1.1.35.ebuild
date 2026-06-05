@@ -25,6 +25,7 @@ DEPEND=" (
   gui-apps/foot
   gui-apps/fuzzel-x
   gui-apps/grim
+  gui-apps/satty
   gui-apps/slurp
   gui-apps/swaybg
   gui-apps/swayidle
