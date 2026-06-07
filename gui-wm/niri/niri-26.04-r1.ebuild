@@ -123,6 +123,10 @@ src_install() {
 	insinto /usr/share/wayland-sessions
 	doins resources/niri.desktop
 
+	# prefer gtk file chooser
+	cat <<- EOF >> resources/niri-portals.conf
+org.freedesktop.impl.portal.FileChooser=gtk;
+EOF
 	insinto /usr/share/xdg-desktop-portal
 	doins resources/niri-portals.conf
 
