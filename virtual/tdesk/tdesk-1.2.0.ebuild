@@ -5,7 +5,7 @@
 EAPI=7
 
 DESCRIPTION="My desktop enviroment."
-SLOT="1.7"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="fcitx media fonts niri"
 
@@ -18,6 +18,7 @@ DEPEND=" (
   app-i18n/librime-octagram
   app-misc/brightnessctl
   app-misc/jq
+  app-misc/cliphist
   app-text/aspell
   dev-util/debugedit
   gnome-extra/nm-applet[appindicator]
@@ -25,6 +26,7 @@ DEPEND=" (
   gui-apps/foot
   gui-apps/fuzzel-x
   gui-apps/grim
+  gui-apps/satty
   gui-apps/slurp
   gui-apps/swaybg
   gui-apps/swayidle

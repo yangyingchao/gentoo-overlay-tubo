@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gonegrier.duarte@gmail.com</email>
+		<name>Gonçalo Negrier Duarte</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>minyaylo51@gmail.com</email>
+		<name>Neatink</name>
+	</maintainer>
+	<upstream>
+		<doc>https://github.com/Satty-org/Satty</doc>
+		<bugs-to>https://github.com/Satty-org/Satty/issues</bugs-to>
+		<remote-id type="github">Satty-org/Satty</remote-id>
+	</upstream>
+</pkgmetadata>
