@@ -7,7 +7,8 @@ app-containers/waydroid
 =app-emulation/winetricks-20260125
 =app-exploits/exploitdb-999999999
 app-i18n/fcitx-meta
-=app-i18n/librime-lua-20240819212322-r1
+=app-i18n/librime-1.17.0
+=app-i18n/librime-lua-20250707183812
 =app-misc/brightnessctl-0.5.1
 =app-misc/cliphist-0.7.0
 =app-mobilephoe/scrcpy-3.3.4
