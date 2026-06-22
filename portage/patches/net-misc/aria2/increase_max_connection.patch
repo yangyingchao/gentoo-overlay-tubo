@@ -1,0 +1,12 @@
+diff -urNa aria2-1.37.0/src/OptionHandlerFactory.cc aria2-1.37.0-mod/src/OptionHandlerFactory.cc
+--- aria2-1.37.0/src/OptionHandlerFactory.cc	2023-11-15 17:49:41.000000000 +0800
++++ aria2-1.37.0-mod/src/OptionHandlerFactory.cc	2026-06-21 16:32:01.060982854 +0800
+@@ -440,7 +440,7 @@
+   {
+     OptionHandler* op(new NumberOptionHandler(PREF_MAX_CONNECTION_PER_SERVER,
+                                               TEXT_MAX_CONNECTION_PER_SERVER,
+-                                              "1", 1, 16, 'x'));
++                                              "1", 1, 64, 'x'));
+     op->addTag(TAG_BASIC);
+     op->addTag(TAG_FTP);
+     op->addTag(TAG_HTTP);
