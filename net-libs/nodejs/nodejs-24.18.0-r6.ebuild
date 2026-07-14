@@ -44,8 +44,9 @@ src_install(){
 		doins -r "${S}"/lib/* ||
 		die "Error installing libraries."
 
-	# FIX: Those symlinks are broken due to wrong permissions, set by our friend, portage. Thank you portage.
-	# I'll figure it out soon.
+	fperms -R 0755 "/usr/lib/node_modules/npm/bin/"
+	fperms -R 0755 "/usr/lib/node_modules/corepack/dist/corepack.js"
+
 	dosym "/usr/lib/node_modules/corepack/dist/corepack.js" "/usr/bin/corepack"
 	dosym "/usr/lib/node_modules/npm/bin/npm-cli.js" "/usr/bin/npm"
 	dosym "/usr/lib/node_modules/npm/bin/npx-cli.js" "/usr/bin/npx"
