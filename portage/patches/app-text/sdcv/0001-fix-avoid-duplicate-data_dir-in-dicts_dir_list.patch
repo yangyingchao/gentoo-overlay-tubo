@@ -1,0 +1,29 @@
+From 48262c30d837a7b57a4686563f3bc73308abe5ff Mon Sep 17 00:00:00 2001
+From: yangyingchao <yang.yingchao@qq.com>
+Date: Wed, 29 Jul 2026 18:24:51 +0800
+Subject: [PATCH] fix: avoid duplicate data_dir in dicts_dir_list
+
+When STARDICT_DATA_DIR overlaps a default search path, dictionaries were listed/loaded multiple times. Skip the push if data_dir is already present.
+---
+ src/sdcv.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/sdcv.cpp b/src/sdcv.cpp
+index 3a10e3c..b995636 100644
+--- a/src/sdcv.cpp
++++ b/src/sdcv.cpp
+@@ -154,7 +154,10 @@ try {
+     std::list<std::string> dicts_dir_list;
+     if (!only_data_dir)
+         dicts_dir_list.push_back(conf_dir + G_DIR_SEPARATOR + "dic");
+-    dicts_dir_list.push_back(data_dir);
++
++    if (std::find(dicts_dir_list.begin(), dicts_dir_list.end(), data_dir) == dicts_dir_list.end())
++        dicts_dir_list.push_back(data_dir);
++
+     if (show_list_dicts) {
+         list_dicts(dicts_dir_list, json_output);
+         return EXIT_SUCCESS;
+-- 
+2.54.0
+
