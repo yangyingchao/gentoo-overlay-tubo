@@ -1,9 +1,9 @@
 EAPI=7
 inherit gnome2-utils pax-utils myunpack xdg-utils
 
-DESCRIPTION="SecoClient-7.0.2.26"
+DESCRIPTION="SecoClient"
 HOMEPAGE="HOMEPAGE"
-SRC_URI="https://github.com/h2o8/secoclient/releases/download/7.0.2.26/secoclient-linux-64-7.0.2.26.run"
+SRC_URI="https://github.com/h2o8/secoclient/releases/download/7.0.12/secoclient-linux-64-7.0.12.run"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
