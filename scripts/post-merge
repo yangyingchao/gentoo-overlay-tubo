@@ -9,7 +9,7 @@ if ld.so --help | grep 'x86-64-v3' | grep -q supported; then
     arch='x86-64-v3'
 fi
 
-hosts=(mirrors.163.com mirrors.tuna.tsinghua.edu.cn mirrors.neusoft.edu.cn)
+hosts=(mirrors.163.com mirrors.tuna.tsinghua.edu.cn mirrors.neusoft.edu.cn )
 
 cat <<- EOF > portage/binrepos.conf/gentoobinhost.conf
 [binhost]
