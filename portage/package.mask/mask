@@ -3,4 +3,5 @@
 >net-analyzer/wireshark-4.5.0
 <net-libs/nodejs-24.14.0-r5
 >net-libs/nodejs-24.18.1
+=net-misc/freerdp-3.31.1
 >sys-devel/gcc-15.2.0
