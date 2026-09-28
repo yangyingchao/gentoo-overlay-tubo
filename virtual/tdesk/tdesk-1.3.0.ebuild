@@ -16,22 +16,14 @@ DEPEND=" (
   app-i18n/librime
   app-i18n/librime-lua
   app-i18n/librime-octagram
-  app-misc/brightnessctl
   app-misc/jq
   app-misc/cliphist
   app-text/aspell
   dev-util/debugedit
-  gnome-extra/nm-applet[appindicator]
-  gui-apps/fnott
+  gui-apps/noctalia
   gui-apps/foot
-  gui-apps/fuzzel-x
   gui-apps/grim
   gui-apps/slurp
-  gui-apps/swaybg
-  gui-apps/swayidle
-  gui-apps/swaylock-effects
-  gui-apps/swayosd
-  gui-apps/waybar[tray,pipewire,experimental]
   gui-apps/wf-recorder
   gui-apps/wl-clipboard
   gui-apps/wl-mirror
@@ -59,7 +51,6 @@ DEPEND=" (
   x11-misc/pcmanfm
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
-
 )"
 
 src_unpack() {

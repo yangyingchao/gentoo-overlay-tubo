@@ -17,6 +17,7 @@ app-i18n/fcitx-meta
 =app-mobilephone/scrcpy-3.3.4
 =app-text/mupdf-1.26.3
 =dev-cpp/sdbus-c++-2.0.0
+=dev-cpp/sdbus-c++-2.3.1
 =dev-lang/zig-bin-0.15.2
 =dev-libs/gbinder-1.1.43
 =dev-libs/libglibutil-1.0.80
@@ -32,6 +33,7 @@ app-i18n/fcitx-meta
 =gui-apps/fnott-1.7.1
 =gui-apps/foot-1.26.1
 =gui-apps/fuzzel-1.11.1
+=gui-apps/noctalia-5.2.0
 =gui-apps/swaylock-effects-1.7.0.0
 =gui-apps/wf-recorder-0.6.0
 =gui-apps/wl-mirror-0.18.3
