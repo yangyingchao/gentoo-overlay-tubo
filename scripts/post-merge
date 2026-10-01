@@ -9,13 +9,19 @@ if ld.so --help | grep 'x86-64-v3' | grep -q supported; then
     arch='x86-64-v3'
 fi
 
-hosts=(mirrors.163.com mirrors.tuna.tsinghua.edu.cn mirrors.neusoft.edu.cn )
+hosts=(mirrors.tuna.tsinghua.edu.cn mirrors.neusoft.edu.cn mirrors.163.com )
 
-cat <<- EOF > portage/binrepos.conf/gentoobinhost.conf
-[binhost]
-priority = 9999
-sync-uri = https://${hosts[0]}/gentoo/releases/amd64/binpackages/23.0/${arch}/
+idx=0
+echo > portage/binrepos.conf/gentoobinhost.conf
+for host in "${hosts[@]}"; do
+    cat <<- EOF >> portage/binrepos.conf/gentoobinhost.conf
+[binhost$idx]
+priority = $((9999-idx))
+sync-uri = https://${host}/gentoo/releases/amd64/binpackages/23.0/${arch}/
+
 EOF
+    idx=$((idx+1))
+done
 
 # generate CPU_FLAGS_X86
 if command -v cpuid2cpuflags > /dev/null; then

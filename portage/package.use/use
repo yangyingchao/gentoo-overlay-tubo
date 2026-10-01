@@ -14,6 +14,7 @@ app-i18n/fcitx-meta -chinese-addons -configtool rime
 app-i18n/fcitx-qt qt6 qt5 wayland
 app-i18n/librime-lua LUA_SINGLE_TARGET: -* lua5-4
 app-i18n/rime-data -pinyin-simp -flypy -cangjie -bopomofo -wubi -terra-pinyin -stroke -prelude -octagram -luna-pinyin -essay -double-pinyin
+app-misc/recoll -qt6
 app-office/freeoffice l10n_zh
 app-office/libreoffice -gtk4 -eds -gstreamer -bluetooth
 app-text/ghostscript-gpl -l10n_zh-CN

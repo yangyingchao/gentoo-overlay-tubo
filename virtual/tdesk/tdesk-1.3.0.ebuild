@@ -17,7 +17,6 @@ DEPEND=" (
   app-i18n/librime-lua
   app-i18n/librime-octagram
   app-misc/jq
-  app-misc/cliphist
   app-text/aspell
   dev-util/debugedit
   gui-apps/noctalia
@@ -47,7 +46,6 @@ DEPEND=" (
   sys-power/power-profiles-daemon
   sys-power/thermald
   sys-power/upower
-  x11-libs/libnotify
   x11-misc/pcmanfm
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
