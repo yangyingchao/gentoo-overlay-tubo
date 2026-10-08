@@ -1,5 +1,6 @@
 <app-i18n/fcitx-5.1.0
 =dev-libs/nss-3.90.2-r1
+>dev-python/charset-normalizer-3.5.0
 >net-analyzer/wireshark-4.5.0
 <net-libs/nodejs-24.14.0-r5
 >net-libs/nodejs-24.18.1
