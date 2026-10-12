@@ -37,7 +37,7 @@ app-i18n/fcitx-meta
 =gui-apps/swaylock-effects-1.7.0.0
 =gui-apps/wf-recorder-0.6.0
 =gui-apps/wl-mirror-0.18.3
-=gui-apps/xwayland-satellite-0.8.2
+=gui-apps/xwayland-satellite-0.8.3-r1
 =gui-libs/gtk4-layer-shell-1.1.1-r1
 =gui-wm/niri-25.08
 =media-libs/fontconfig-2.18.3
