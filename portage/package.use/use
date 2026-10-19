@@ -44,6 +44,7 @@ gnome-extra/nm-applet appindicator
 gui-apps/swaybg gdk-pixbuf
 gui-apps/waybar tray experimental pipewire
 gui-wm/swayfx swaynag
+gui-wm/umbriel jemalloc
 kde-frameworks/sonnet qml
 media-fonts/fontawesome ttf
 media-fonts/noto cjk

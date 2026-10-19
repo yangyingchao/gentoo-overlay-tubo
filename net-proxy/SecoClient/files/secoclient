@@ -29,4 +29,8 @@ fi
 
 pgrep -f SecoClientPromoteService > /dev/null || die "Failed to start SecoClientPromoteService"
 
+# use x11.
+unset XDG_SESSION_TYPE
+unset WAYLAND_DISPLAY
+
 ./SecoClient
