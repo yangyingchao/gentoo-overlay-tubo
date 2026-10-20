@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="My desktop enviroment."
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
-IUSE="fcitx media fonts niri"
+IUSE="fcitx media fonts"
 
 DEPEND=" (
   virtual/tcmd
@@ -19,6 +19,8 @@ DEPEND=" (
   app-misc/jq
   app-text/aspell
   dev-util/debugedit
+  gui-wm/umbriel
+  sys-apps/xdg-desktop-portal-umbriel
   gui-apps/noctalia
   gui-apps/foot
   gui-apps/grim
@@ -27,8 +29,6 @@ DEPEND=" (
   gui-apps/wl-clipboard
   gui-apps/wl-mirror
   gui-apps/wlrctl
-  gui-apps/xwayland-satellite
-  gui-wm/niri
   media-fonts/noto-emoji
   media-fonts/noto[cjk,extra]
   media-gfx/chafa
