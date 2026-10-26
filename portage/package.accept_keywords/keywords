@@ -27,6 +27,7 @@ app-i18n/fcitx-meta
 =dev-python/moddb-0.13.0
 =dev-python/pyclip-0.7.0-r2
 =dev-python/pypresence-4.6.1
+=dev-python/setuptools-84.2.1
 =dev-ruby/bundler-audit-0.9.3
 =game-utils/lutris-0.5.19
 =games-util/gamemode-1.8.2
