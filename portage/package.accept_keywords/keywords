@@ -13,6 +13,7 @@ app-i18n/fcitx-meta
 =app-i18n/librime-lua-20250707183812
 =app-misc/brightnessctl-0.5.1
 =app-misc/cliphist-0.7.0
+=app-misc/nwg-look-1.0.6
 =app-mobilephoe/scrcpy-3.3.4
 =app-mobilephone/scrcpy-3.3.4
 =app-office/wps-office-12.1.2.29183
@@ -57,10 +58,12 @@ net-im/wechat
 =net-misc/remmina-1.4.41-r1
 sys-apps/xdg-desktop-portal-umbriel
 =sys-fs/go-mtpfs-1.0.0-r1
+=x11-apps/xcur2png-0.7.1-r3
 =x11-libs/libfm-1.3.2-r1
 =x11-misc/autotiling-1.9.3
 =x11-misc/flatpak-xdg-utils-1.0.6
 =x11-misc/pcmanfm-1.3.2-r2
 =x11-terms/ghostty-1.3.1
 =x11-terms/ghostty-terminfo-1.3.1
+=x11-themes/adw-gtk3-6.5
 =x11-themes/neonly-cursor-1.0.0

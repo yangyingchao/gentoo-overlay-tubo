@@ -19,16 +19,16 @@ DEPEND=" (
   app-misc/jq
   app-text/aspell
   dev-util/debugedit
-  gui-wm/umbriel
-  sys-apps/xdg-desktop-portal-umbriel
-  gui-apps/noctalia
   gui-apps/foot
   gui-apps/grim
+  gui-apps/noctalia
+  gui-apps/qt6ct
   gui-apps/slurp
   gui-apps/wf-recorder
   gui-apps/wl-clipboard
   gui-apps/wl-mirror
   gui-apps/wlrctl
+  gui-wm/umbriel
   media-fonts/noto-emoji
   media-fonts/noto[cjk,extra]
   media-gfx/chafa
@@ -41,12 +41,14 @@ DEPEND=" (
   sys-apps/dbus-broker
   sys-apps/usbutils
   sys-apps/xdg-desktop-portal-gnome
+  sys-apps/xdg-desktop-portal-umbriel
   sys-auth/polkit[gtk]
   sys-fs/udisks
   sys-power/power-profiles-daemon
   sys-power/thermald
   sys-power/upower
   x11-misc/pcmanfm
+  x11-themes/adw-gtk3
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
 )"
@@ -54,13 +56,6 @@ DEPEND=" (
 src_unpack() {
 	echo "Preparing fake dir: $P"
 	mkdir ${P} || die "failed to create dir."
-}
-
-src_install() {
-	mkdir -p ${ED}/etc/env.d || die "failed to create directory."
-	cat << EOF > ${ED}/etc/env.d/98theme
-QT_STYLE_OVERRIDE=adwaita
-EOF
 }
 
 pkg_postinst() {
