@@ -51,6 +51,10 @@ DEPEND=" (
   x11-themes/adw-gtk3
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
+
+  app-office/wordcraft
+  app-office/pdfcraft
+  app-office/gridcraft
 )"
 
 src_unpack() {
