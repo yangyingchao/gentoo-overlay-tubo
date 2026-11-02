@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=localsend
+Comment=Share files over local network
+Exec=/opt/bin/localsend
+Terminal=false
+Icon=/opt/localsend/data/flutter_assets/assets/img/logo-256.png
+Categories=Network;
+StartupNotify=false

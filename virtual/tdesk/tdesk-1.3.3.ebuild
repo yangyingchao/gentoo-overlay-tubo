@@ -9,6 +9,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="fcitx media fonts"
 
+# gui-libs/gtksourceview is required by strata
+
 DEPEND=" (
   virtual/tcmd
 
@@ -29,6 +31,7 @@ DEPEND=" (
   gui-apps/wl-mirror
   gui-apps/wlrctl
   gui-wm/umbriel
+  gui-libs/gtksourceview
   media-fonts/noto-emoji
   media-fonts/noto[cjk,extra]
   media-gfx/chafa
@@ -47,7 +50,6 @@ DEPEND=" (
   sys-power/power-profiles-daemon
   sys-power/thermald
   sys-power/upower
-  x11-misc/pcmanfm
   x11-themes/adw-gtk3
   x11-themes/adwaita-qt
   x11-themes/faenza-icon-theme
