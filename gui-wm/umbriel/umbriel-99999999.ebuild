@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/noctalia-dev/umbriel.git"
 LICENSE="MIT"
 SLOT="0"
 IUSE="jemalloc screencast"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 DEPEND="
 	gui-libs/wlroots:0.20[X(+)]
