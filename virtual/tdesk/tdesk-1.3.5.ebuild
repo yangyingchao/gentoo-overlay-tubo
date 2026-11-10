@@ -29,7 +29,6 @@ DEPEND=" (
   gui-apps/wl-mirror
   gui-apps/wlrctl
   gui-wm/umbriel
-  gui-apps/strata
   media-fonts/noto-emoji
   media-fonts/noto[cjk,extra]
   media-gfx/chafa
