@@ -65,7 +65,7 @@ media-video/pipewire sound-server
 media-video/vlc upnp opus
 net-fs/samba -systemd
 net-im/wechat fcitx
-net-libs/webkit-gtk keyring
+net-libs/webkit-gtk -keyring
 net-mail/mu emacs
 net-misc/aria2 xmlrpc jemalloc metalink bittorrent
 net-misc/curl -zstd
