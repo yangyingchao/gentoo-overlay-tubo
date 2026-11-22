@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>yang.yingchao@qq.com</email>
+		<name>yangyingchao</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">anefzaoui/misterdownloadmanager</remote-id>
+	</upstream>
+</pkgmetadata>
