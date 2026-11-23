@@ -9,7 +9,7 @@ if ld.so --help | grep 'x86-64-v3' | grep -q supported; then
     arch='x86-64-v3'
 fi
 
-hosts=(mirrors.ustc.edu.cn mirrors.aliyun.com mirrors.huaweicloud.com)
+hosts=(mirrors.aliyun.com mirrors.huaweicloud.com)
 
 idx=0
 echo > portage/binrepos.conf/gentoobinhost.conf

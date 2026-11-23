@@ -7,7 +7,9 @@ inherit desktop unpacker xdg
 
 DESCRIPTION="Open-source download manager written in Rust"
 HOMEPAGE="https://github.com/anefzaoui/misterdownloadmanager"
-SRC_URI="https://github.com/anefzaoui/misterdownloadmanager/releases/download/v${PV}/MisterDownloadManager-${PV}-linux-x86_64.deb -> ${P}-amd64.deb"
+# Distfile name pinned to the upstream product name: it must not follow ${PN}, or a rename
+# would orphan the copy already in DISTDIR.
+SRC_URI="https://github.com/anefzaoui/misterdownloadmanager/releases/download/v${PV}/MisterDownloadManager-${PV}-linux-x86_64.deb -> misterdownloadmanager-${PV}-amd64.deb"
 S="${WORKDIR}"
 
 LICENSE="GPL-3+"
@@ -43,14 +45,14 @@ QA_PREBUILT="
 src_install() {
 	doins -r *
 
-	# the deb ships its docs under /usr/share/doc/${PN}, move them to /usr/share/doc/${PF}
-	local docdir="${ED}"/usr/share/doc/${PN}
-	rm -rf "${docdir}" || die
-	dodoc usr/share/doc/misterdownloadmanager/{ATTRIBUTION.md,LICENSE}
+	rm -rf "${ED}"/usr/share/doc/misterdownloadmanager
+	rm -rf "${ED}"/usr/share/misterdownloadmanager
 
 	exeinto /usr/bin
 	exeopts -m0755
 	doexe usr/bin/*
+
+	dosym -r /usr/bin/misterdownloadmanager-cli /usr/bin/mdm
 }
 
 pkg_postinst() {

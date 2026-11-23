@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# Portage fetch dispatcher: pick a downloader, fall back to the next one.
+#   fetch:  mdd (http/https only) -> aria2c -> wget
+#   resume: aria2c -> wget
+# Portage calls it as: portage-fetch <fetch|resume> <DISTDIR> <FILE> <URI>
+#
+# mdd is skipped on resume: its continue path is the session based `resume`
+# subcommand, which does not take these three arguments.
+#
+# Lives in the overlay and reaches the machine through the portage/ bind mount, so
+# it arrives with make.conf itself: no package has to be installed before the
+# first fetch works.
+
+set -u
+
+ARIA2_CONF=/etc/portage/aria2.conf
+
+usage='usage: portage-fetch <fetch|resume> <distdir> <file> <uri>'
+
+mode=${1:-}
+distdir=${2:-}
+file=${3:-}
+uri=${4:-}
+
+if [[ -z ${mode} || -z ${distdir} || -z ${file} || -z ${uri} ]]; then
+	printf '%s\n' "${usage}" >&2
+	exit 2
+fi
+
+dest="${distdir}/${file}"
+last_rc=1
+
+# Runs one downloader; on success the whole script is done, otherwise the caller
+# falls through to the next candidate.
+run() {
+	local name=${1}
+	shift
+	printf 'portage-fetch: trying %s\n' "${name}" >&2
+	"$@"
+	last_rc=$?
+	if [[ ${last_rc} -eq 0 ]]; then
+		exit 0
+	fi
+	printf 'portage-fetch: %s failed (exit %s)\n' "${name}" "${last_rc}" >&2
+	return 0
+}
+
+echo "UU: ${uri}"
+
+if [[ ${mode} == fetch ]]; then
+	case "${uri}" in
+	http://* | https://*)
+		mdd=$(command -v misterdownloadmanager-cli 2>/dev/null) || mdd=
+		[[ -n ${mdd} ]] && run mdd "${mdd}" get -o "${dest}" "${uri}"
+		;;
+	esac
+fi
+
+aria2c=$(command -v aria2c 2>/dev/null) || aria2c=
+if [[ -n ${aria2c} && -r ${ARIA2_CONF} ]]; then
+	run aria2c "${aria2c}" --conf-path="${ARIA2_CONF}" -d "${distdir}" -o "${file}" "${uri}"
+fi
+
+# The wget invocations are portage's own defaults, copied from make.globals so the
+# fallback behaves exactly like a stock install.
+wget=$(command -v wget 2>/dev/null) || wget=
+if [[ -n ${wget} ]]; then
+	if [[ ${mode} == resume ]]; then
+		run wget "${wget}" -c -t 3 -T 60 --passive-ftp \
+			-U "Portage (Gentoo, gentoo.org) distfile-fetch" -O "${dest}" "${uri}"
+	else
+		run wget "${wget}" -t 3 -T 60 --passive-ftp \
+			-U "Portage (Gentoo, gentoo.org) distfile-fetch" -O "${dest}" "${uri}"
+	fi
+fi
+
+printf 'portage-fetch: no downloader succeeded (last exit %s)\n' "${last_rc}" >&2
+exit "${last_rc}"
